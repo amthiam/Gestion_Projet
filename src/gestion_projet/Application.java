@@ -24,8 +24,8 @@ public class Application extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel_Activities = new javax.swing.JPanel();
-        jPanel_Activities.setVisible(false);
+        jPanel_Home = new javax.swing.JPanel();
+        jPanel_Home.setVisible(false);
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -33,6 +33,28 @@ public class Application extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jPanel_Risks = new javax.swing.JPanel();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jPanel_WBS = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jPanel_Tasks = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jPanel_Activities = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jPanel_States = new javax.swing.JPanel();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,11 +79,11 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel_ActivitiesLayout = new javax.swing.GroupLayout(jPanel_Activities);
-        jPanel_Activities.setLayout(jPanel_ActivitiesLayout);
-        jPanel_ActivitiesLayout.setHorizontalGroup(
-            jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_HomeLayout = new javax.swing.GroupLayout(jPanel_Home);
+        jPanel_Home.setLayout(jPanel_HomeLayout);
+        jPanel_HomeLayout.setHorizontalGroup(
+            jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_HomeLayout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -69,15 +91,15 @@ public class Application extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addContainerGap(531, Short.MAX_VALUE))
         );
-        jPanel_ActivitiesLayout.setVerticalGroup(
-            jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel_HomeLayout.setVerticalGroup(
+            jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton3)
                 .addComponent(jButton1)
                 .addComponent(jButton2))
         );
 
-        jTabbedPane1.addTab("Home", jPanel_Activities);
+        jTabbedPane1.addTab("Home", jPanel_Home);
 
         jButton4.setText("Human");
 
@@ -105,10 +127,184 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton4)
                     .addComponent(jButton6))
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Resources", jPanel_Resources);
+
+        jButton19.setText("Modify");
+
+        jButton20.setText("New Requirement");
+
+        jButton21.setText("New Risk");
+
+        javax.swing.GroupLayout jPanel_RisksLayout = new javax.swing.GroupLayout(jPanel_Risks);
+        jPanel_Risks.setLayout(jPanel_RisksLayout);
+        jPanel_RisksLayout.setHorizontalGroup(
+            jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_RisksLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jButton21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton20)
+                .addContainerGap(534, Short.MAX_VALUE))
+        );
+        jPanel_RisksLayout.setVerticalGroup(
+            jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_RisksLayout.createSequentialGroup()
+                .addGroup(jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20)
+                    .addComponent(jButton19)
+                    .addComponent(jButton21))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Risks", jPanel_Risks);
+
+        jButton7.setText("Export as List");
+
+        jButton8.setText("Show as List");
+
+        jButton9.setText("Show as a Tree");
+
+        jButton22.setText("Export as PDF");
+
+        javax.swing.GroupLayout jPanel_WBSLayout = new javax.swing.GroupLayout(jPanel_WBS);
+        jPanel_WBS.setLayout(jPanel_WBSLayout);
+        jPanel_WBSLayout.setHorizontalGroup(
+            jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_WBSLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton22)
+                .addContainerGap(399, Short.MAX_VALUE))
+        );
+        jPanel_WBSLayout.setVerticalGroup(
+            jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_WBSLayout.createSequentialGroup()
+                .addGroup(jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton7)
+                    .addComponent(jButton9)
+                    .addComponent(jButton22))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("WBS", jPanel_WBS);
+
+        jButton10.setText("Modify");
+
+        jButton11.setText("New");
+
+        jButton12.setText("Export in a TextFile");
+
+        jButton23.setText("Export to MS Project");
+
+        javax.swing.GroupLayout jPanel_TasksLayout = new javax.swing.GroupLayout(jPanel_Tasks);
+        jPanel_Tasks.setLayout(jPanel_TasksLayout);
+        jPanel_TasksLayout.setHorizontalGroup(
+            jPanel_TasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TasksLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jButton11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton23)
+                .addContainerGap(421, Short.MAX_VALUE))
+        );
+        jPanel_TasksLayout.setVerticalGroup(
+            jPanel_TasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TasksLayout.createSequentialGroup()
+                .addGroup(jPanel_TasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton11)
+                    .addComponent(jButton10)
+                    .addComponent(jButton12)
+                    .addComponent(jButton23))
+                .addGap(0, 207, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tasks", jPanel_Tasks);
+
+        jButton13.setText("Modify");
+
+        jButton14.setText("Activities / State Graph");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setText("New");
+
+        jButton24.setText("Activities Graph");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_ActivitiesLayout = new javax.swing.GroupLayout(jPanel_Activities);
+        jPanel_Activities.setLayout(jPanel_ActivitiesLayout);
+        jPanel_ActivitiesLayout.setHorizontalGroup(
+            jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+                .addComponent(jButton15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton24)
+                .addContainerGap(424, Short.MAX_VALUE))
+        );
+        jPanel_ActivitiesLayout.setVerticalGroup(
+            jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+                .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton14)
+                    .addComponent(jButton13)
+                    .addComponent(jButton15)
+                    .addComponent(jButton24))
+                .addGap(0, 207, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Activities", jPanel_Activities);
+
+        jButton17.setText("Modify");
+
+        jButton18.setText("New");
+
+        javax.swing.GroupLayout jPanel_StatesLayout = new javax.swing.GroupLayout(jPanel_States);
+        jPanel_States.setLayout(jPanel_StatesLayout);
+        jPanel_StatesLayout.setHorizontalGroup(
+            jPanel_StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_StatesLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jButton18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton17)
+                .addContainerGap(681, Short.MAX_VALUE))
+        );
+        jPanel_StatesLayout.setVerticalGroup(
+            jPanel_StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_StatesLayout.createSequentialGroup()
+                .addGroup(jPanel_StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton17)
+                    .addComponent(jButton18))
+                .addGap(0, 207, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("States", jPanel_States);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +336,14 @@ public class Application extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,13 +384,35 @@ public class Application extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel_Activities;
+    private javax.swing.JPanel jPanel_Home;
     private javax.swing.JPanel jPanel_Resources;
+    private javax.swing.JPanel jPanel_Risks;
+    private javax.swing.JPanel jPanel_States;
+    private javax.swing.JPanel jPanel_Tasks;
+    private javax.swing.JPanel jPanel_WBS;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
