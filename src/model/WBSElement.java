@@ -16,6 +16,9 @@ public class WBSElement {
     /* id of the project this element is related to */
     protected Project project;
     
+    /* id of the element in the database */
+    protected long id;
+    
     /* label of the element */
     protected String label; 
     
