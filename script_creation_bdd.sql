@@ -174,7 +174,7 @@ CREATE TABLE projectDefinition.activity (
                 activity_label VARCHAR(255),
                 activity_description CLOB,
                 activity_workload DECIMAL,
-                activity_duration DECIMAL NOT NULL,
+                activity_duration DECIMAL,
                 activity_hypothesis CLOB,
                 activity_calcNote CLOB,
                 activity_constDateValue TIMESTAMP,
@@ -209,6 +209,7 @@ CREATE TABLE projectDefinition.humanResource (
                 allocationMode_id BIGINT,
                 targetGroup_id BIGINT,
                 unit_id BIGINT,
+				place_id BIGINT,
                 CONSTRAINT humanResource_pk PRIMARY KEY (humanResource_id, project_id)
 );
 
@@ -250,7 +251,7 @@ CREATE TABLE projectDefinition.risk (
                 risk_outcome CLOB,
                 risk_financial DECIMAL,
                 risk_provision DECIMAL,
-                risk_modality CLOB NOT NULL,
+                risk_modality CLOB,
                 risk_horizon VARCHAR(255),
                 element_id BIGINT,
                 riskStrategy_id BIGINT,
@@ -534,6 +535,12 @@ ON UPDATE CASCADE;
 ALTER TABLE projectDefinition.humanResource ADD CONSTRAINT targetGroup_humanResource_fk
 FOREIGN KEY (targetGroup_id, project_id)
 REFERENCES projectDefinition.targetGroup (targetGroup_id, project_id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE;
+
+ALTER TABLE projectDefinition.humanResource ADD CONSTRAINT place_humanResource_fk
+FOREIGN KEY (place_id, project_id)
+REFERENCES projectDefinition.place (place_id, project_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 

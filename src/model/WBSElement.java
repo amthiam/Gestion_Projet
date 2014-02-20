@@ -13,8 +13,6 @@ public class WBSElement {
     
     //Attributes
     
-    /* id of the project this element is related to */
-    protected Project project;
     
     /* id of the element in the database */
     protected long id;
