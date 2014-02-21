@@ -9,6 +9,7 @@ package model;
  */
 public class State {
     
+    //ATTRIBUTES
     /* id of the state in the database */
     protected long id;
     
@@ -23,5 +24,26 @@ public class State {
     
     /* activity generator of the considered state */
     protected Activity predecessorActivity;
+
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public boolean isIsMilestone() {
+        return isMilestone;
+    }
+
+    public WBSElement getElement() {
+        return element;
+    }
+
+    public Activity getPredecessorActivity() {
+        return predecessorActivity;
+    }
     
 }

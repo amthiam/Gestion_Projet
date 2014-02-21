@@ -7,6 +7,7 @@ package model;
  */
 public class Unit {
     
+    //ATTRIBUTES
     /* id of the unit in the database */
     protected long id;
     
@@ -15,4 +16,19 @@ public class Unit {
     
     /* name of the unit */
     protected String name;
+    
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
 }

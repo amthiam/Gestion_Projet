@@ -7,9 +7,20 @@ package model;
  */
 public class Project {
     
+    //ATTRIBUTES
     /* database id of the project */
     protected long id;
     
     /* label of the project */
     protected String label;
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+    
 }

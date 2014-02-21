@@ -7,6 +7,8 @@ package model;
  */
 public class Document {
     
+    //ATTRIBUTES
+    
     /* id of the document in the database */
     protected long id;
     
@@ -31,6 +33,39 @@ public class Document {
     /* name of the resource responsible for the dispatch */
     protected String dispatcher;
     
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getRecordCarrier() {
+        return recordCarrier;
+    }
+
+    public String getDispatchFrequency() {
+        return dispatchFrequency;
+    }
+
+    public String getResponsibleResource() {
+        return responsibleResource;
+    }
+
+    public String getTargetGroup() {
+        return targetGroup;
+    }
+
+    public String getDispatcher() {
+        return dispatcher;
+    }
     
     
 }

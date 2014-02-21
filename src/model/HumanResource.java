@@ -9,6 +9,8 @@ import java.math.BigDecimal;
  */
 public class HumanResource {
     
+    //ATTRIBUTES
+    
     /* id of the human resource in the database */
     protected long id;
     
@@ -51,6 +53,63 @@ public class HumanResource {
     /* name of the place of the resource */
     protected String place;
     
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getInitials() {
+        return initials;
+    }
+
+    public BigDecimal getCapacity() {
+        return capacity;
+    }
+
+    public BigDecimal getStandardRate() {
+        return standardRate;
+    }
+
+    public BigDecimal getOvertimeRate() {
+        return overtimeRate;
+    }
+
+    public BigDecimal getUseCost() {
+        return useCost;
+    }
+
+    public boolean isIsCritical() {
+        return isCritical;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public String getAllocationMode() {
+        return allocationMode;
+    }
+
+    public String getTargetGroup() {
+        return targetGroup;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getPlace() {
+        return place;
+    }
     
     
 }

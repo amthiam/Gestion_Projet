@@ -84,4 +84,97 @@ public class WBSElement {
     protected int rank;
    
     
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isIsWorkpackage() {
+        return isWorkpackage;
+    }
+
+    public GregorianCalendar getStartDate() {
+        return startDate;
+    }
+
+    public BigDecimal getWorkload() {
+        return workload;
+    }
+
+    public BigDecimal getDuration() {
+        return duration;
+    }
+
+    public boolean isIsContractual() {
+        return isContractual;
+    }
+
+    public String getAchievmentCriteria() {
+        return achievmentCriteria;
+    }
+
+    public GregorianCalendar getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public BigDecimal getLaborAmount() {
+        return laborAmount;
+    }
+
+    public BigDecimal getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public BigDecimal getExpenseAmount() {
+        return expenseAmount;
+    }
+
+    public BigDecimal getRentAmount() {
+        return rentAmount;
+    }
+
+    public BigDecimal getSubcontractAmount() {
+        return subcontractAmount;
+    }
+
+    public GregorianCalendar getEarlyStart() {
+        return earlyStart;
+    }
+
+    public GregorianCalendar getEarlyFinish() {
+        return earlyFinish;
+    }
+
+    public GregorianCalendar getLateStart() {
+        return lateStart;
+    }
+
+    public GregorianCalendar getLateFinish() {
+        return lateFinish;
+    }
+
+    public BigDecimal getTotalSlack() {
+        return totalSlack;
+    }
+
+    public BigDecimal getFreeSlack() {
+        return freeSlack;
+    }
+
+    public WBSElement getParentElement() {
+        return parentElement;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+    
 }

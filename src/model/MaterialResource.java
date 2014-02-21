@@ -9,6 +9,8 @@ import java.math.BigDecimal;
  */
 public class MaterialResource {
     
+    //ATTRIBUTES
+    
     /* id of the material resource in the database */
     protected long id;
     
@@ -51,6 +53,63 @@ public class MaterialResource {
     /* type of the resource : labor, equipment or cost */
     protected String resourceType;
     
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getInitials() {
+        return initials;
+    }
+
+    public BigDecimal getStandardRate() {
+        return standardRate;
+    }
+
+    public BigDecimal getOvertimeRate() {
+        return overtimeRate;
+    }
+
+    public BigDecimal getUseCost() {
+        return useCost;
+    }
+
+    public boolean isIsCritical() {
+        return isCritical;
+    }
+
+    public BigDecimal getCapacity() {
+        return capacity;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getAllocationMode() {
+        return allocationMode;
+    }
+
+    public String getResourceType() {
+        return resourceType;
+    }
     
     
 }

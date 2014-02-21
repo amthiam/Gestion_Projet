@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
  */
 public class Risk {
     
+    //ATTRIBUTES
     /* id of the risk in the database */
     protected long id;
     
@@ -60,5 +61,74 @@ public class Risk {
     
     /* nature of the risk : technical, calendar, budget, financial */
     protected String riskNature;
+
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTriggerEvent() {
+        return triggerEvent;
+    }
+
+    public int getProbability() {
+        return probability;
+    }
+
+    public int getImpact() {
+        return impact;
+    }
+
+    public int getDetectionDifficulty() {
+        return detectionDifficulty;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public BigDecimal getFinancial() {
+        return financial;
+    }
+
+    public BigDecimal getProvision() {
+        return provision;
+    }
+
+    public String getModality() {
+        return modality;
+    }
+
+    public GregorianCalendar getHorizon() {
+        return horizon;
+    }
+
+    public String getElementLabel() {
+        return elementLabel;
+    }
+
+    public String getResponseStrategy() {
+        return responseStrategy;
+    }
+
+    public String getDetectionResponsible() {
+        return detectionResponsible;
+    }
+
+    public String getResolvingResponsible() {
+        return resolvingResponsible;
+    }
+
+    public String getRiskNature() {
+        return riskNature;
+    }
     
 }

@@ -9,7 +9,8 @@ import java.util.GregorianCalendar;
  * @author Felix
  */
 public class Activity {
-    
+
+    //ATTRIBUTES
     /* id of the activity in the database */
     protected long id;
     
@@ -44,5 +45,51 @@ public class Activity {
         
     /* place of the activity */
     protected Place place;
+    
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getWorkload() {
+        return workload;
+    }
+
+    public BigDecimal getDuration() {
+        return duration;
+    }
+
+    public String getHypothesis() {
+        return hypothesis;
+    }
+
+    public String getCaculationNote() {
+        return caculationNote;
+    }
+
+    public GregorianCalendar getConstDateValue() {
+        return constDateValue;
+    }
+
+    public WBSElement getElement() {
+        return element;
+    }
+
+    public String getConstraintDateType() {
+        return constraintDateType;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
     
 }

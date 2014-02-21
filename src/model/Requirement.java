@@ -7,6 +7,7 @@ package model;
  */
 public class Requirement {
     
+    //ATTRIBUTES
     /* id of the requirement in the database */
     protected long id;
     
@@ -39,5 +40,51 @@ public class Requirement {
     
     /* WBS element concerned by the requirement */
     protected WBSElement element;
+    
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getAcceptanceCriteria() {
+        return acceptanceCriteria;
+    }
+
+    public String getCriticityLevel() {
+        return criticityLevel;
+    }
+
+    public String getHardnessLevel() {
+        return hardnessLevel;
+    }
+
+    public String getFlexibility() {
+        return flexibility;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getResponsible() {
+        return responsible;
+    }
+
+    public String getTrackingMethod() {
+        return trackingMethod;
+    }
+
+    public WBSElement getElement() {
+        return element;
+    }
     
 }

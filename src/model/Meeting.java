@@ -7,6 +7,8 @@ package model;
  */
 public class Meeting {
     
+    //ATTRIBUTES
+    
     /* id of the meeting in the database */
     protected long id;
     
@@ -25,6 +27,31 @@ public class Meeting {
     /* place label where the meeting occurs */
     protected String place;
     
+    
+    //GET METHODS
+    public long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    public String getMedia() {
+        return media;
+    }
+
+    public String getPlace() {
+        return place;
+    }
     
     
 }
