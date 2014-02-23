@@ -16,4 +16,8 @@ public class DatabaseException extends ProjectException {
 	public DatabaseException(String message) {
 		super(ResultCode.DATABASE_ERROR, message);
 	}
+        
+        	public DatabaseException(Throwable e) {
+		super(ResultCode.DATABASE_ERROR, e);
+	}
 }

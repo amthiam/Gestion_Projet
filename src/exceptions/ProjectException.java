@@ -19,7 +19,16 @@ public class ProjectException extends Exception {
 		super(message);
 		this.resultCode = resultCode;
 	}
+        
+        public ProjectException(ResultCode resultCode, Throwable e) {
+		super(e);
+		this.resultCode = resultCode;
+	}
 	
+	public ProjectException(ResultCode resultCode, String message, Throwable e) {
+		super(message, e);
+		this.resultCode = resultCode;
+        }
 	
 	public ResultCode getResultCode() {
 		return resultCode;
