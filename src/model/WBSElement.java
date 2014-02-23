@@ -11,8 +11,7 @@ import java.util.GregorianCalendar;
  */
 public class WBSElement {
     
-    //Attributes
-    
+    //ATTRIBUTES
     
     /* id of the element in the database */
     protected long id;
@@ -83,6 +82,34 @@ public class WBSElement {
     /* rank of the element on its level */
     protected int rank;
    
+    //CONSTRUCTOR
+    public WBSElement(long id, String label, String description, boolean isWorkpackage, GregorianCalendar startDate, BigDecimal workload, BigDecimal duration, boolean isContractual, String achievmentCriteria, GregorianCalendar deliveryDate, BigDecimal laborAmount, BigDecimal purchaseAmount, BigDecimal expenseAmount, BigDecimal rentAmount, BigDecimal subcontractAmount, GregorianCalendar earlyStart, GregorianCalendar earlyFinish, GregorianCalendar lateStart, GregorianCalendar lateFinish, BigDecimal totalSlack, BigDecimal freeSlack, WBSElement parentElement, int rank) {
+        this.id = id;
+        this.label = label;
+        this.description = description;
+        this.isWorkpackage = isWorkpackage;
+        this.startDate = startDate;
+        this.workload = workload;
+        this.duration = duration;
+        this.isContractual = isContractual;
+        this.achievmentCriteria = achievmentCriteria;
+        this.deliveryDate = deliveryDate;
+        this.laborAmount = laborAmount;
+        this.purchaseAmount = purchaseAmount;
+        this.expenseAmount = expenseAmount;
+        this.rentAmount = rentAmount;
+        this.subcontractAmount = subcontractAmount;
+        this.earlyStart = earlyStart;
+        this.earlyFinish = earlyFinish;
+        this.lateStart = lateStart;
+        this.lateFinish = lateFinish;
+        this.totalSlack = totalSlack;
+        this.freeSlack = freeSlack;
+        this.parentElement = parentElement;
+        this.rank = rank;
+    }
+    
+    
     
     //GET METHODS
     public long getId() {
