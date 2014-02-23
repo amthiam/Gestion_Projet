@@ -2,7 +2,8 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.GregorianCalendar;
+import java.util.Date;
+
 
 
 /**
@@ -26,7 +27,7 @@ public class WBSElement {
     protected boolean isWorkpackage;
     
     /* startdate of the element */
-    protected GregorianCalendar startDate;
+    protected Date startDate;
     
     /* workload expected for the element */
     protected BigDecimal workload;
@@ -41,7 +42,7 @@ public class WBSElement {
     protected String achievmentCriteria;
     
     /* delivery date of the element */
-    protected GregorianCalendar deliveryDate;
+    protected Date deliveryDate;
     
     /* expected labor amount of the element */
     protected BigDecimal laborAmount;
@@ -59,16 +60,16 @@ public class WBSElement {
     protected BigDecimal subcontractAmount;
     
     /* early start date of the element */
-    protected GregorianCalendar earlyStart;
+    protected Date earlyStart;
     
     /* early finish date */
-    protected GregorianCalendar earlyFinish;
+    protected Date earlyFinish;
     
     /* late start date */
-    protected GregorianCalendar lateStart;
+    protected Date lateStart;
     
     /* late finish date */
-    protected GregorianCalendar lateFinish;
+    protected Date lateFinish;
     
     /* total slack of the element */
     protected BigDecimal totalSlack;
@@ -76,14 +77,14 @@ public class WBSElement {
     /* free slack of the element */
     protected BigDecimal freeSlack;
     
-    /* parent element */
-    protected WBSElement parentElement;
+    /* id of the parent element */
+    protected long idParentElement;
     
     /* rank of the element on its level */
     protected int rank;
    
     //CONSTRUCTOR
-    public WBSElement(long id, String label, String description, boolean isWorkpackage, GregorianCalendar startDate, BigDecimal workload, BigDecimal duration, boolean isContractual, String achievmentCriteria, GregorianCalendar deliveryDate, BigDecimal laborAmount, BigDecimal purchaseAmount, BigDecimal expenseAmount, BigDecimal rentAmount, BigDecimal subcontractAmount, GregorianCalendar earlyStart, GregorianCalendar earlyFinish, GregorianCalendar lateStart, GregorianCalendar lateFinish, BigDecimal totalSlack, BigDecimal freeSlack, WBSElement parentElement, int rank) {
+    public WBSElement(long id, String label, String description, boolean isWorkpackage, Date startDate, BigDecimal workload, BigDecimal duration, boolean isContractual, String achievmentCriteria, Date deliveryDate, BigDecimal laborAmount, BigDecimal purchaseAmount, BigDecimal expenseAmount, BigDecimal rentAmount, BigDecimal subcontractAmount, Date earlyStart, Date earlyFinish, Date lateStart, Date lateFinish, BigDecimal totalSlack, BigDecimal freeSlack, long idParentElement, int rank) {
         this.id = id;
         this.label = label;
         this.description = description;
@@ -105,7 +106,7 @@ public class WBSElement {
         this.lateFinish = lateFinish;
         this.totalSlack = totalSlack;
         this.freeSlack = freeSlack;
-        this.parentElement = parentElement;
+        this.idParentElement = idParentElement;
         this.rank = rank;
     }
     
@@ -128,7 +129,7 @@ public class WBSElement {
         return isWorkpackage;
     }
 
-    public GregorianCalendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
@@ -148,7 +149,7 @@ public class WBSElement {
         return achievmentCriteria;
     }
 
-    public GregorianCalendar getDeliveryDate() {
+    public Date getDeliveryDate() {
         return deliveryDate;
     }
 
@@ -172,19 +173,19 @@ public class WBSElement {
         return subcontractAmount;
     }
 
-    public GregorianCalendar getEarlyStart() {
+    public Date getEarlyStart() {
         return earlyStart;
     }
 
-    public GregorianCalendar getEarlyFinish() {
+    public Date getEarlyFinish() {
         return earlyFinish;
     }
 
-    public GregorianCalendar getLateStart() {
+    public Date getLateStart() {
         return lateStart;
     }
 
-    public GregorianCalendar getLateFinish() {
+    public Date getLateFinish() {
         return lateFinish;
     }
 
@@ -196,8 +197,8 @@ public class WBSElement {
         return freeSlack;
     }
 
-    public WBSElement getParentElement() {
-        return parentElement;
+    public long getIdParentElement() {
+        return idParentElement;
     }
 
     public int getRank() {

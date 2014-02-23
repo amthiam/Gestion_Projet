@@ -142,7 +142,7 @@ CREATE TABLE projectDefinition.element (
                 element_totalSlack DECIMAL,
                 element_freeSlack DECIMAL,
                 Parent_element_id BIGINT,
-                element_rank BIGINT,
+                element_rank INTEGER,
                 CONSTRAINT element_pk PRIMARY KEY (element_id, project_id)
 );
 

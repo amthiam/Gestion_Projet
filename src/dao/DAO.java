@@ -1,5 +1,6 @@
 package dao;
-import java.sql.Connection;
+import exceptions.DatabaseException;
+import manager.DatabaseManager;
 
 /**
  * Generic class for finding, creating, updating or deleting an object in the database
@@ -8,10 +9,11 @@ import java.sql.Connection;
  */
 public abstract class DAO<T> {
     
-    protected Connection connect = null;
+    // Database access
+    protected DatabaseManager db = null;
     
-    public DAO(Connection conn){
-        this.connect = conn;
+    public DAO(DatabaseManager db){
+        this.db = db;
         }
     
     /**
@@ -40,5 +42,5 @@ public abstract class DAO<T> {
      * @param id : id of the object to find
      * @return object 
      */
-    public abstract T find(long id);
+    public abstract T find(long id) throws DatabaseException;
 }
