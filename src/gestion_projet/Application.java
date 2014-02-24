@@ -3,6 +3,7 @@
 
 package gestion_projet;
 
+
 /**
  *
  * @author amadou
@@ -12,6 +13,9 @@ public class Application extends javax.swing.JFrame {
     
     public Application() {
         initComponents();
+        
+        System.out.println("test");
+        
     }
 
     /**
@@ -225,6 +229,11 @@ public class Application extends javax.swing.JFrame {
         });
 
         jButton15.setText("New");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
 
         jButton24.setText("State List");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -406,6 +415,11 @@ public class Application extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+ // TODO add your handling code here:
+        new New_Activity(this, true);
+    }//GEN-LAST:event_jButton15MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -436,8 +450,9 @@ public class Application extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Application().setVisible(true);
+                new Application().setVisible(true) ;
                 
+               
                 
             }
         });
