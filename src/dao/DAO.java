@@ -1,5 +1,6 @@
 package dao;
 import exceptions.DatabaseException;
+import exceptions.ProjectException;
 import manager.DatabaseManager;
 
 /**
@@ -21,7 +22,7 @@ public abstract class DAO<T> {
      * @param obj : object to insert in the database
      * @return boolean : indicates if creation has been successful
      */
-    public abstract boolean create(T obj);
+    public abstract void create(T obj) throws ProjectException;
     
     /**
      * Object deletion method
@@ -42,5 +43,5 @@ public abstract class DAO<T> {
      * @param id : id of the object to find
      * @return object 
      */
-    public abstract T find(long id) throws DatabaseException;
+    public abstract T find(long id) throws ProjectException;
 }

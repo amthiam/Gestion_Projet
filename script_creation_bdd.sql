@@ -2,6 +2,7 @@
 CREATE TABLE projectDefinition.constraintDateType (
                 constraintDateType_id IDENTITY NOT NULL,
                 constraintDateType_label VARCHAR(255) NOT NULL,
+				constraintDateType_languageCode VARCHAR(255),
                 CONSTRAINT constraintDateType_id PRIMARY KEY (constraintDateType_id)
 );
 
@@ -104,6 +105,9 @@ CREATE TABLE projectDefinition.user (
 CREATE TABLE projectDefinition.project (
                 project_id IDENTITY NOT NULL,
                 project_label VARCHAR(255) NOT NULL,
+				project_name VARCHAR(255),
+				project_description CLOB,
+				customer_name VARCHAR(255),
                 user_projectManagerId BIGINT NOT NULL,
                 CONSTRAINT project_id PRIMARY KEY (project_id)
 );
@@ -121,7 +125,7 @@ CREATE TABLE projectDefinition.targetGroup (
 CREATE TABLE projectDefinition.element (
                 element_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
-                element_label VARCHAR(255),
+                element_label VARCHAR(255) NOT NULL,
                 element_description CLOB,
                 element_isWorkpackage BOOLEAN,
                 element_start TIMESTAMP,
@@ -171,7 +175,7 @@ CREATE TABLE projectDefinition.meeting (
 CREATE TABLE projectDefinition.activity (
                 activity_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
-                activity_label VARCHAR(255),
+                activity_label VARCHAR(255) NOT NULL,
                 activity_description CLOB,
                 activity_workload DECIMAL,
                 activity_duration DECIMAL,
@@ -241,7 +245,7 @@ CREATE TABLE projectDefinition.document (
 CREATE TABLE projectDefinition.risk (
                 risk_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
-                risk_label VARCHAR(255),
+                risk_label VARCHAR(255) NOT NULL,
                 risk_description CLOB,
                 risk_event VARCHAR(255),
                 risk_probability INTEGER,
@@ -309,7 +313,7 @@ CREATE TABLE projectDefinition.materialResourceNeededActiviy (
 CREATE TABLE projectDefinition.state (
                 state_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
-                state_label VARCHAR(255),
+                state_label VARCHAR(255) NOT NULL,
                 state_isMilestone BOOLEAN,
                 element_id BIGINT,
                 activity_idActivityPredecessorToState BIGINT,

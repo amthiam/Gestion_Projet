@@ -15,7 +15,10 @@ public class WBSElement {
     //ATTRIBUTES
     
     /* id of the element in the database */
-    protected long id;
+    protected Long id;
+    
+    /* id of the project the element is associated */
+    protected Long idProject;
     
     /* label of the element */
     protected String label; 
@@ -78,14 +81,15 @@ public class WBSElement {
     protected BigDecimal freeSlack;
     
     /* id of the parent element */
-    protected long idParentElement;
+    protected Long idParentElement;
     
     /* rank of the element on its level */
-    protected int rank;
+    protected Integer rank;
    
     //CONSTRUCTOR
-    public WBSElement(long id, String label, String description, boolean isWorkpackage, Date startDate, BigDecimal workload, BigDecimal duration, boolean isContractual, String achievmentCriteria, Date deliveryDate, BigDecimal laborAmount, BigDecimal purchaseAmount, BigDecimal expenseAmount, BigDecimal rentAmount, BigDecimal subcontractAmount, Date earlyStart, Date earlyFinish, Date lateStart, Date lateFinish, BigDecimal totalSlack, BigDecimal freeSlack, long idParentElement, int rank) {
+    public WBSElement(Long id, String label, String description, boolean isWorkpackage, Date startDate, BigDecimal workload, BigDecimal duration, boolean isContractual, String achievmentCriteria, Date deliveryDate, BigDecimal laborAmount, BigDecimal purchaseAmount, BigDecimal expenseAmount, BigDecimal rentAmount, BigDecimal subcontractAmount, Date earlyStart, Date earlyFinish, Date lateStart, Date lateFinish, BigDecimal totalSlack, BigDecimal freeSlack, Long idParentElement, Integer rank, Long idProject) {
         this.id = id;
+        this.idProject = idProject;
         this.label = label;
         this.description = description;
         this.isWorkpackage = isWorkpackage;
@@ -113,8 +117,12 @@ public class WBSElement {
     
     
     //GET METHODS
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+    
+    public Long getIdProject(){
+        return idProject;
     }
 
     public String getLabel() {
@@ -197,11 +205,11 @@ public class WBSElement {
         return freeSlack;
     }
 
-    public long getIdParentElement() {
+    public Long getIdParentElement() {
         return idParentElement;
     }
 
-    public int getRank() {
+    public Integer getRank() {
         return rank;
     }
     

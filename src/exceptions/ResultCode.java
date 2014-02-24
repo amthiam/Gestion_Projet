@@ -18,7 +18,10 @@ public enum ResultCode {
     
        
        /** the request has been made with missing parameters */
-        WRONG_PARAMETERS_FOR_REQUEST(3);
+        WRONG_PARAMETERS_FOR_REQUEST(3),
+        
+        /** The object to be created in the database is invalid */
+        INVALID_OBJECT(4);
 	
         private int code;
         

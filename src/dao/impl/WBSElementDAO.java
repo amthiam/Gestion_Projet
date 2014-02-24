@@ -2,11 +2,15 @@ package dao.impl;
 
 import dao.DAO;
 import exceptions.DatabaseException;
+import exceptions.ProjectException;
+import exceptions.ResultCode;
 import java.math.BigDecimal;
 import java.sql.Clob;
+import java.sql.PreparedStatement;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import manager.DatabaseManager;
 import model.WBSElement;
 
@@ -23,8 +27,65 @@ public class WBSElementDAO extends DAO<WBSElement> {
     }
 
     @Override
-    public boolean create(WBSElement obj) {
-        return false;
+    public void create(WBSElement element) throws ProjectException {
+
+        // The fields idParentElement and element_label are compulsory in the database
+        if (element.getIdParentElement() == null || element.getLabel().isEmpty()) {
+            throw new ProjectException(ResultCode.INVALID_OBJECT, "A WBS element must have a parent element and a label");
+        }
+
+        //Insertion in the database
+        try {
+
+            db.startTransaction();
+
+            PreparedStatement stmt = db.getConnection().prepareStatement("INSERT INTO projectDefinition.element"
+                    + "project_id, element_label, element_description, element_isWorkpackage, element_start, element_workload, element_duration, element_isContractual"
+                    + "element_achievCriteria, element_delivDate, element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount"
+                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, Parent_element_id, element_rank"
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING element_id");
+
+            stmt.setLong(1, element.getIdProject());
+            stmt.setString(2, element.getLabel());
+
+            Clob description = db.getConnection().createClob();
+            description.setString(1, element.getDescription());
+            stmt.setClob(3, description);
+
+            stmt.setBoolean(4, element.isIsWorkpackage());
+            stmt.setTimestamp(5, new Timestamp(element.getStartDate().getTime()));
+            stmt.setBigDecimal(6, element.getWorkload());
+            stmt.setBigDecimal(7, element.getDuration());
+            stmt.setBoolean(8, element.isIsContractual());
+
+            Clob achievCriteria = db.getConnection().createClob();
+            achievCriteria.setString(1, element.getAchievmentCriteria());
+            stmt.setClob(9, achievCriteria);
+
+            stmt.setTimestamp(10, new Timestamp(element.getDeliveryDate().getTime()));
+            stmt.setBigDecimal(11, element.getLaborAmount());
+            stmt.setBigDecimal(12, element.getPurchaseAmount());
+            stmt.setBigDecimal(13, element.getExpenseAmount());
+            stmt.setBigDecimal(14, element.getRentAmount());
+            stmt.setBigDecimal(15, element.getSubcontractAmount());
+            stmt.setTimestamp(16, new Timestamp(element.getEarlyStart().getTime()));
+            stmt.setTimestamp(17, new Timestamp(element.getEarlyFinish().getTime()));
+            stmt.setTimestamp(18, new Timestamp(element.getLateStart().getTime()));
+            stmt.setTimestamp(19, new Timestamp(element.getLateFinish().getTime()));
+            stmt.setBigDecimal(20, element.getTotalSlack());
+            stmt.setBigDecimal(21, element.getFreeSlack());
+            stmt.setLong(22, element.getIdParentElement());
+            stmt.setInt(23, element.getRank());
+
+            stmt.executeQuery();
+
+            db.commit();
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
+
+
+
     }
 
     @Override
@@ -44,11 +105,11 @@ public class WBSElementDAO extends DAO<WBSElement> {
                     "SELECT element_id, element_label, element_description, element_isWorkpackage, element_start"
                     + "element_workload, element_duration, element_isContractual, element_achievCriteria, element_delivDate"
                     + "element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount"
-                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank"
+                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank, project_id"
                     + "FROM projectDefinition.element"
                     + "WHERE element_id=" + id);
 
-            int idElement = response.getInt("element_id");
+            Long idElement = response.getLong("element_id");
             String label = response.getString("element_label");
             Clob descriptionCl = response.getClob("element_description");
             boolean isWorkpackage = response.getBoolean("element_isWorkpackage");
@@ -69,13 +130,14 @@ public class WBSElementDAO extends DAO<WBSElement> {
             Date lateFinish = response.getTimestamp("element_lateFinish");
             BigDecimal totalSlack = response.getBigDecimal("element_totalSlack");
             BigDecimal freeSlack = response.getBigDecimal("element_freeSlack");
-            long idParentElement = response.getLong("Parent_element_id");
-            int rank = response.getInt("element_rank");
+            Long idParentElement = response.getLong("Parent_element_id");
+            Integer rank = response.getInt("element_rank");
+            Long idProject = response.getLong("project_id");
 
             String description = descriptionCl.getSubString(1, (int) descriptionCl.length());
             String achievCriteria = achievCriteriaCl.getSubString(1, (int) achievCriteriaCl.length());
 
-            WBSElement result = new WBSElement(idElement, label, description, isWorkpackage, startDate, workload, duration, isContractual, achievCriteria, delivDate, laborAmount, purchaseAmount, expenseAmount, rentAmount, subcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, totalSlack, freeSlack, idParentElement, rank);
+            WBSElement result = new WBSElement(idElement, label, description, isWorkpackage, startDate, workload, duration, isContractual, achievCriteria, delivDate, laborAmount, purchaseAmount, expenseAmount, rentAmount, subcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, totalSlack, freeSlack, idParentElement, rank, idProject);
 
             return result;
         } catch (SQLException e) {
