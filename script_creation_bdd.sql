@@ -110,16 +110,16 @@ CREATE TABLE projectDefinition.project (
 
 
 CREATE TABLE projectDefinition.targetGroup (
-                targetGroup_id BIGINT AUTO_INCREMENT NOT NULL,
+                targetGroup_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 targetGroup_code VARCHAR(255) NOT NULL,
                 targetGroup_label VARCHAR(255) NOT NULL,
-                CONSTRAINT targetGroup_pk PRIMARY KEY (targetGroup_id, project_id)
+                CONSTRAINT targetGroup_pk PRIMARY KEY (targetGroup_id)
 );
 
 
 CREATE TABLE projectDefinition.element (
-                element_id BIGINT AUTO_INCREMENT NOT NULL,
+                element_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 element_label VARCHAR(255),
                 element_description CLOB,
@@ -143,33 +143,33 @@ CREATE TABLE projectDefinition.element (
                 element_freeSlack DECIMAL,
                 Parent_element_id BIGINT,
                 element_rank INTEGER,
-                CONSTRAINT element_pk PRIMARY KEY (element_id, project_id)
+                CONSTRAINT element_pk PRIMARY KEY (element_id)
 );
 
 
 CREATE TABLE projectDefinition.place (
-                place_id BIGINT AUTO_INCREMENT NOT NULL,
+                place_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 place_code VARCHAR(255),
                 place_label VARCHAR(255),
-                CONSTRAINT place_pk PRIMARY KEY (place_id, project_id)
+                CONSTRAINT place_pk PRIMARY KEY (place_id)
 );
 
 
 CREATE TABLE projectDefinition.meeting (
-                meeting_id BIGINT AUTO_INCREMENT NOT NULL,
+                meeting_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 meeting_code VARCHAR(255),
                 meeting_label VARCHAR(255),
                 frequency_id BIGINT,
                 meetingMedia_id BIGINT,
                 place_id BIGINT,
-                CONSTRAINT meeting_pk PRIMARY KEY (meeting_id, project_id)
+                CONSTRAINT meeting_pk PRIMARY KEY (meeting_id)
 );
 
 
 CREATE TABLE projectDefinition.activity (
-                activity_id BIGINT AUTO_INCREMENT NOT NULL,
+                activity_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 activity_label VARCHAR(255),
                 activity_description CLOB,
@@ -181,21 +181,21 @@ CREATE TABLE projectDefinition.activity (
                 element_id BIGINT,
                 constraintDateType_id BIGINT,
                 place_id BIGINT,
-                CONSTRAINT activity_pk PRIMARY KEY (activity_id, project_id)
+                CONSTRAINT activity_pk PRIMARY KEY (activity_id)
 );
 
 
 CREATE TABLE projectDefinition.unit (
-                unit_id BIGINT AUTO_INCREMENT NOT NULL,
+                unit_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 unit_code VARCHAR(255),
                 unit_name VARCHAR(255),
-                CONSTRAINT unit_pk PRIMARY KEY (unit_id, project_id)
+                CONSTRAINT unit_pk PRIMARY KEY (unit_id)
 );
 
 
 CREATE TABLE projectDefinition.humanResource (
-                humanResource_id BIGINT AUTO_INCREMENT NOT NULL,
+                humanResource_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 humanResource_profileCode VARCHAR(255),
                 humanResource_profileName VARCHAR(255),
@@ -210,23 +210,22 @@ CREATE TABLE projectDefinition.humanResource (
                 targetGroup_id BIGINT,
                 unit_id BIGINT,
 				place_id BIGINT,
-                CONSTRAINT humanResource_pk PRIMARY KEY (humanResource_id, project_id)
+                CONSTRAINT humanResource_pk PRIMARY KEY (humanResource_id)
 );
 
 
 CREATE TABLE projectDefinition.humanResourceNeeded (
                 activity_id BIGINT NOT NULL,
-                project_id BIGINT NOT NULL,
                 humanResource_id BIGINT NOT NULL,
                 responsibility_id BIGINT,
                 humanResourceNeeded_wrklAssigned DECIMAL,
                 humanResourceNeeded_resCapacity BIGINT,
-                CONSTRAINT humanResourceNeeded_pk PRIMARY KEY (activity_id, project_id, humanResource_id)
+                CONSTRAINT humanResourceNeeded_pk PRIMARY KEY (activity_id, humanResource_id)
 );
 
 
 CREATE TABLE projectDefinition.document (
-                document_id BIGINT AUTO_INCREMENT NOT NULL,
+                document_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 document_code VARCHAR(255),
                 document_label VARCHAR(255),
@@ -235,12 +234,12 @@ CREATE TABLE projectDefinition.document (
                 humanResource_idResponsible BIGINT,
                 targetGroup_id BIGINT,
                 humanResource_idDispatcher BIGINT,
-                CONSTRAINT document_pk PRIMARY KEY (document_id, project_id)
+                CONSTRAINT document_pk PRIMARY KEY (document_id)
 );
 
 
 CREATE TABLE projectDefinition.risk (
-                risk_id BIGINT AUTO_INCREMENT NOT NULL,
+                risk_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 risk_label VARCHAR(255),
                 risk_description CLOB,
@@ -258,12 +257,12 @@ CREATE TABLE projectDefinition.risk (
                 humanResource_idResourceDetection BIGINT,
                 humanResource_idResourceResponsible BIGINT,
                 riskNature_id BIGINT,
-                CONSTRAINT risk_pk PRIMARY KEY (risk_id, project_id)
+                CONSTRAINT risk_pk PRIMARY KEY (risk_id)
 );
 
 
 CREATE TABLE projectDefinition.requirement (
-                requirement_id BIGINT AUTO_INCREMENT NOT NULL,
+                requirement_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 requirement_code VARCHAR(255),
                 requirement_label VARCHAR(255),
@@ -275,12 +274,12 @@ CREATE TABLE projectDefinition.requirement (
                 humanResource_idRequirementResponsible BIGINT,
                 trackingMethod_id BIGINT,
                 element_id BIGINT,
-                CONSTRAINT requirement_pk PRIMARY KEY (requirement_id, project_id)
+                CONSTRAINT requirement_pk PRIMARY KEY (requirement_id)
 );
 
 
 CREATE TABLE projectDefinition.materialResource (
-                materialResource_id BIGINT AUTO_INCREMENT NOT NULL,
+                materialResource_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 materialResource_equipCode VARCHAR(255),
                 materialResource_equipDescription VARCHAR(255),
@@ -295,35 +294,33 @@ CREATE TABLE projectDefinition.materialResource (
                 unit_id BIGINT,
                 allocationMode_id BIGINT,
                 resourceType_id BIGINT,
-                CONSTRAINT materialResource_pk PRIMARY KEY (materialResource_id, project_id)
+                CONSTRAINT materialResource_pk PRIMARY KEY (materialResource_id)
 );
 
 
 CREATE TABLE projectDefinition.materialResourceNeededActiviy (
                 activity_id BIGINT NOT NULL,
-                project_id BIGINT NOT NULL,
                 materialResource_id BIGINT NOT NULL,
                 materialResourceNeededActiviy_quantity BIGINT,
-                CONSTRAINT materialResourceNeededActiviy_pk PRIMARY KEY (activity_id, project_id, materialResource_id)
+                CONSTRAINT materialResourceNeededActiviy_pk PRIMARY KEY (activity_id, materialResource_id)
 );
 
 
 CREATE TABLE projectDefinition.state (
-                state_id BIGINT AUTO_INCREMENT NOT NULL,
+                state_id IDENTITY NOT NULL,
                 project_id BIGINT NOT NULL,
                 state_label VARCHAR(255),
                 state_isMilestone BOOLEAN,
                 element_id BIGINT,
                 activity_idActivityPredecessorToState BIGINT,
-                CONSTRAINT state_pk PRIMARY KEY (state_id, project_id)
+                CONSTRAINT state_pk PRIMARY KEY (state_id)
 );
 
 
 CREATE TABLE projectDefinition.statePredecessorToActivity (
                 state_id BIGINT NOT NULL,
-                project_id BIGINT NOT NULL,
                 activity_id BIGINT NOT NULL,
-                CONSTRAINT statePredecessorToActivity_pk PRIMARY KEY (state_id, project_id, activity_id)
+                CONSTRAINT statePredecessorToActivity_pk PRIMARY KEY (state_id, activity_id)
 );
 
 
@@ -533,151 +530,151 @@ ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.humanResource ADD CONSTRAINT targetGroup_humanResource_fk
-FOREIGN KEY (targetGroup_id, project_id)
-REFERENCES projectDefinition.targetGroup (targetGroup_id, project_id)
+FOREIGN KEY (targetGroup_id)
+REFERENCES projectDefinition.targetGroup (targetGroup_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.humanResource ADD CONSTRAINT place_humanResource_fk
-FOREIGN KEY (place_id, project_id)
-REFERENCES projectDefinition.place (place_id, project_id)
+FOREIGN KEY (place_id)
+REFERENCES projectDefinition.place (place_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.element ADD CONSTRAINT element_element_fk
-FOREIGN KEY (project_id, Parent_element_id)
-REFERENCES projectDefinition.element (project_id, element_id)
+FOREIGN KEY (Parent_element_id)
+REFERENCES projectDefinition.element (element_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.requirement ADD CONSTRAINT element_requirement_fk
-FOREIGN KEY (project_id, element_id)
-REFERENCES projectDefinition.element (project_id, element_id)
+FOREIGN KEY (element_id)
+REFERENCES projectDefinition.element (element_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.risk ADD CONSTRAINT element_risk_fk
-FOREIGN KEY (project_id, element_id)
-REFERENCES projectDefinition.element (project_id, element_id)
+FOREIGN KEY (element_id)
+REFERENCES projectDefinition.element (element_id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.activity ADD CONSTRAINT element_activity_fk
-FOREIGN KEY (project_id, element_id)
-REFERENCES projectDefinition.element (project_id, element_id)
+FOREIGN KEY (element_id)
+REFERENCES projectDefinition.element (element_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.state ADD CONSTRAINT element_state_fk
-FOREIGN KEY (project_id, element_id)
-REFERENCES projectDefinition.element (project_id, element_id)
+FOREIGN KEY (element_id)
+REFERENCES projectDefinition.element (element_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.activity ADD CONSTRAINT place_activity_fk
-FOREIGN KEY (project_id, place_id)
-REFERENCES projectDefinition.place (project_id, place_id)
+FOREIGN KEY (place_id)
+REFERENCES projectDefinition.place (place_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.materialResource ADD CONSTRAINT place_materialResource_fk
-FOREIGN KEY (project_id, place_id)
-REFERENCES projectDefinition.place (project_id, place_id)
+FOREIGN KEY (place_id)
+REFERENCES projectDefinition.place (place_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.meeting ADD CONSTRAINT place_meeting_fk
-FOREIGN KEY (place_id, project_id)
-REFERENCES projectDefinition.place (place_id, project_id)
+FOREIGN KEY (place_id)
+REFERENCES projectDefinition.place (place_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE projectDefinition.statePredecessorToActivity ADD CONSTRAINT activity_statePredecessorToActivity_fk
-FOREIGN KEY (activity_id, project_id)
-REFERENCES projectDefinition.activity (activity_id, project_id)
+FOREIGN KEY (activity_id)
+REFERENCES projectDefinition.activity (activity_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.materialResourceNeededActiviy ADD CONSTRAINT activity_materialResourceNeededActiviy_fk
-FOREIGN KEY (activity_id, project_id)
-REFERENCES projectDefinition.activity (activity_id, project_id)
+FOREIGN KEY (activity_id)
+REFERENCES projectDefinition.activity (activity_id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.state ADD CONSTRAINT activity_state_fk
-FOREIGN KEY (activity_idActivityPredecessorToState, project_id)
-REFERENCES projectDefinition.activity (activity_id, project_id)
+FOREIGN KEY (activity_idActivityPredecessorToState)
+REFERENCES projectDefinition.activity (activity_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.humanResourceNeeded ADD CONSTRAINT activity_humanResourceNeeded_fk
-FOREIGN KEY (activity_id, project_id)
-REFERENCES projectDefinition.activity (activity_id, project_id)
+FOREIGN KEY (activity_id)
+REFERENCES projectDefinition.activity (activity_id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.materialResource ADD CONSTRAINT unit_materialResource_fk
-FOREIGN KEY (unit_id, project_id)
-REFERENCES projectDefinition.unit (unit_id, project_id)
+FOREIGN KEY (unit_id)
+REFERENCES projectDefinition.unit (unit_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.humanResource ADD CONSTRAINT unit_humanResource_fk
-FOREIGN KEY (unit_id, project_id)
-REFERENCES projectDefinition.unit (unit_id, project_id)
+FOREIGN KEY (unit_id)
+REFERENCES projectDefinition.unit (unit_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.requirement ADD CONSTRAINT humanResource_requirement_fk
-FOREIGN KEY (project_id, humanResource_idRequirementOwner)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idRequirementOwner)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.requirement ADD CONSTRAINT humanResource_requirement_fk1
-FOREIGN KEY (project_id, humanResource_idRequirementResponsible)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idRequirementResponsible)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.risk ADD CONSTRAINT humanResource_risk_fk
-FOREIGN KEY (project_id, humanResource_idResourceDetection)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idResourceDetection)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.risk ADD CONSTRAINT humanResource_risk_fk1
-FOREIGN KEY (project_id, humanResource_idResourceResponsible)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idResourceResponsible)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.document ADD CONSTRAINT humanResource_document_fk
-FOREIGN KEY (project_id, humanResource_idResponsible)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idResponsible)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.document ADD CONSTRAINT humanResource_document_fk1
-FOREIGN KEY (project_id, humanResource_idDispatcher)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_idDispatcher)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.humanResourceNeeded ADD CONSTRAINT humanResource_humanResourceNeeded_fk
-FOREIGN KEY (project_id, humanResource_id)
-REFERENCES projectDefinition.humanResource (project_id, humanResource_id)
+FOREIGN KEY (humanResource_id)
+REFERENCES projectDefinition.humanResource (humanResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.materialResourceNeededActiviy ADD CONSTRAINT materialResource_materialResourceNeededActiviy_fk
-FOREIGN KEY (project_id, materialResource_id)
-REFERENCES projectDefinition.materialResource (project_id, materialResource_id)
+FOREIGN KEY (materialResource_id)
+REFERENCES projectDefinition.materialResource (materialResource_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
 
 ALTER TABLE projectDefinition.statePredecessorToActivity ADD CONSTRAINT state_statePredecessorToActivity_fk
-FOREIGN KEY (project_id, state_id)
-REFERENCES projectDefinition.state (project_id, state_id)
+FOREIGN KEY (state_id)
+REFERENCES projectDefinition.state (state_id)
 ON DELETE NO ACTION
 ON UPDATE CASCADE;
