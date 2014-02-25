@@ -22,6 +22,10 @@ import model.WBSElement;
  */
 public class WBSElementDAO extends DAO<WBSElement> {
 
+    /**
+     * Constructor
+     * @param db : database manager providing a connection to the database
+     */
     public WBSElementDAO(DatabaseManager db) {
         super(db);
     }
@@ -39,10 +43,10 @@ public class WBSElementDAO extends DAO<WBSElement> {
 
             db.startTransaction();
 
-            PreparedStatement stmt = db.getConnection().prepareStatement("INSERT INTO projectDefinition.element"
-                    + "project_id, element_label, element_description, element_isWorkpackage, element_start, element_workload, element_duration, element_isContractual"
-                    + "element_achievCriteria, element_delivDate, element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount"
-                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, Parent_element_id, element_rank"
+            PreparedStatement stmt = db.getConnection().prepareStatement("INSERT INTO projectDefinition.element "
+                    + "(project_id, element_label, element_description, element_isWorkpackage, element_start, element_workload, element_duration, element_isContractual, "
+                    + "element_achievCriteria, element_delivDate, element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount, "
+                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, Parent_element_id, element_rank) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING element_id");
 
             stmt.setLong(1, element.getIdProject());
@@ -102,12 +106,12 @@ public class WBSElementDAO extends DAO<WBSElement> {
     public WBSElement find(long id) throws DatabaseException {
         try {
             ResultSet response = db.executeRequest(
-                    "SELECT element_id, element_label, element_description, element_isWorkpackage, element_start"
-                    + "element_workload, element_duration, element_isContractual, element_achievCriteria, element_delivDate"
-                    + "element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount"
-                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank, project_id"
-                    + "FROM projectDefinition.element"
-                    + "WHERE element_id=" + id);
+                    "SELECT element_id, element_label, element_description, element_isWorkpackage, element_start, "
+                    + "element_workload, element_duration, element_isContractual, element_achievCriteria, element_delivDate, "
+                    + "element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount, "
+                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank, project_id "
+                    + "FROM projectDefinition.element "
+                    + "WHERE element_id = " + id);
 
             Long idElement = response.getLong("element_id");
             String label = response.getString("element_label");

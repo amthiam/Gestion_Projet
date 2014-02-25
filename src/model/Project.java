@@ -14,6 +14,35 @@ public class Project {
     /* label of the project */
     protected String label;
     
+    /* name of the project */
+    protected String name;
+    
+    /* description of the project */
+    protected String description;
+    
+    /* name of the customer of the project */
+    protected String customerName;
+    
+    /* id of the projectManager */
+    protected Long projectManagerId;
+    
+    /**
+     * Constructor : generate an object Project from a list of value of its attributes
+     * @param id : id of the project
+     * @param label : label of the project
+     * @param name : name of the project
+     * @param description : description of the project 
+     * @param customerName : name of the customer of the project
+     */
+    public Project(Long id, String label, String name, String description, String customerName, Long projectManagerId) {
+        this.id = id;
+        this.label = label;
+        this.name = name;
+        this.description = description;
+        this.customerName = customerName;
+        this.projectManagerId = projectManagerId;
+    }
+    
     //GET METHODS
     public long getId() {
         return id;
@@ -23,4 +52,19 @@ public class Project {
         return label;
     }
     
+    public String getName() {
+        return name;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+    
+    public String getCustomerName() {
+        return customerName;
+    }
+    
+    public Long getprojectManagerId() {
+        return projectManagerId;
+    }
 }
