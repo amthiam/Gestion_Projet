@@ -20,9 +20,9 @@ public abstract class DAO<T> {
     /**
      * Object creation method
      * @param obj : object to insert in the database
-     * @return boolean : indicates if creation has been successful
+     * @return Long : id of the object inserted in the database
      */
-    public abstract void create(T obj) throws ProjectException;
+    public abstract Long create(T obj) throws ProjectException;
     
     /**
      * Object deletion method

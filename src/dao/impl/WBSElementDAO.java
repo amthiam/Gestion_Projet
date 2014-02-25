@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import manager.DatabaseManager;
 import model.WBSElement;
@@ -24,6 +25,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
 
     /**
      * Constructor
+     *
      * @param db : database manager providing a connection to the database
      */
     public WBSElementDAO(DatabaseManager db) {
@@ -31,7 +33,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
     }
 
     @Override
-    public void create(WBSElement element) throws ProjectException {
+    public Long create(WBSElement element) throws ProjectException {
 
         // The fields idParentElement and element_label are compulsory in the database
         if (element.getIdParentElement() == null || element.getLabel().isEmpty()) {
@@ -43,11 +45,15 @@ public class WBSElementDAO extends DAO<WBSElement> {
 
             db.startTransaction();
 
-            PreparedStatement stmt = db.getConnection().prepareStatement("INSERT INTO projectDefinition.element "
+            // SQL query
+            String sql = "INSERT INTO projectDefinition.element "
                     + "(project_id, element_label, element_description, element_isWorkpackage, element_start, element_workload, element_duration, element_isContractual, "
                     + "element_achievCriteria, element_delivDate, element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount, "
                     + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, Parent_element_id, element_rank) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING element_id");
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            //Creation of the sql statement
+            PreparedStatement stmt = db.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setLong(1, element.getIdProject());
             stmt.setString(2, element.getLabel());
@@ -81,9 +87,20 @@ public class WBSElementDAO extends DAO<WBSElement> {
             stmt.setLong(22, element.getIdParentElement());
             stmt.setInt(23, element.getRank());
 
-            stmt.executeQuery();
+            //Execution of the query
+            stmt.executeUpdate();
+
+            // Retrieve the id of the element just created
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (!generatedKeys.next()) {
+                throw new DatabaseException(ResultCode.DATABASE_ERROR, "The creation of the element failed");
+            }
+            Long idElement = generatedKeys.getLong(1);
 
             db.commit();
+
+            return idElement;
+
         } catch (SQLException e) {
             throw new DatabaseException(e);
         }

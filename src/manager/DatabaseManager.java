@@ -27,14 +27,13 @@ public class DatabaseManager {
 
         Connection connection;
         try {
-
             // load the database driver
             Class.forName("org.h2.Driver");
 
 
             //Open a connection to the database
             connection = DriverManager.getConnection(url, user, passwd);
-
+           
         } catch (Exception e) {
             throw new DatabaseException(e);
         }

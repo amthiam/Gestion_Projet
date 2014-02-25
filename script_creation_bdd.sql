@@ -108,7 +108,7 @@ CREATE TABLE projectDefinition.project (
 				project_name VARCHAR(255),
 				project_description CLOB,
 				customer_name VARCHAR(255),
-                user_projectManagerId BIGINT NOT NULL,
+                user_projectManagerId BIGINT,
                 CONSTRAINT project_id PRIMARY KEY (project_id)
 );
 
