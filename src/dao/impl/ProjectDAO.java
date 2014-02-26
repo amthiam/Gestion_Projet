@@ -52,25 +52,42 @@ public class ProjectDAO extends DAO<Project> {
 
             stmt.setString(1, project.getLabel());
 
-            stmt.setString(2, project.getName());
+            // Field name is optional
+            if (project.isNull("name")) {
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(2, project.getName());
+            }
 
-            Clob description = db.getConnection().createClob();
-            description.setString(1, project.getDescription());
-            stmt.setClob(3, description);
+            // Field description is optional
+            if (project.isNull("description")) {
+                stmt.setNull(3, java.sql.Types.CLOB);
+            } else {
+                Clob description = db.getConnection().createClob();
+                description.setString(1, project.getDescription());
+                stmt.setClob(3, description);
+            }
 
-            stmt.setString(4, project.getCustomerName());
+            //Field CustomerName is optional
+            if (project.isNull("customerName")) {
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(4, project.getCustomerName());
+            }
+
             stmt.setLong(5, project.getprojectManagerId());
-            
+
+
             // Execution of the query
             stmt.executeUpdate();
-            
+
             // Retrieve the id of the project just created
             ResultSet generatedKeys = stmt.getGeneratedKeys();
             if (!generatedKeys.next()) {
                 throw new DatabaseException(ResultCode.DATABASE_ERROR, "The creation of the project in the database failed");
             }
             Long idProject = generatedKeys.getLong(1);
-            
+
             db.commit();
 
             return idProject;
@@ -106,7 +123,7 @@ public class ProjectDAO extends DAO<Project> {
 
             String description = descriptionClob.getSubString(1, (int) descriptionClob.length());
 
-            Project result = new Project(null, label, name, description, customer, projectManagerId);
+            Project result = new Project(id, label, name, description, customer, projectManagerId);
 
             return result;
         } catch (SQLException e) {

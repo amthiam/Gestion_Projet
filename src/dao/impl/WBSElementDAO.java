@@ -36,8 +36,8 @@ public class WBSElementDAO extends DAO<WBSElement> {
     public Long create(WBSElement element) throws ProjectException {
 
         // The fields idParentElement and element_label are compulsory in the database
-        if (element.getIdParentElement() == null || element.getLabel().isEmpty()) {
-            throw new ProjectException(ResultCode.INVALID_OBJECT, "A WBS element must have a parent element and a label");
+        if (element.getLabel().isEmpty()) {
+            throw new ProjectException(ResultCode.INVALID_OBJECT, "A WBS element must have a label");
         }
 
         //Insertion in the database
@@ -58,34 +58,146 @@ public class WBSElementDAO extends DAO<WBSElement> {
             stmt.setLong(1, element.getIdProject());
             stmt.setString(2, element.getLabel());
 
-            Clob description = db.getConnection().createClob();
-            description.setString(1, element.getDescription());
-            stmt.setClob(3, description);
+            // Field description is optional
+            if (element.isNull("description")) {
+                stmt.setNull(3, java.sql.Types.CLOB);
+            } else {
+                Clob description = db.getConnection().createClob();
+                description.setString(1, element.getDescription());
+                stmt.setClob(3, description);
+            }
 
             stmt.setBoolean(4, element.isIsWorkpackage());
-            stmt.setTimestamp(5, new Timestamp(element.getStartDate().getTime()));
-            stmt.setBigDecimal(6, element.getWorkload());
-            stmt.setBigDecimal(7, element.getDuration());
+
+            // Field startDate is optional
+            if (element.isNull("startDate")) {
+                stmt.setNull(5, java.sql.Types.TIMESTAMP);
+            } else {
+                stmt.setTimestamp(5, new Timestamp(element.getStartDate().getTime()));
+            }
+
+            // Field workload is optional
+            if (element.isNull("workload")) {
+                stmt.setNull(6, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(6, element.getWorkload());
+            }
+
+            // Field duration is optional
+            if (element.isNull("duration")) {
+                stmt.setNull(7, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(7, element.getDuration());
+            }
+
             stmt.setBoolean(8, element.isIsContractual());
 
-            Clob achievCriteria = db.getConnection().createClob();
-            achievCriteria.setString(1, element.getAchievmentCriteria());
-            stmt.setClob(9, achievCriteria);
+            // Field achievmentCriteria is optional
+            if (element.isNull("achievmentCriteria")) {
+                stmt.setNull(9, java.sql.Types.CLOB);
+            } else {
+                Clob achievCriteria = db.getConnection().createClob();
+                achievCriteria.setString(1, element.getAchievmentCriteria());
+                stmt.setClob(9, achievCriteria);
+            }
 
-            stmt.setTimestamp(10, new Timestamp(element.getDeliveryDate().getTime()));
-            stmt.setBigDecimal(11, element.getLaborAmount());
-            stmt.setBigDecimal(12, element.getPurchaseAmount());
-            stmt.setBigDecimal(13, element.getExpenseAmount());
-            stmt.setBigDecimal(14, element.getRentAmount());
-            stmt.setBigDecimal(15, element.getSubcontractAmount());
-            stmt.setTimestamp(16, new Timestamp(element.getEarlyStart().getTime()));
-            stmt.setTimestamp(17, new Timestamp(element.getEarlyFinish().getTime()));
-            stmt.setTimestamp(18, new Timestamp(element.getLateStart().getTime()));
-            stmt.setTimestamp(19, new Timestamp(element.getLateFinish().getTime()));
-            stmt.setBigDecimal(20, element.getTotalSlack());
-            stmt.setBigDecimal(21, element.getFreeSlack());
-            stmt.setLong(22, element.getIdParentElement());
-            stmt.setInt(23, element.getRank());
+            // Field deliveryDate is optional
+            if (element.isNull("deliveryDate")) {
+                stmt.setNull(10, java.sql.Types.TIMESTAMP);
+            } else {
+                stmt.setTimestamp(10, new Timestamp(element.getDeliveryDate().getTime()));
+            }
+
+            // Field laborAmount is optional
+            if (element.isNull("laborAmount")) {
+                stmt.setNull(11, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(11, element.getLaborAmount());
+            }
+
+            // Field pruchaseAmount is optional
+            if (element.isNull("purchaseAmount")) {
+                stmt.setNull(12, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(12, element.getPurchaseAmount());
+            }
+
+            // Field expenseAmount is optional
+            if (element.isNull("expenseAmount")) {
+                stmt.setNull(13, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(13, element.getExpenseAmount());
+            }
+
+            // Field rentAmount is optional
+            if (element.isNull("rentAmount")) {
+                stmt.setNull(14, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(14, element.getRentAmount());
+            }
+
+            // Field subcontractAmount is optional
+            if (element.isNull("subcontractAmount")) {
+                stmt.setNull(15, java.sql.Types.DECIMAL);
+            } else {
+                stmt.setBigDecimal(15, element.getSubcontractAmount());
+            }
+
+            // Field earlyStart is optional
+            if (element.isNull("earlyStart")) {
+                stmt.setNull(16, java.sql.Types.TIMESTAMP);
+            } else {
+                stmt.setTimestamp(16, new Timestamp(element.getEarlyStart().getTime()));
+            }
+
+            // Field earlyFinish is optional
+            if (element.isNull("earlyFinish")) {
+                stmt.setNull(17, java.sql.Types.TIMESTAMP);
+            } else {
+                stmt.setTimestamp(17, new Timestamp(element.getEarlyFinish().getTime()));
+            }
+
+            // Field lateStart is optional
+            if (element.isNull("lateStart")) {
+                stmt.setNull(18, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setTimestamp(18, new Timestamp(element.getLateStart().getTime()));
+            }
+
+            // Field lateFinish is optional
+            if (element.isNull("lateFinish")) {
+                stmt.setNull(19, java.sql.Types.TIMESTAMP);
+            } else {
+                stmt.setTimestamp(19, new Timestamp(element.getLateFinish().getTime()));
+            }
+
+            // Field totalSlack is optional
+            if (element.isNull("totalSlack")) {
+                stmt.setNull(20, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setBigDecimal(20, element.getTotalSlack());
+            }
+
+            // Field freeSlack is optional
+            if (element.isNull("freeSlack")) {
+                stmt.setNull(21, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setBigDecimal(21, element.getFreeSlack());
+            }
+
+            // Field idParentElement is optional
+            if (element.isNull("idParentElement")) {
+                stmt.setNull(22, java.sql.Types.BIGINT);
+            } else {
+                stmt.setLong(22, element.getIdParentElement());
+            }
+
+            // Field rank is optional
+            if (element.isNull("rank")) {
+                stmt.setNull(23, java.sql.Types.INTEGER);
+            } else {
+                stmt.setInt(23, element.getRank());
+            }
 
             //Execution of the query
             stmt.executeUpdate();
@@ -122,13 +234,20 @@ public class WBSElementDAO extends DAO<WBSElement> {
     @Override
     public WBSElement find(long id) throws DatabaseException {
         try {
+
             ResultSet response = db.executeRequest(
                     "SELECT element_id, element_label, element_description, element_isWorkpackage, element_start, "
                     + "element_workload, element_duration, element_isContractual, element_achievCriteria, element_delivDate, "
                     + "element_laborAmount, element_purchaseAmount, element_expenseAmount, element_rentAmount, element_subContrAmount, "
-                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank, project_id "
+                    + "element_earlyStart, element_earlyFinish, element_lateStart, element_lateFinish, element_totalSlack, element_freeSlack, element_rank, project_id, Parent_element_id "
                     + "FROM projectDefinition.element "
                     + "WHERE element_id = " + id);
+
+            System.out.println("result set was null : " + response.wasNull());
+
+            if (!response.next()) {
+                throw new DatabaseException(ResultCode.DATABASE_ERROR, "Object not found");
+            }
 
             Long idElement = response.getLong("element_id");
             String label = response.getString("element_label");

@@ -1,5 +1,8 @@
 package model;
 
+import exceptions.ProjectException;
+import exceptions.ResultCode;
+
 /**
  * Class project identifying the current selected project
  * Singleton class : only one project can be opened at a time
@@ -9,7 +12,7 @@ public class Project {
     
     //ATTRIBUTES
     /* database id of the project */
-    protected long id;
+    protected Long id;
     
     /* label of the project */
     protected String label;
@@ -65,7 +68,7 @@ public class Project {
     
  
     //GET METHODS
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -92,6 +95,55 @@ public class Project {
     //SET METHODS
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    
+    //METHODS
+     /**
+     * Check if the attribute given in parameter is null
+     * @param attribute : one attribute of the considered user
+     * @return boolean : true if the given attribute is null
+     */
+    public boolean isNull(String attribute) throws ProjectException{
+        
+        boolean result = false;
+        switch(attribute){
+            case "id" :
+                if(this.id == null) {
+                    result = true;
+                }
+                break;
+            case "label" :
+                if (this.label == null) {
+                    result = true;
+                }
+                break;
+            case "name" :
+                if (this.name == null) {
+                    result = true;
+                }
+                break;
+            case "description" :
+                if (this.description == null) {
+                    result = true;
+                }
+                break;
+            case "customerName" :
+                if (this.customerName == null) {
+                    result = true;
+                }
+                break;
+            case "projectManagerId" :
+                if (this.projectManagerId == null) {
+                    result = true;
+                }
+                break;
+                default : 
+                    throw new ProjectException(ResultCode.INVALID_OBJECT, "Invalid argument for isNull method : argument must be an attribute");
+        }
+        
+        return result;
+        
     }
    
 }
