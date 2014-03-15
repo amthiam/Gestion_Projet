@@ -40,6 +40,8 @@ public class Application extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel_Resources = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -124,23 +126,39 @@ public class Application extends javax.swing.JFrame {
 
         jButton17.setText("Estimation");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Code", "Label", "Work Package", "Concractual", "Start Date", "Delivery Date"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel_WBSLayout = new javax.swing.GroupLayout(jPanel_WBS);
         jPanel_WBS.setLayout(jPanel_WBSLayout);
         jPanel_WBSLayout.setHorizontalGroup(
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_WBSLayout.createSequentialGroup()
-                .addComponent(jButton17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton22)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGroup(jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_WBSLayout.createSequentialGroup()
+                        .addComponent(jButton17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton22))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel_WBSLayout.setVerticalGroup(
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +170,9 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton22)
                     .addComponent(jButton16)
                     .addComponent(jButton17))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("WBS", jPanel_WBS);
@@ -188,7 +208,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton6)
                     .addComponent(jButton25))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Resources", jPanel_Resources);
@@ -214,7 +234,7 @@ public class Application extends javax.swing.JFrame {
                 .addGroup(jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton20)
                     .addComponent(jButton21))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Risks", jPanel_Risks);
@@ -269,7 +289,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton15)
                     .addComponent(jButton24)
                     .addComponent(jButton18))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Activities", jPanel_Activities);
@@ -300,7 +320,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton26)
                     .addComponent(jButton27)
                     .addComponent(jButton28))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Communication", jPanel_Communication);
@@ -331,7 +351,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton29)
                     .addComponent(jButton30)
                     .addComponent(jButton31))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Referential", jPanel_Referential);
@@ -367,7 +387,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButton32)
                     .addComponent(jButton33)
                     .addComponent(jButton34))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Export", jPanel_Export);
@@ -384,8 +404,8 @@ public class Application extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 250, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 71, Short.MAX_VALUE))
         );
 
         pack();
@@ -496,7 +516,9 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Resources;
     private javax.swing.JPanel jPanel_Risks;
     private javax.swing.JPanel jPanel_WBS;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     
