@@ -243,7 +243,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
                     + "FROM projectDefinition.element "
                     + "WHERE element_id = " + id);
 
-            System.out.println("result set was null : " + response.wasNull());
+            
 
             if (!response.next()) {
                 throw new DatabaseException(ResultCode.DATABASE_ERROR, "Object not found");

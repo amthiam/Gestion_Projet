@@ -105,6 +105,32 @@ public class Test {
             System.out.println("Rang : " + elementFils2Trouve.getRank());
             System.out.println("id du Projet : " + elementFils2Trouve.getIdProject());
             
+            
+            
+            //Test activités
+            
+            //Création d'une activité
+            Activity activiteTest = new Activity(null, idProjetTest, "Activité test", "Création d'une activité test", new BigDecimal(10), new BigDecimal(1), "Pas d'hypothèses pour cette activité", "Pas de notes de calcul", dateLivraison, elementFils1Trouve, null, null, null);
+            //Creation de l'objet activiteDAO
+            ActivityDAO activiteDAO = new ActivityDAO(dbManager);
+            //Insertion dans la base de donnée
+            Long idActiviteTest = activiteDAO.create(activiteTest);
+            //On cherche l'activite
+            Activity activiteTestTrouve = activiteDAO.find(idActiviteTest);
+            
+            System.out.println("Activité trouvée dans la base :");
+            System.out.println("id : "+activiteTestTrouve.getId());
+            System.out.println("label : "+ activiteTestTrouve.getLabel());
+            System.out.println("Description : "+ activiteTestTrouve.getDescription());
+            System.out.println("workload : " + activiteTestTrouve.getWorkload());
+            System.out.println("duration : " + activiteTestTrouve.getDuration());
+            System.out.println("hypothesis : " + activiteTestTrouve.getHypothesis());
+            System.out.println("calculation note : " + activiteTestTrouve.getCalculationNote());
+            System.out.println("constraint date value : " + activiteTestTrouve.getConstDateValue());
+            System.out.println("Label de l'élément du WBS auquel est rattachée l'activité : "+ activiteTestTrouve.getElement().getLabel());
+            
+            
+            
         } catch (DatabaseException e) {
             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
             System.out.println(e.getStackTrace().toString());
