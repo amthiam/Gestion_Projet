@@ -274,8 +274,14 @@ public class WBSElementDAO extends DAO<WBSElement> {
             Integer rank = response.getInt("element_rank");
             Long idProject = response.getLong("project_id");
 
-            String description = descriptionCl.getSubString(1, (int) descriptionCl.length());
-            String achievCriteria = achievCriteriaCl.getSubString(1, (int) achievCriteriaCl.length());
+            String description = null;
+            if (descriptionCl != null){
+                description = descriptionCl.getSubString(1, (int) descriptionCl.length());
+            }
+            String achievCriteria = null;
+            if (achievCriteriaCl != null) {
+            achievCriteria = achievCriteriaCl.getSubString(1, (int) achievCriteriaCl.length());
+            }
 
             WBSElement result = new WBSElement(idElement, label, description, isWorkpackage, startDate, workload, duration, isContractual, achievCriteria, delivDate, laborAmount, purchaseAmount, expenseAmount, rentAmount, subcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, totalSlack, freeSlack, idParentElement, rank, idProject);
 
@@ -292,7 +298,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
      * @param projectId : id of the project 
      * @return the list of element 
      */
-    public LinkedList<WBSElement> ListElementFromProject(long projectId) throws ProjectException{
+    public LinkedList<WBSElement> ListElementOfProject(long projectId) throws ProjectException{
         
         LinkedList<WBSElement> resultList = new LinkedList();
         

@@ -157,6 +157,7 @@ public class ActivityDAO extends DAO<Activity> {
             
             //Insertion of the states preceding this activity in the table statePredecessorToActivity
             LinkedList<State> statePredecessors = activity.getListOfStatePredecessors();
+            System.out.println("Taille de la liste des états prédécesseurs : " + statePredecessors.size());
             for (State state : statePredecessors){
                 db.executeUpdate("INSERT INTO projectDefinition.statePredecessorToActivity "
                         + "(state_id, activity_id) VALUES (" + state.getId() + ", " + idActivity + ")");
@@ -210,10 +211,18 @@ public class ActivityDAO extends DAO<Activity> {
             Long constraintDateTypeId = response.getLong("constraintDateType_id");
             Long placeId = response.getLong("place_id");
             
-            
-            String description = descriptionCl.getSubString(1, (int) descriptionCl.length());
-            String hypothesis = hypothesisCl.getSubString(1, (int) hypothesisCl.length());
-            String calculationNote = calcNoteCl.getSubString(1, (int) calcNoteCl.length());
+            String description = null;
+            if (descriptionCl != null){
+            description = descriptionCl.getSubString(1, (int) descriptionCl.length());
+            }
+            String hypothesis = null;
+            if (hypothesisCl != null) {
+            hypothesis = hypothesisCl.getSubString(1, (int) hypothesisCl.length());
+            }
+            String calculationNote = null;
+            if (calcNoteCl != null) {
+            calculationNote = calcNoteCl.getSubString(1, (int) calcNoteCl.length());
+            }
 
             //Creation of the WBS element  and place objects
             WBSElementDAO wbsDAO = new WBSElementDAO(db);
@@ -257,6 +266,38 @@ public class ActivityDAO extends DAO<Activity> {
         }
 
 
+    }
+    
+    
+    
+    
+    /**
+     * Method returning the list of activities stored in the database concerning a given project
+     * @param projectId : id of the project 
+     * @return the list of activities 
+     */
+    public LinkedList<Activity> ListActivitiesOfProject(long projectId) throws ProjectException{
+        
+        LinkedList<Activity> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of activities.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT activity_id FROM project WHERE project_id = " + projectId);
+            
+            //Creating the activity objects from the list of ids found, and adding them to the result list
+            while(response.next()){
+                Long activityId = response.getLong("activity_id");
+                Activity activity = find(activityId);
+                resultList.add(activity);
+                
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+        return resultList;
     }
     
 }

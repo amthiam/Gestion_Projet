@@ -5,6 +5,7 @@ import exceptions.DatabaseException;
 import exceptions.ProjectException;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
 import manager.DatabaseManager;
 import model.*;
 
@@ -107,10 +108,11 @@ public class Test {
             
             
             
-            //Test activités
+            
+            //Tests activités et états
             
             //Création d'une activité
-            Activity activiteTest = new Activity(null, idProjetTest, "Activité test", "Création d'une activité test", new BigDecimal(10), new BigDecimal(1), "Pas d'hypothèses pour cette activité", "Pas de notes de calcul", dateLivraison, elementFils1Trouve, null, null, null);
+            Activity activiteTest = new Activity(null, idProjetTest, "Activité test", "Création d'une activité test", new BigDecimal(10), new BigDecimal(1), "Pas d'hypothèses pour cette activité", "Pas de notes de calcul", dateLivraison, elementFils1Trouve, null, null, new LinkedList<State>());
             //Creation de l'objet activiteDAO
             ActivityDAO activiteDAO = new ActivityDAO(dbManager);
             //Insertion dans la base de donnée
@@ -128,6 +130,65 @@ public class Test {
             System.out.println("calculation note : " + activiteTestTrouve.getCalculationNote());
             System.out.println("constraint date value : " + activiteTestTrouve.getConstDateValue());
             System.out.println("Label de l'élément du WBS auquel est rattachée l'activité : "+ activiteTestTrouve.getElement().getLabel());
+            
+            //Création de l'état d'arrivée de l'activité
+            State etatTest = new State(null, idProjetTest, "Etat test", false, elementFils1Trouve, activiteTestTrouve);
+            //Création de l'objet StateDAO
+            StateDAO stateDAO = new StateDAO(dbManager);
+            //Insertion dans la base de données
+            Long idEtatTest = stateDAO.create(etatTest);
+            //On cherche l'état tout juste créée
+            State etatTestTrouve = stateDAO.find(idEtatTest);
+            
+            System.out.println("Etat trouvé dans la base :");
+            System.out.println("id : "+ etatTestTrouve.getId());
+            System.out.println("label : " + etatTestTrouve.getLabel());
+            System.out.println("Milestone ? : " + etatTestTrouve.isMilestone());
+            System.out.println("Label de l'élément du WBS auquel est rattaché l'état : " + etatTestTrouve.getElement().getLabel());
+            System.out.println("Label de l'activité précédant l'état : " + etatTestTrouve.getPredecessorActivity().getLabel());
+            
+            
+            //Création de deux activités parallèles
+            LinkedList<State> etatPred = new LinkedList();
+            etatTest.setId(idEtatTest);
+            etatPred.add(etatTest);
+            Activity activite2 = new Activity(null, idProjetTest, "Activité 2", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Long idActivite2 = activiteDAO.create(activite2);
+            activite2.setId(idActivite2);
+            Activity activite3 = new Activity(null, idProjetTest, "Activité 3", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Long idActivite3 = activiteDAO.create(activite3);
+            activite3.setId(idActivite3);
+            //Création des états correspondants
+            State etat2 = new State(null, idProjetTest, "Etat 2", false, elementFils1Trouve, activite2);
+            Long idEtat2 = stateDAO.create(etat2);
+            etat2.setId(idEtat2);
+            State etat3 = new State(null, idProjetTest, "Etat 3", false, elementFils1Trouve, activite3);
+            Long idEtat3 = stateDAO.create(etat3);
+            etat3.setId(idEtat3);
+            //Création de l'activité suivant ces deux activités parallèle
+            etatPred.clear();
+            etatPred.add(etat2);
+            etatPred.add(etat3);
+            Activity activite4 = new Activity(null, idProjetTest, "Activité 4", "Activité suivant deux activités s'étant déroulée en parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Long idActivite4 = activiteDAO.create(activite4);
+            activite4.setId(idActivite4);
+            activite4 = activiteDAO.find(idActivite4);
+            
+            System.out.println("Activité 4 :");
+            System.out.println("id : "+activite4.getId());
+            System.out.println("label : "+ activite4.getLabel());
+            System.out.println("Description : "+ activite4.getDescription());
+            System.out.println("workload : " + activite4.getWorkload());
+            System.out.println("duration : " + activite4.getDuration());
+            System.out.println("hypothesis : " + activite4.getHypothesis());
+            System.out.println("calculation note : " + activite4.getCalculationNote());
+            System.out.println("constraint date value : " + activite4.getConstDateValue());
+            System.out.println("Label de l'élément du WBS auquel est rattachée l'activité : "+ activite4.getElement().getLabel());
+            System.out.println("Etats précédant l'activité : ");
+            for (State etatPredecesseur : activite4.getListOfStatePredecessors()){
+                System.out.println(etatPredecesseur.getLabel());
+            }
+            
             
             
             

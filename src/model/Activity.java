@@ -128,6 +128,15 @@ public class Activity {
         return listOfStatePredecessors;
     }
     
+    
+    //SET METHODS
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
+    
+    
     //METHODS
     /**
      * Check if the attribute given in parameter is null

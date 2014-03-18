@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import manager.DatabaseManager;
 import model.Activity;
 import model.State;
@@ -19,7 +20,7 @@ import model.WBSElement;
  * and delete information about activities in the database
  * @author Felix
  */
-class StateDAO extends DAO<State> {
+public class StateDAO extends DAO<State> {
 
 /**
      * Constructor
@@ -147,6 +148,37 @@ class StateDAO extends DAO<State> {
     }
         
     
+    }
+    
+    
+    
+    /**
+     * Method returning the list of states stored in the database concerning a given project
+     * @param projectId : id of the project 
+     * @return the list of states 
+     */
+    public LinkedList<State> ListStatesOfProject(long projectId) throws ProjectException{
+        
+        LinkedList<State> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of states.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT state_id FROM project WHERE project_id = " + projectId);
+            
+            //Creating the state objects from the list of ids found, and adding them to the result list
+            while(response.next()){
+                Long stateId = response.getLong("state_id");
+                State state = find(stateId);
+                resultList.add(state);
+                
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+        return resultList;
     }
     
 }

@@ -68,6 +68,12 @@ public class State {
         return predecessorActivity;
     }
     
+    
+    //SET METHODS
+    public void setId(Long id){
+        this.id = id;
+    }
+    
     //METHODS
     
     /**
