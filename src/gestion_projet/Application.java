@@ -1,7 +1,7 @@
 /*d open the template in the editor.
  */
-
 package gestion_projet;
+
 
 
 /**
@@ -9,10 +9,11 @@ package gestion_projet;
  * @author amadou
  */
 public class Application extends javax.swing.JFrame {
-
+ObjetsBDD objets = new ObjetsBDD();
     
     public Application() {
         initComponents();
+        
         
         System.out.println("test");
         
@@ -126,39 +127,38 @@ public class Application extends javax.swing.JFrame {
 
         jButton17.setText("Estimation");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Code", "Label", "Work Package", "Concractual", "Start Date", "Delivery Date"
-            }
-        ));
+        MyModel mtm = new MyModel(this.objets);
+        jTable1.setModel(mtm);
+        jTable1.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Code");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Label");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Work Package");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Concractual");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Start Date");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Delivery Date");
+        }
 
         javax.swing.GroupLayout jPanel_WBSLayout = new javax.swing.GroupLayout(jPanel_WBS);
         jPanel_WBS.setLayout(jPanel_WBSLayout);
         jPanel_WBSLayout.setHorizontalGroup(
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_WBSLayout.createSequentialGroup()
-                .addGroup(jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_WBSLayout.createSequentialGroup()
-                        .addComponent(jButton17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton22))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(jButton17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton22)
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel_WBSLayout.setVerticalGroup(
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
