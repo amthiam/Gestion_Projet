@@ -283,8 +283,8 @@ ObjetsBDD objets = new ObjetsBDD();
             jTable2.getColumnModel().getColumn(3).setHeaderValue("Duration");
             jTable2.getColumnModel().getColumn(4).setHeaderValue("Constraint Type");
             jTable2.getColumnModel().getColumn(5).setHeaderValue("Imposed Date");
-            jTable2.getColumnModel().getColumn(5).setHeaderValue("Execution Place");
-            jTable2.getColumnModel().getColumn(5).setHeaderValue("Completed");
+            jTable2.getColumnModel().getColumn(6).setHeaderValue("Execution Place");
+            jTable2.getColumnModel().getColumn(7).setHeaderValue("Completed");
         }
 
         javax.swing.GroupLayout jPanel_ActivitiesLayout = new javax.swing.GroupLayout(jPanel_Activities);
@@ -437,7 +437,7 @@ ObjetsBDD objets = new ObjetsBDD();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

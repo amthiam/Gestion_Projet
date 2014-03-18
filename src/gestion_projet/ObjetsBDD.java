@@ -42,10 +42,12 @@ public class ObjetsBDD {
             WBSElement elementTest2 = new WBSElement(null, "Element père", "Element de test d'arbre WBS :élément quelconque", false, null, new BigDecimal(10), new BigDecimal(1), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, null, new Integer(1), x);
 
             this.elements = new ArrayList<WBSElement>();
+             this.activites = new ArrayList<Activity>();
             
             elements.add(elementTest);
             elements.add(elementTest2);
- //Création d'un nouvel élément à des fins de test
+ //Création d'une nouvelle activité à des fins de test
+            
             
  }
 

@@ -45,6 +45,22 @@ public class Activity {
         
     /* place of the activity */
     protected Place place;
+
+    public Activity(long id, String label, String description, BigDecimal workload, BigDecimal duration, String hypothesis, String caculationNote, GregorianCalendar constDateValue, WBSElement element, String constraintDateType, Place place) {
+        this.id = id;
+        this.label = label;
+        this.description = description;
+        this.workload = workload;
+        this.duration = duration;
+        this.hypothesis = hypothesis;
+        this.caculationNote = caculationNote;
+        this.constDateValue = constDateValue;
+        this.element = element;
+        this.constraintDateType = constraintDateType;
+        this.place = place;
+    }
+    
+    
     
     
     //GET METHODS
