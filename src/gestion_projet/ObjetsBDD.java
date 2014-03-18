@@ -45,7 +45,8 @@ public class ObjetsBDD {
             
             elements.add(elementTest);
             elements.add(elementTest2);
- 
+ //Création d'un nouvel élément à des fins de test
+            
  }
 
     public ArrayList<WBSElement> getElements() {

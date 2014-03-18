@@ -42,7 +42,7 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable_WBS = new javax.swing.JTable();
         jPanel_Resources = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -57,6 +57,10 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton15 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jPanel_Communication = new javax.swing.JPanel();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
@@ -128,17 +132,16 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton17.setText("Estimation");
 
         MyModel mtm = new MyModel(this.objets);
-        jTable1.setModel(mtm);
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Code");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Label");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Work Package");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Concractual");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Start Date");
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("Delivery Date");
+        jTable_WBS.setModel(mtm);
+        jScrollPane1.setViewportView(jTable_WBS);
+        jTable_WBS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
+            jTable_WBS.getColumnModel().getColumn(0).setHeaderValue("Code");
+            jTable_WBS.getColumnModel().getColumn(1).setHeaderValue("Label");
+            jTable_WBS.getColumnModel().getColumn(2).setHeaderValue("Work Package");
+            jTable_WBS.getColumnModel().getColumn(3).setHeaderValue("Concractual");
+            jTable_WBS.getColumnModel().getColumn(4).setHeaderValue("Start Date");
+            jTable_WBS.getColumnModel().getColumn(5).setHeaderValue("Delivery Date");
         }
 
         javax.swing.GroupLayout jPanel_WBSLayout = new javax.swing.GroupLayout(jPanel_WBS);
@@ -264,21 +267,51 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jButton18.setText("Allocate Material Resource");
 
+        jLabel1.setText("Work Package:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        MyModelActivity a= new MyModelActivity(this.objets);
+        jTable2.setModel(a);
+        jTable2.setColumnSelectionAllowed(true);
+        jScrollPane2.setViewportView(jTable2);
+        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setHeaderValue("Activity Label");
+            jTable2.getColumnModel().getColumn(1).setHeaderValue("States at the origin of the activity");
+            jTable2.getColumnModel().getColumn(2).setHeaderValue("Workload");
+            jTable2.getColumnModel().getColumn(3).setHeaderValue("Duration");
+            jTable2.getColumnModel().getColumn(4).setHeaderValue("Constraint Type");
+            jTable2.getColumnModel().getColumn(5).setHeaderValue("Imposed Date");
+            jTable2.getColumnModel().getColumn(5).setHeaderValue("Execution Place");
+            jTable2.getColumnModel().getColumn(5).setHeaderValue("Completed");
+        }
+
         javax.swing.GroupLayout jPanel_ActivitiesLayout = new javax.swing.GroupLayout(jPanel_Activities);
         jPanel_Activities.setLayout(jPanel_ActivitiesLayout);
         jPanel_ActivitiesLayout.setHorizontalGroup(
             jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
-                .addComponent(jButton15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton18)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+                        .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+                                .addComponent(jButton15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton18))
+                            .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 125, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         jPanel_ActivitiesLayout.setVerticalGroup(
             jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +322,13 @@ ObjetsBDD objets = new ObjetsBDD();
                     .addComponent(jButton15)
                     .addComponent(jButton24)
                     .addComponent(jButton18))
-                .addGap(0, 199, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Activities", jPanel_Activities);
@@ -398,14 +437,14 @@ ObjetsBDD objets = new ObjetsBDD();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 71, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         pack();
@@ -508,6 +547,8 @@ ObjetsBDD objets = new ObjetsBDD();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel_Activities;
     private javax.swing.JPanel jPanel_Communication;
     private javax.swing.JPanel jPanel_Export;
@@ -517,8 +558,10 @@ ObjetsBDD objets = new ObjetsBDD();
     private javax.swing.JPanel jPanel_Risks;
     private javax.swing.JPanel jPanel_WBS;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable_WBS;
     // End of variables declaration//GEN-END:variables
 
     
