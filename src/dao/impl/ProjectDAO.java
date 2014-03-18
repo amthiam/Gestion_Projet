@@ -102,12 +102,77 @@ public class ProjectDAO extends DAO<Project> {
     }
 
     @Override
-    public boolean update(Project project) {
-        return false;
-    }
+    public void update(Project project) throws ProjectException {
+        
+        try{
+            
+            db.startTransaction();
+
+
+            //Check that the compulsory fields are not empty
+            if (project.getLabel().isEmpty()) {
+                throw new ProjectException(ResultCode.INVALID_OBJECT, "A project must have a label");
+            }
+            
+            //Check if the information of the id of the object in the database is available
+            if (project.isNull("id")){
+                throw new ProjectException(ResultCode.INVALID_OBJECT, "The id of the project must be known to update the element");
+            }
+
+            //Preparation of the sql query
+            String sql = "UPDATE projectDefinition.project "
+                    + "SET project_label = ?, "
+                    + "project_name = ?, "
+                    + "project_description = ?, "
+                    + "customer_name = ?, "
+                    + "user_projectManagerId = ? "
+                    + "WHERE project_id = " + project.getId();
+
+            //Creation of the prepared statement
+            PreparedStatement stmt = db.getConnection().prepareStatement(sql);
+
+            stmt.setString(1, project.getLabel());
+
+            // Field name is optional
+            if (project.isNull("name")) {
+                stmt.setNull(2, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(2, project.getName());
+            }
+
+            // Field description is optional
+            if (project.isNull("description")) {
+                stmt.setNull(3, java.sql.Types.CLOB);
+            } else {
+                Clob description = db.getConnection().createClob();
+                description.setString(1, project.getDescription());
+                stmt.setClob(3, description);
+            }
+
+            //Field CustomerName is optional
+            if (project.isNull("customerName")) {
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(4, project.getCustomerName());
+            }
+
+            stmt.setLong(5, project.getprojectManagerId());
+
+
+            // Execution of the query
+            stmt.executeUpdate();
+
+            db.commit();
+            
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
+        
+        }
+
 
     @Override
-    public Project find(long id) throws DatabaseException {
+    public Project find(long id) throws ProjectException {
 
         try {
             ResultSet response = db.executeRequest(
@@ -128,7 +193,7 @@ public class ProjectDAO extends DAO<Project> {
             return result;
         } catch (SQLException e) {
             throw new DatabaseException(e);
-
         }
+   
     }
 }

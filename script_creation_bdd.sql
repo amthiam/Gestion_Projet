@@ -16,7 +16,7 @@ CREATE TABLE projectDefinition.meetingMedia (
 
 CREATE TABLE projectDefinition.responsibility (
                 responsibility_id IDENTITY NOT NULL,
-                responsibility_mode VARCHAR(1),
+                responsibility_mode VARCHAR(2),
                 responsibility_label VARCHAR(255),
                 CONSTRAINT responsibility_id PRIMARY KEY (responsibility_id)
 );
