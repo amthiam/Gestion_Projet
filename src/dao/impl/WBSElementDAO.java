@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import manager.DatabaseManager;
 import model.WBSElement;
 
@@ -227,8 +228,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
     }
 
     @Override
-    public boolean update(WBSElement obj) {
-        return false;
+    public void update(WBSElement obj) throws DatabaseException {
     }
 
     @Override
@@ -285,5 +285,34 @@ public class WBSElementDAO extends DAO<WBSElement> {
         }
 
 
+    }
+    
+    /**
+     * Method returning the list of WBS Element stored in the database concerning a given project
+     * @param projectId : id of the project 
+     * @return the list of element 
+     */
+    public LinkedList<WBSElement> ListElementFromProject(long projectId) throws ProjectException{
+        
+        LinkedList<WBSElement> resultList = new LinkedList();
+        
+        //Query into the database to return the list of id of WBS element.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT element_id FROM project WHERE project_id = " + projectId);
+            
+            //Creating the WBSElement objects from the list of ids found, and adding them to the result list
+            while(response.next()){
+                Long elementId = response.getLong("element_id");
+                WBSElement element = find(elementId);
+                resultList.add(element);
+                
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+        return resultList;
     }
 }

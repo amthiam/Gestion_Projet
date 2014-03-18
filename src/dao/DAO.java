@@ -34,9 +34,9 @@ public abstract class DAO<T> {
     /**
      * Object updating method
      * @param obj : object to update 
-     * @return boolean 
+     * @return void 
      */
-    public abstract boolean update(T obj);
+    public abstract void update(T obj) throws ProjectException;
     
     /**
      * Method finding the object in the database 
