@@ -48,6 +48,8 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_RH = new javax.swing.JTable();
         jPanel_Risks = new javax.swing.JPanel();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
@@ -131,7 +133,7 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jButton17.setText("Estimation");
 
-        MyModel mtm = new MyModel(this.objets);
+        gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.objets);
         jTable_WBS.setModel(mtm);
         jScrollPane1.setViewportView(jTable_WBS);
         jTable_WBS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -188,6 +190,28 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jButton25.setText("New Human");
 
+        gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH(this.objets);
+        jTable_RH.setModel(model_rh);
+        jTable_RH.setColumnSelectionAllowed(true);
+        jScrollPane3.setViewportView(jTable_RH);
+        jTable_RH.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable_RH.getColumnModel().getColumnCount() > 0) {
+            jTable_RH.getColumnModel().getColumn(0).setHeaderValue("Code");
+            jTable_RH.getColumnModel().getColumn(1).setHeaderValue("Label");
+            jTable_RH.getColumnModel().getColumn(2).setHeaderValue("Initials");
+            jTable_RH.getColumnModel().getColumn(3).setHeaderValue("Unit");
+            jTable_RH.getColumnModel().getColumn(4).setHeaderValue("Skill");
+            jTable_RH.getColumnModel().getColumn(5).setHeaderValue("Capacity");
+            jTable_RH.getColumnModel().getColumn(6).setHeaderValue("Std Rate");
+            jTable_RH.getColumnModel().getColumn(7).setHeaderValue("Overtime");
+            jTable_RH.getColumnModel().getColumn(8).setHeaderValue("Use Cost");
+            jTable_RH.getColumnModel().getColumn(9).setHeaderValue("Critical");
+            jTable_RH.getColumnModel().getColumn(10).setHeaderValue("Allocation Mode");
+            jTable_RH.getColumnModel().getColumn(11).setHeaderValue("Target Group");
+            jTable_RH.getColumnModel().getColumn(12).setHeaderValue("Place");
+
+        }
+
         javax.swing.GroupLayout jPanel_ResourcesLayout = new javax.swing.GroupLayout(jPanel_Resources);
         jPanel_Resources.setLayout(jPanel_ResourcesLayout);
         jPanel_ResourcesLayout.setHorizontalGroup(
@@ -202,6 +226,7 @@ ObjetsBDD objets = new ObjetsBDD();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton25)
                 .addContainerGap(359, Short.MAX_VALUE))
+            .addComponent(jScrollPane3)
         );
         jPanel_ResourcesLayout.setVerticalGroup(
             jPanel_ResourcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +236,9 @@ ObjetsBDD objets = new ObjetsBDD();
                     .addComponent(jButton4)
                     .addComponent(jButton6)
                     .addComponent(jButton25))
-                .addGap(0, 199, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Resources", jPanel_Resources);
@@ -255,6 +282,11 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton15MouseClicked(evt);
+            }
+        });
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
             }
         });
 
@@ -476,8 +508,13 @@ ObjetsBDD objets = new ObjetsBDD();
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
  // TODO add your handling code here:
-        new New_Activity(this, true);
+        new New_Activity(this, true, objets);
     }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -559,8 +596,10 @@ ObjetsBDD objets = new ObjetsBDD();
     private javax.swing.JPanel jPanel_WBS;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable_RH;
     private javax.swing.JTable jTable_WBS;
     // End of variables declaration//GEN-END:variables
 

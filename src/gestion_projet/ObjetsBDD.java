@@ -38,14 +38,23 @@ public class ObjetsBDD {
   //Creation d'un nouvel element du WBS
             Date dateLivraison = new Date(114, 03, 24);
             long x=2l;
+            BigDecimal y = new BigDecimal(5);
             WBSElement elementTest = new WBSElement(null, "Element père", "Element de test d'arbre WBS : élément père", false, null, new BigDecimal(10), new BigDecimal(1), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, null, new Integer(1), x);
             WBSElement elementTest2 = new WBSElement(null, "Element père", "Element de test d'arbre WBS :élément quelconque", false, null, new BigDecimal(10), new BigDecimal(1), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, null, new Integer(1), x);
 
+            HumanResource a = new HumanResource(x, "LEC", "LECLERE", "LECL", y, y, y, y, true, "confirmed", "Proportion", "Group", "Euro", "France") ;
+
+            
             this.elements = new ArrayList<WBSElement>();
              this.activites = new ArrayList<Activity>();
+             this.rh = new ArrayList<HumanResource>();
+             
+
+             
             
             elements.add(elementTest);
             elements.add(elementTest2);
+            rh.add(a);
  //Création d'une nouvelle activité à des fins de test
             
             

@@ -110,6 +110,23 @@ public class HumanResource {
     public String getPlace() {
         return place;
     }
+
+    public HumanResource(long id, String code, String name, String initials, BigDecimal capacity, BigDecimal standardRate, BigDecimal overtimeRate, BigDecimal useCost, boolean isCritical, String skill, String allocationMode, String targetGroup, String unit, String place) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.initials = initials;
+        this.capacity = capacity;
+        this.standardRate = standardRate;
+        this.overtimeRate = overtimeRate;
+        this.useCost = useCost;
+        this.isCritical = isCritical;
+        this.skill = skill;
+        this.allocationMode = allocationMode;
+        this.targetGroup = targetGroup;
+        this.unit = unit;
+        this.place = place;
+    }
     
     
 }
