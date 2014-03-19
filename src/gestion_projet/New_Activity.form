@@ -28,35 +28,35 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_Workload" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="labelTF" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                                   <Component id="Workload_TF" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_Duration" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Duration_TF" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="constraint_TF" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel_Constraint" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="Calculation_Note_TF" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_Calculation" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_ActivityDesc" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="Description_TF" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_Hypothesis" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="Hypothesis_TF" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_Milestone" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_ResultingState" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_label2" min="-2" max="-2" attributes="0"/>
                                           <Component id="RS_Label_TF" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -84,8 +84,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_ActivityDesc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -94,9 +94,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_ResultingState" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_label2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -106,17 +106,17 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_Workload" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Workload_TF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jLabel_Duration" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Duration_TF" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_Hypothesis" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="RS_Label_TF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -126,7 +126,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBox_Milestone" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -134,13 +134,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_Constraint" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="constraint_TF" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_Calculation" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Calculation_Note_TF" min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
@@ -160,21 +160,21 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel_label">
       <Properties>
         <Property name="text" type="java.lang.String" value="Label"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="labelTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabel_Workload">
       <Properties>
         <Property name="text" type="java.lang.String" value="Workload"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Workload_TF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLabel_Duration">
       <Properties>
         <Property name="text" type="java.lang.String" value="Duration"/>
       </Properties>
@@ -184,12 +184,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Duration_TFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabel_Constraint">
       <Properties>
         <Property name="text" type="java.lang.String" value="Constraint Type"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabel_ActivityDesc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Activity Description"/>
       </Properties>
@@ -198,14 +198,14 @@
     </Component>
     <Component class="javax.swing.JTextField" name="Hypothesis_TF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="jLabel_Hypothesis">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hypothesis"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Calculation_Note_TF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLabel_Calculation">
       <Properties>
         <Property name="text" type="java.lang.String" value="Calculation Notes"/>
       </Properties>
@@ -220,19 +220,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImposedDate_TFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="jLabel_ResultingState">
       <Properties>
         <Property name="text" type="java.lang.String" value="Resulting State:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="jLabel_label2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Label"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="RS_Label_TF">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="jCheckBox_Milestone">
       <Properties>
         <Property name="text" type="java.lang.String" value="Milestone"/>
       </Properties>

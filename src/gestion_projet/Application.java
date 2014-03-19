@@ -31,71 +31,71 @@ ObjetsBDD objets = new ObjetsBDD();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel_Home = new javax.swing.JPanel();
         jPanel_Home.setVisible(false);
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton_LoadProject = new javax.swing.JButton();
+        jButton_NewProject = new javax.swing.JButton();
+        jButton_Deconnection = new javax.swing.JButton();
         jPanel_WBS = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        jButton_ExportList = new javax.swing.JButton();
+        jButton_ShowAsList = new javax.swing.JButton();
+        jButton_ShowTree = new javax.swing.JButton();
+        jButton_ExportPDF = new javax.swing.JButton();
+        jButton_New_Element = new javax.swing.JButton();
+        jButton_Estimation = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_WBS = new javax.swing.JTable();
         jPanel_Resources = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
+        jButton_Human = new javax.swing.JButton();
+        jButton_Material = new javax.swing.JButton();
+        jButton_NewMaterial = new javax.swing.JButton();
+        jButton_NewHuman = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_RH = new javax.swing.JTable();
         jPanel_Risks = new javax.swing.JPanel();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
+        jButton_NewReq = new javax.swing.JButton();
+        jButton_NewRisk = new javax.swing.JButton();
         jPanel_Activities = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton_AllocHumanResource = new javax.swing.JButton();
+        jButton_Act_List = new javax.swing.JButton();
+        jButton_NewAct = new javax.swing.JButton();
+        jButton_StateList = new javax.swing.JButton();
+        jButton_AllocMatResource = new javax.swing.JButton();
+        jLabel_WP = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel_Communication = new javax.swing.JPanel();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
+        jButton_Meeting = new javax.swing.JButton();
+        jButtonTargetGroup = new javax.swing.JButton();
+        jButton_Doc = new javax.swing.JButton();
         jPanel_Referential = new javax.swing.JPanel();
-        jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
+        jButton_Unit = new javax.swing.JButton();
+        jButton_Respo = new javax.swing.JButton();
+        jButton_Place = new javax.swing.JButton();
         jPanel_Export = new javax.swing.JPanel();
-        jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
+        jButton_ActGraph = new javax.swing.JButton();
+        jButton_ActStateGraph = new javax.swing.JButton();
+        jButton_ExportMSProject = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Load Project");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_LoadProject.setText("Load Project");
+        jButton_LoadProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_LoadProjectActionPerformed(evt);
             }
         });
 
-        jButton3.setText("New Project");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_NewProject.setText("New Project");
+        jButton_NewProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton_NewProjectActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Deconnection");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Deconnection.setText("Deconnection");
+        jButton_Deconnection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_DeconnectionActionPerformed(evt);
             }
         });
 
@@ -104,34 +104,34 @@ ObjetsBDD objets = new ObjetsBDD();
         jPanel_HomeLayout.setHorizontalGroup(
             jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_HomeLayout.createSequentialGroup()
-                .addComponent(jButton3)
+                .addComponent(jButton_NewProject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jButton_LoadProject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(jButton_Deconnection)
                 .addContainerGap(405, Short.MAX_VALUE))
         );
         jPanel_HomeLayout.setVerticalGroup(
             jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton3)
-                .addComponent(jButton1)
-                .addComponent(jButton2))
+                .addComponent(jButton_NewProject)
+                .addComponent(jButton_LoadProject)
+                .addComponent(jButton_Deconnection))
         );
 
         jTabbedPane1.addTab("Home", jPanel_Home);
 
-        jButton7.setText("Export as List");
+        jButton_ExportList.setText("Export as List");
 
-        jButton8.setText("Show as List");
+        jButton_ShowAsList.setText("Show as List");
 
-        jButton9.setText("Show as a Tree");
+        jButton_ShowTree.setText("Show as a Tree");
 
-        jButton22.setText("Export as PDF");
+        jButton_ExportPDF.setText("Export as PDF");
 
-        jButton16.setText("New Element");
+        jButton_New_Element.setText("New Element");
 
-        jButton17.setText("Estimation");
+        jButton_Estimation.setText("Estimation");
 
         gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.objets);
         jTable_WBS.setModel(mtm);
@@ -151,17 +151,17 @@ ObjetsBDD objets = new ObjetsBDD();
         jPanel_WBSLayout.setHorizontalGroup(
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_WBSLayout.createSequentialGroup()
-                .addComponent(jButton17)
+                .addComponent(jButton_Estimation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton16)
+                .addComponent(jButton_New_Element)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
+                .addComponent(jButton_ShowAsList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(jButton_ExportList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9)
+                .addComponent(jButton_ShowTree)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton22)
+                .addComponent(jButton_ExportPDF)
                 .addContainerGap(96, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
@@ -169,12 +169,12 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_WBSLayout.createSequentialGroup()
                 .addGroup(jPanel_WBSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton7)
-                    .addComponent(jButton9)
-                    .addComponent(jButton22)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17))
+                    .addComponent(jButton_ShowAsList)
+                    .addComponent(jButton_ExportList)
+                    .addComponent(jButton_ShowTree)
+                    .addComponent(jButton_ExportPDF)
+                    .addComponent(jButton_New_Element)
+                    .addComponent(jButton_Estimation))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -182,13 +182,13 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jTabbedPane1.addTab("WBS", jPanel_WBS);
 
-        jButton4.setText("Human");
+        jButton_Human.setText("Human");
 
-        jButton5.setText("Material");
+        jButton_Material.setText("Material");
 
-        jButton6.setText("New Material");
+        jButton_NewMaterial.setText("New Material");
 
-        jButton25.setText("New Human");
+        jButton_NewHuman.setText("New Human");
 
         gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH(this.objets);
         jTable_RH.setModel(model_rh);
@@ -218,13 +218,13 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_ResourcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ResourcesLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(jButton5)
+                .addComponent(jButton_Material)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(jButton_NewMaterial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(jButton_Human)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton25)
+                .addComponent(jButton_NewHuman)
                 .addContainerGap(359, Short.MAX_VALUE))
             .addComponent(jScrollPane3)
         );
@@ -232,10 +232,10 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_ResourcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ResourcesLayout.createSequentialGroup()
                 .addGroup(jPanel_ResourcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6)
-                    .addComponent(jButton25))
+                    .addComponent(jButton_Material)
+                    .addComponent(jButton_Human)
+                    .addComponent(jButton_NewMaterial)
+                    .addComponent(jButton_NewHuman))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -243,9 +243,9 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jTabbedPane1.addTab("Resources", jPanel_Resources);
 
-        jButton20.setText("New Requirement");
+        jButton_NewReq.setText("New Requirement");
 
-        jButton21.setText("New Risk");
+        jButton_NewRisk.setText("New Risk");
 
         javax.swing.GroupLayout jPanel_RisksLayout = new javax.swing.GroupLayout(jPanel_Risks);
         jPanel_Risks.setLayout(jPanel_RisksLayout);
@@ -253,53 +253,53 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_RisksLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jButton21)
+                .addComponent(jButton_NewRisk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton20)
+                .addComponent(jButton_NewReq)
                 .addContainerGap(493, Short.MAX_VALUE))
         );
         jPanel_RisksLayout.setVerticalGroup(
             jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_RisksLayout.createSequentialGroup()
                 .addGroup(jPanel_RisksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton20)
-                    .addComponent(jButton21))
+                    .addComponent(jButton_NewReq)
+                    .addComponent(jButton_NewRisk))
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Risks", jPanel_Risks);
 
-        jButton13.setText("Allocate Human Resource");
+        jButton_AllocHumanResource.setText("Allocate Human Resource");
 
-        jButton14.setText("Activities List");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Act_List.setText("Activities List");
+        jButton_Act_List.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jButton_Act_ListActionPerformed(evt);
             }
         });
 
-        jButton15.setText("New");
-        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton_NewAct.setText("New");
+        jButton_NewAct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton15MouseClicked(evt);
+                jButton_NewActMouseClicked(evt);
             }
         });
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        jButton_NewAct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jButton_NewActActionPerformed(evt);
             }
         });
 
-        jButton24.setText("State List");
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        jButton_StateList.setText("State List");
+        jButton_StateList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                jButton_StateListActionPerformed(evt);
             }
         });
 
-        jButton18.setText("Allocate Material Resource");
+        jButton_AllocMatResource.setText("Allocate Material Resource");
 
-        jLabel1.setText("Work Package:");
+        jLabel_WP.setText("Work Package:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -328,17 +328,17 @@ ObjetsBDD objets = new ObjetsBDD();
                     .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
                         .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
-                                .addComponent(jButton15)
+                                .addComponent(jButton_NewAct)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton14)
+                                .addComponent(jButton_Act_List)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton24)
+                                .addComponent(jButton_StateList)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton13)
+                                .addComponent(jButton_AllocHumanResource)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton18))
+                                .addComponent(jButton_AllocMatResource))
                             .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel_WP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 125, Short.MAX_VALUE))
@@ -349,14 +349,14 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ActivitiesLayout.createSequentialGroup()
                 .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14)
-                    .addComponent(jButton13)
-                    .addComponent(jButton15)
-                    .addComponent(jButton24)
-                    .addComponent(jButton18))
+                    .addComponent(jButton_Act_List)
+                    .addComponent(jButton_AllocHumanResource)
+                    .addComponent(jButton_NewAct)
+                    .addComponent(jButton_StateList)
+                    .addComponent(jButton_AllocMatResource))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_ActivitiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel_WP)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,11 +365,11 @@ ObjetsBDD objets = new ObjetsBDD();
 
         jTabbedPane1.addTab("Activities", jPanel_Activities);
 
-        jButton26.setText("Meeting");
+        jButton_Meeting.setText("Meeting");
 
-        jButton27.setText("Target Group");
+        jButtonTargetGroup.setText("Target Group");
 
-        jButton28.setText("Document");
+        jButton_Doc.setText("Document");
 
         javax.swing.GroupLayout jPanel_CommunicationLayout = new javax.swing.GroupLayout(jPanel_Communication);
         jPanel_Communication.setLayout(jPanel_CommunicationLayout);
@@ -377,30 +377,30 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_CommunicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_CommunicationLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jButton27)
+                .addComponent(jButtonTargetGroup)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton26)
+                .addComponent(jButton_Meeting)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton28)
+                .addComponent(jButton_Doc)
                 .addContainerGap(430, Short.MAX_VALUE))
         );
         jPanel_CommunicationLayout.setVerticalGroup(
             jPanel_CommunicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_CommunicationLayout.createSequentialGroup()
                 .addGroup(jPanel_CommunicationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton26)
-                    .addComponent(jButton27)
-                    .addComponent(jButton28))
+                    .addComponent(jButton_Meeting)
+                    .addComponent(jButtonTargetGroup)
+                    .addComponent(jButton_Doc))
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Communication", jPanel_Communication);
 
-        jButton29.setText("Unit");
+        jButton_Unit.setText("Unit");
 
-        jButton30.setText("Responsability");
+        jButton_Respo.setText("Responsability");
 
-        jButton31.setText("Place");
+        jButton_Place.setText("Place");
 
         javax.swing.GroupLayout jPanel_ReferentialLayout = new javax.swing.GroupLayout(jPanel_Referential);
         jPanel_Referential.setLayout(jPanel_ReferentialLayout);
@@ -408,35 +408,35 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_ReferentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ReferentialLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jButton30)
+                .addComponent(jButton_Respo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton29)
+                .addComponent(jButton_Unit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton31)
+                .addComponent(jButton_Place)
                 .addContainerGap(470, Short.MAX_VALUE))
         );
         jPanel_ReferentialLayout.setVerticalGroup(
             jPanel_ReferentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ReferentialLayout.createSequentialGroup()
                 .addGroup(jPanel_ReferentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton29)
-                    .addComponent(jButton30)
-                    .addComponent(jButton31))
+                    .addComponent(jButton_Unit)
+                    .addComponent(jButton_Respo)
+                    .addComponent(jButton_Place))
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Referential", jPanel_Referential);
 
-        jButton32.setText("Activities Graph");
+        jButton_ActGraph.setText("Activities Graph");
 
-        jButton33.setText("Activities / State Graph");
-        jButton33.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ActStateGraph.setText("Activities / State Graph");
+        jButton_ActStateGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton33ActionPerformed(evt);
+                jButton_ActStateGraphActionPerformed(evt);
             }
         });
 
-        jButton34.setText("Export To MS Project");
+        jButton_ExportMSProject.setText("Export To MS Project");
 
         javax.swing.GroupLayout jPanel_ExportLayout = new javax.swing.GroupLayout(jPanel_Export);
         jPanel_Export.setLayout(jPanel_ExportLayout);
@@ -444,20 +444,20 @@ ObjetsBDD objets = new ObjetsBDD();
             jPanel_ExportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ExportLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jButton33)
+                .addComponent(jButton_ActStateGraph)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton32)
+                .addComponent(jButton_ActGraph)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton34)
+                .addComponent(jButton_ExportMSProject)
                 .addContainerGap(296, Short.MAX_VALUE))
         );
         jPanel_ExportLayout.setVerticalGroup(
             jPanel_ExportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ExportLayout.createSequentialGroup()
                 .addGroup(jPanel_ExportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton32)
-                    .addComponent(jButton33)
-                    .addComponent(jButton34))
+                    .addComponent(jButton_ActGraph)
+                    .addComponent(jButton_ActStateGraph)
+                    .addComponent(jButton_ExportMSProject))
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
@@ -482,39 +482,39 @@ ObjetsBDD objets = new ObjetsBDD();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+    private void jButton_ActStateGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActStateGraphActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton33ActionPerformed
+    }//GEN-LAST:event_jButton_ActStateGraphActionPerformed
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+    private void jButton_StateListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StateListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
+    }//GEN-LAST:event_jButton_StateListActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void jButton_Act_ListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Act_ListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_jButton_Act_ListActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton_DeconnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeconnectionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton_DeconnectionActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton_NewProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewProjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton_NewProjectActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_LoadProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoadProjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_LoadProjectActionPerformed
 
-    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+    private void jButton_NewActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_NewActMouseClicked
  // TODO add your handling code here:
         new New_Activity(this, true, objets);
-    }//GEN-LAST:event_jButton15MouseClicked
+    }//GEN-LAST:event_jButton_NewActMouseClicked
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void jButton_NewActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewActActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_jButton_NewActActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,37 +555,37 @@ ObjetsBDD objets = new ObjetsBDD();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonTargetGroup;
+    private javax.swing.JButton jButton_ActGraph;
+    private javax.swing.JButton jButton_ActStateGraph;
+    private javax.swing.JButton jButton_Act_List;
+    private javax.swing.JButton jButton_AllocHumanResource;
+    private javax.swing.JButton jButton_AllocMatResource;
+    private javax.swing.JButton jButton_Deconnection;
+    private javax.swing.JButton jButton_Doc;
+    private javax.swing.JButton jButton_Estimation;
+    private javax.swing.JButton jButton_ExportList;
+    private javax.swing.JButton jButton_ExportMSProject;
+    private javax.swing.JButton jButton_ExportPDF;
+    private javax.swing.JButton jButton_Human;
+    private javax.swing.JButton jButton_LoadProject;
+    private javax.swing.JButton jButton_Material;
+    private javax.swing.JButton jButton_Meeting;
+    private javax.swing.JButton jButton_NewAct;
+    private javax.swing.JButton jButton_NewHuman;
+    private javax.swing.JButton jButton_NewMaterial;
+    private javax.swing.JButton jButton_NewProject;
+    private javax.swing.JButton jButton_NewReq;
+    private javax.swing.JButton jButton_NewRisk;
+    private javax.swing.JButton jButton_New_Element;
+    private javax.swing.JButton jButton_Place;
+    private javax.swing.JButton jButton_Respo;
+    private javax.swing.JButton jButton_ShowAsList;
+    private javax.swing.JButton jButton_ShowTree;
+    private javax.swing.JButton jButton_StateList;
+    private javax.swing.JButton jButton_Unit;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel_WP;
     private javax.swing.JPanel jPanel_Activities;
     private javax.swing.JPanel jPanel_Communication;
     private javax.swing.JPanel jPanel_Export;

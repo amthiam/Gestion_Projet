@@ -72,36 +72,36 @@ public class New_Activity extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel_label = new javax.swing.JLabel();
         labelTF = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel_Workload = new javax.swing.JLabel();
         Workload_TF = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel_Duration = new javax.swing.JLabel();
         Duration_TF = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel_Constraint = new javax.swing.JLabel();
+        jLabel_ActivityDesc = new javax.swing.JLabel();
         Description_TF = new javax.swing.JTextField();
         Hypothesis_TF = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel_Hypothesis = new javax.swing.JLabel();
         Calculation_Note_TF = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel_Calculation = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         ImposedDate_TF = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel_ResultingState = new javax.swing.JLabel();
+        jLabel_label2 = new javax.swing.JLabel();
         RS_Label_TF = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox_Milestone = new javax.swing.JCheckBox();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         constraint_TF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Label");
+        jLabel_label.setText("Label");
 
-        jLabel2.setText("Workload");
+        jLabel_Workload.setText("Workload");
 
-        jLabel3.setText("Duration");
+        jLabel_Duration.setText("Duration");
 
         Duration_TF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,13 +109,13 @@ public class New_Activity extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("Constraint Type");
+        jLabel_Constraint.setText("Constraint Type");
 
-        jLabel5.setText("Activity Description");
+        jLabel_ActivityDesc.setText("Activity Description");
 
-        jLabel6.setText("Hypothesis");
+        jLabel_Hypothesis.setText("Hypothesis");
 
-        jLabel7.setText("Calculation Notes");
+        jLabel_Calculation.setText("Calculation Notes");
 
         jLabel8.setText("Imposed date");
 
@@ -125,11 +125,11 @@ public class New_Activity extends javax.swing.JDialog {
             }
         });
 
-        jLabel9.setText("Resulting State:");
+        jLabel_ResultingState.setText("Resulting State:");
 
-        jLabel10.setText("Label");
+        jLabel_label2.setText("Label");
 
-        jCheckBox1.setText("Milestone");
+        jCheckBox_Milestone.setText("Milestone");
 
         okButton.setText("Ok");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,32 +154,32 @@ public class New_Activity extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(jLabel_Workload)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel_label)
                                     .addComponent(labelTF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Workload_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel_Duration)
                                     .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(constraint_TF, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jLabel_Constraint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(89, 89, 89)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel_Calculation)
+                                    .addComponent(jLabel_ActivityDesc)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Description_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel_Hypothesis)
                                             .addComponent(Hypothesis_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(68, 68, 68)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox1)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
+                                            .addComponent(jCheckBox_Milestone)
+                                            .addComponent(jLabel_ResultingState)
+                                            .addComponent(jLabel_label2)
                                             .addComponent(RS_Label_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(ImposedDate_TF, javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,33 +196,33 @@ public class New_Activity extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel_label)
+                    .addComponent(jLabel_ActivityDesc))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Description_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel9)
+                        .addComponent(jLabel_ResultingState)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel10))
+                        .addComponent(jLabel_label2))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel_Workload)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Workload_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel_Duration, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(jLabel_Hypothesis)
                             .addComponent(RS_Label_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -230,16 +230,16 @@ public class New_Activity extends javax.swing.JDialog {
                                 .addComponent(Hypothesis_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(jCheckBox1)))))
+                                .addComponent(jCheckBox_Milestone)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel4)
+                        .addComponent(jLabel_Constraint)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(constraint_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel7)
+                        .addComponent(jLabel_Calculation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
@@ -341,17 +341,17 @@ public class New_Activity extends javax.swing.JDialog {
     private javax.swing.JTextField Workload_TF;
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField constraint_TF;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JCheckBox jCheckBox_Milestone;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_ActivityDesc;
+    private javax.swing.JLabel jLabel_Calculation;
+    private javax.swing.JLabel jLabel_Constraint;
+    private javax.swing.JLabel jLabel_Duration;
+    private javax.swing.JLabel jLabel_Hypothesis;
+    private javax.swing.JLabel jLabel_ResultingState;
+    private javax.swing.JLabel jLabel_Workload;
+    private javax.swing.JLabel jLabel_label;
+    private javax.swing.JLabel jLabel_label2;
     private javax.swing.JTextField labelTF;
     private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
