@@ -10,7 +10,7 @@ import exceptions.ResultCode;
  * On the contrary a state may have multiple activity as predecessors.
  * @author Felix
  */
-public class State {
+public class State extends Task {
     
     //ATTRIBUTES
     /* id of the state in the database */

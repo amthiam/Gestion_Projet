@@ -157,7 +157,7 @@ public class StateDAO extends DAO<State> {
      * @param projectId : id of the project 
      * @return the list of states 
      */
-    public LinkedList<State> ListStatesOfProject(long projectId) throws ProjectException{
+    public LinkedList<State> listStatesOfProject(long projectId) throws ProjectException{
         
         LinkedList<State> resultList = new LinkedList();
         
@@ -165,7 +165,7 @@ public class StateDAO extends DAO<State> {
         try{
             
             ResultSet response = db.executeRequest(
-                    "SELECT state_id FROM project WHERE project_id = " + projectId);
+                    "SELECT state_id FROM projectDefinition.state WHERE project_id = " + projectId);
             
             //Creating the state objects from the list of ids found, and adding them to the result list
             while(response.next()){

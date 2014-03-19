@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * Class representing an activity of the project
  * @author Felix
  */
-public class Activity {
+public class Activity extends Task {
 
     //ATTRIBUTES
     /* id of the activity in the database */
@@ -76,7 +76,7 @@ public class Activity {
     
     
     //GET METHODS
-    public long getId() {
+    public Long getId() {
         return id;
     }
     

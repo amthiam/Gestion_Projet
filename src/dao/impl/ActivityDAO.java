@@ -276,7 +276,7 @@ public class ActivityDAO extends DAO<Activity> {
      * @param projectId : id of the project 
      * @return the list of activities 
      */
-    public LinkedList<Activity> ListActivitiesOfProject(long projectId) throws ProjectException{
+    public LinkedList<Activity> listActivitiesOfProject(long projectId) throws ProjectException{
         
         LinkedList<Activity> resultList = new LinkedList();
         
@@ -284,7 +284,7 @@ public class ActivityDAO extends DAO<Activity> {
         try{
             
             ResultSet response = db.executeRequest(
-                    "SELECT activity_id FROM project WHERE project_id = " + projectId);
+                    "SELECT activity_id FROM projectDefinition.activity WHERE project_id = " + projectId);
             
             //Creating the activity objects from the list of ids found, and adding them to the result list
             while(response.next()){
