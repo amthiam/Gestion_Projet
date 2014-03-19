@@ -189,6 +189,11 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton_NewMaterial.setText("New Material");
 
         jButton_NewHuman.setText("New Human");
+        jButton_NewHuman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_NewHumanActionPerformed(evt);
+            }
+        });
 
         gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH(this.objets);
         jTable_RH.setModel(model_rh);
@@ -515,6 +520,11 @@ ObjetsBDD objets = new ObjetsBDD();
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton_NewActActionPerformed
+
+    private void jButton_NewHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewHumanActionPerformed
+        // TODO add your handling code here:
+        new New_RH();
+    }//GEN-LAST:event_jButton_NewHumanActionPerformed
 
     /**
      * @param args the command line arguments
