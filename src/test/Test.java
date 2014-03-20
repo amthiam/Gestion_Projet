@@ -190,10 +190,15 @@ public class Test {
                 System.out.println(etatPredecesseur.getLabel());
             }
             
-            
+            //Affichage de tous les éléments du WBS du projet
+            LinkedList<WBSElement> elementList = elementDAO.listElementOfProject(idProjetTest);
+            System.out.println("Affichage de l'enesemble des éléments du WBS : ");
+            for (WBSElement element : elementList){
+                System.out.println(element.getLabel());
+                        }
             //Test de création de graphe
-            GraphManager graphGenerator = new GraphManager(dbManager);
-            graphGenerator.writeStateActivity(idProjetTest);
+            //GraphManager graphGenerator = new GraphManager(dbManager);
+            //graphGenerator.writeStateActivity(idProjetTest);
             
         } catch (DatabaseException e) {
             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());

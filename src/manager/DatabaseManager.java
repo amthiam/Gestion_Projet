@@ -21,8 +21,8 @@ public class DatabaseManager {
     
     //Connection to the database
     protected Connection connection;
-    //boolean indicating if the connection to the database is open
-    protected boolean connectionOpen;
+
+
 
 
     /**
@@ -36,10 +36,10 @@ public class DatabaseManager {
             this.url = url;
             this.user = user;
             this.passwd = passwd;
-            this.connectionOpen = false;
             
             // load the database driver
             Class.forName("org.h2.Driver");
+          connection = DriverManager.getConnection(url, user, passwd);
         } catch (Exception e) {
             throw new DatabaseException(e);
         }
@@ -51,16 +51,6 @@ public class DatabaseManager {
      * @return connection object 
      */
     public Connection getConnection() throws DatabaseException{
-        
-        try{
-            if(connectionOpen = false){
-        //Open a connection to the database
-           this.connection = DriverManager.getConnection(url, user, passwd);
-           this.connectionOpen = true;
-            }
-        } catch (Exception e) {
-            throw new DatabaseException(e);
-        }
 
         return connection;
     }
@@ -71,15 +61,11 @@ public class DatabaseManager {
      *
      * @return boolean 
      */
-    public void close() {
+    public void close() throws DatabaseException {
         try {
-            if(connectionOpen = true){
             connection.close();
-            this.connectionOpen = false;
-            }
         } catch (SQLException e) {
-            //The connection object failed to close the connection
-            this.connectionOpen = true;
+            throw new DatabaseException(e);
         }
     }
 
@@ -96,9 +82,6 @@ public class DatabaseManager {
         ResultSet result = null;
 
         try {
-
-            //Open a connection to the database
-            getConnection();
             
             // Preparation of the query
             PreparedStatement preparedRequest = connection.prepareStatement(request);
@@ -108,8 +91,6 @@ public class DatabaseManager {
                 result = preparedRequest.getResultSet();
             }
             
-            //Close the connection to the database
-            close();
             
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -131,17 +112,12 @@ public class DatabaseManager {
 
         try {
 
-            //Open a connection to the database
-            getConnection();
             
             // Preparation of the query
             PreparedStatement preparedStmt = connection.prepareStatement(query);
 
             // Execution of the query and storage of the result
             count = preparedStmt.executeUpdate();
-            
-            //Close the connection to the database
-            close();
 
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -158,7 +134,8 @@ public class DatabaseManager {
      */
     public void startTransaction() throws DatabaseException {
         try {
-            connection.setAutoCommit(false);
+            
+            this.connection.setAutoCommit(false);
         } catch (SQLException e) {
             throw new DatabaseException(e);
         }
@@ -178,5 +155,7 @@ public class DatabaseManager {
         }
     }
 
+    
+    
   
 }

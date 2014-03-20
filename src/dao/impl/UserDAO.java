@@ -34,7 +34,6 @@ public class UserDAO extends DAO<User> {
 
         try {
 
-            db.getConnection();
             
             db.startTransaction();
 
@@ -74,8 +73,6 @@ public class UserDAO extends DAO<User> {
             Long idUser = generatedKeys.getLong(1);
             
             db.commit();
-            
-            db.close();
 
             return idUser;
         } catch (SQLException e) {
@@ -97,7 +94,7 @@ public class UserDAO extends DAO<User> {
     public User find(long id) throws DatabaseException {
 
         try {
-            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT user_name, user_password, user_idLastProject"
                     + "FROM projectDefinition.user"
@@ -108,9 +105,6 @@ public class UserDAO extends DAO<User> {
             Long idLastProject = response.getLong("user_idLastProject");
             
             User result = new User(id, name, password, idLastProject);
-            
-            db.close();
-            
             return result;
         }
         catch(SQLException e){

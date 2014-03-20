@@ -44,8 +44,6 @@ public class StateDAO extends DAO<State> {
 
         //Insertion in the database
         try {
-
-            db.getConnection();
             
             db.startTransaction();
 
@@ -89,7 +87,7 @@ public class StateDAO extends DAO<State> {
   
   db.commit();
   
-  db.close();
+
 
             return idState;
         }
@@ -113,7 +111,6 @@ public class StateDAO extends DAO<State> {
         
         try {
 
-            db.getConnection();
             
             ResultSet response = db.executeRequest(
                     "SELECT state_id, project_id, state_label, state_isMilestone, "
@@ -139,6 +136,9 @@ public class StateDAO extends DAO<State> {
             if (idElement != 0) {
                 element = elementDAO.find(idElement);
             }
+            
+           
+            
             Activity predecessorActivity = null;
             if (idPredecessorActivity != 0) {
                 predecessorActivity = activityDAO.find(idPredecessorActivity);
@@ -146,8 +146,6 @@ public class StateDAO extends DAO<State> {
             
             //Creation of the resulting state object
             State result = new State(id, idProject, label, milestone, element, predecessorActivity);
-            
-            db.close();
             
             return result;
             
@@ -172,8 +170,6 @@ public class StateDAO extends DAO<State> {
         //Query into the database to return the list of ids of states.
         try{
             
-            db.getConnection();
-            
             ResultSet response = db.executeRequest(
                     "SELECT state_id FROM projectDefinition.state WHERE project_id = " + projectId);
             
@@ -183,9 +179,10 @@ public class StateDAO extends DAO<State> {
                 State state = find(stateId);
                 resultList.add(state);
                 
+                // The connection has been closed by the find method
+
+                
             }
-            
-            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);
@@ -206,8 +203,6 @@ public class StateDAO extends DAO<State> {
         //Query into the database to return the list of ids of states.
         try{
             
-            db.getConnection();
-            
             ResultSet response = db.executeRequest(
                     "SELECT state_id FROM projectDefinition.state WHERE element_id = " + wbsElementId);
             
@@ -217,9 +212,8 @@ public class StateDAO extends DAO<State> {
                 State state = find(stateId);
                 resultList.add(state);
                 
+
             }
-            
-            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);

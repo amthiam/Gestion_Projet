@@ -49,9 +49,7 @@ public class ActivityDAO extends DAO<Activity> {
 
         //Insertion in the database
         try {
-
             
-            db.getConnection();
             db.startTransaction();
 
             // SQL query
@@ -166,8 +164,6 @@ public class ActivityDAO extends DAO<Activity> {
             }
             
             db.commit();
-            
-            db.close();
 
             return idActivity;
         }
@@ -190,8 +186,7 @@ public class ActivityDAO extends DAO<Activity> {
     public Activity find(long id) throws ProjectException {
         
         try {
-
-            db.getConnection();
+            
             
             ResultSet response = db.executeRequest(
                     "SELECT activity_id, project_id, activity_label, activity_description, activity_workload, "
@@ -239,9 +234,15 @@ public class ActivityDAO extends DAO<Activity> {
             element = wbsDAO.find(elementId);
             }
             
+            // The connection has been closed by the find method
+            
+
+            
             Place place = null;
             if(placeId != 0){
             place = placeDAO.find(placeId);}
+            
+ 
             
             //Query to find the string matching the constraintDateTypeId
             String constraintDateType = null;
@@ -262,11 +263,13 @@ public class ActivityDAO extends DAO<Activity> {
             while (statePredecessorsSet.next()){
                 Long stateId = statePredecessorsSet.getLong("state_id");
                 listOfStatePredecessors.add(stateDAO.find(stateId));
+
+            
             }
             
             Activity result = new Activity(idActivity, idProject, label, description, workload, duration, hypothesis, calculationNote, constDateValue, element, constraintDateType, place, listOfStatePredecessors);
 
-            db.close();
+
             
             return result;
         } catch (SQLException e) {
@@ -290,6 +293,7 @@ public class ActivityDAO extends DAO<Activity> {
         
         //Query into the database to return the list of ids of activities.
         try{
+            
             db.getConnection();
             
             ResultSet response = db.executeRequest(
@@ -303,7 +307,6 @@ public class ActivityDAO extends DAO<Activity> {
                 
             }
             
-            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);
@@ -324,8 +327,6 @@ public class ActivityDAO extends DAO<Activity> {
         //Query into the database to return the list of ids of activities.
         try{
             
-            db.getConnection();
-            
             ResultSet response = db.executeRequest(
                     "SELECT activity_id FROM projectDefinition.activity WHERE element_id = " + wbsElementId);
             
@@ -335,15 +336,17 @@ public class ActivityDAO extends DAO<Activity> {
                 Activity activity = find(activityId);
                 resultList.add(activity);
                 
+
             }
+
+           
             
-            db.close();
-            
+              return resultList;
         }
         catch(SQLException e){
             throw new DatabaseException(e);
         }
-        return resultList;
+      
     }
     
 }
