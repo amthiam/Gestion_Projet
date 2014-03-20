@@ -185,8 +185,15 @@ protected Long idProject;
 
         jButton_Estimation.setText("Estimation");
 
-        gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.objets);
-        jTable_WBS.setModel(mtm);
+        try {
+            gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.idProject, this.db);
+            jTable_WBS.setModel(mtm);
+        }
+        catch(ProjectException e){
+            System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+        }
         jScrollPane1.setViewportView(jTable_WBS);
         jTable_WBS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
@@ -360,8 +367,9 @@ protected Long idProject;
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        MyModelActivity a= new MyModelActivity(this.objets);
+        /*MyModelActivity a= new MyModelActivity(this.objets);
         jTable2.setModel(a);
+        */
         jTable2.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(jTable2);
         jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

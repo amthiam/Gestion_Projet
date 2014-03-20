@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.Activity;
 import model.WBSElement;
+import dao.impl.WBSElementDAO;
 class MyModelActivity extends AbstractTableModel{
     
-    public MyModelActivity(ObjetsBDD a){
+    public MyModelActivity(Long projectId){
         this.list = a.getActivites();
         
     }
