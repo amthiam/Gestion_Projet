@@ -84,6 +84,12 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jComboBox2.removeAllItems();&#xa;ProjectDAO p = new ProjectDAO(this.db);&#xa;            try {&#xa;            LinkedList&lt;String&gt; strArray =  p.listOfProjectId();&#xa;&#xa;            for(String str : strArray) {&#xa;                 jComboBox2.addItem(str);&#xa;            }&#xa;            } catch (ProjectException ex) {&#xa;                Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);&#xa;            }"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

@@ -226,4 +226,27 @@ public class ProjectDAO extends DAO<Project> {
             throw new DatabaseException(e);
         }
     }
+    
+    public LinkedList<String> listOfProjectId() throws ProjectException{
+        
+        LinkedList<String> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of projects.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT project_id FROM projectDefinition.project ");
+            
+            //Creating the state objects from the list of ids found, and adding them to the result list
+
+            while(response.next()){
+                 resultList.add(String.valueOf(response.getLong("project_id")));
+            }
+            
+                    return resultList;
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+    }
 }

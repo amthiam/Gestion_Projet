@@ -24,44 +24,17 @@ protected ObjetsBDD objets = new ObjetsBDD();
 protected DatabaseManager db;
 protected Long idProject;
     
-    public Application() throws DatabaseException {
+    public Application(long idProject, DatabaseManager db) throws DatabaseException {
         
-         try {
-            
-            //Connection à la base de données
-            DatabaseManager db = new DatabaseManager("jdbc:h2:~/test", "sa", "");
-            this.db=db;
-            System.out.println("DatabaseManager créé");
-            
-            //We create a test project
-            ProjectDAO projetDao = new ProjectDAO(db);
-            UserDAO userDao = new UserDAO(db);
-            //Création d'un user tes
-            User projectManager = new User("Project Manager", "pwd");
-            //Insertion dans la base de données
-            Long idProjectManager = userDao.create(projectManager);
-            projectManager.setId(idProjectManager);
-            //Creation d'un nouveau projet
-            Project projetTest = new Project("Projet Test", "Projet Test", "Projet test : test d'insertion et de manipulation d'objets du WBS", "", projectManager.getId());
-            //Insertion du projet dans la base de données + affectation de l'attribut projet désignant le projet en cours.
-            this.idProject = projetDao.create(projetTest);
-         }
-         catch (DatabaseException e) {
-            System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
-            System.out.println(e.getStackTrace().toString());
-            e.printStackTrace();
-        }
-         catch(ProjectException e){
-             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
-            System.out.println(e.getStackTrace().toString());
-            e.printStackTrace();
-         }
-        
-        
+         
+        this.db=db;
+        this.idProject=idProject;
         initComponents();
         
         
         System.out.println("test");
+        System.out.println(this.idProject);
+        this.setVisible(true);
         
         
     }
@@ -606,44 +579,7 @@ protected Long idProject;
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Application().setVisible(true) ;
-                } catch (DatabaseException ex) {
-                    Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-               
-                
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonTargetGroup;

@@ -6,46 +6,76 @@
 
 package gestion_projet;
 
+import dao.impl.ProjectDAO;
+import dao.impl.UserDAO;
+import exceptions.DatabaseException;
+import exceptions.ProjectException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import manager.DatabaseManager;
+import model.Project;
+import model.User;
+
 /**
  *
  * @author amadou
  */
 public class Start extends javax.swing.JFrame {
 
+  
+protected DatabaseManager db;
+protected Long idProject;
     /**
      * Creates new form Start
      */
-    public Start() {
-        initComponents();
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    public Start() throws DatabaseException {
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         
-                new Start().setVisible(true);
+         //Connection à la base de données
+            DatabaseManager db = new DatabaseManager("jdbc:h2:~/test", "sa", "");
+            this.db=db;
+            System.out.println("DatabaseManager créé");
             
+            /*
+            
+            //We create a test project
+            ProjectDAO projetDao = new ProjectDAO(db);
+            UserDAO userDao = new UserDAO(db);
+            //Création d'un user tes
+            User projectManager = new User("Project Manager", "pwd");
+            //Insertion dans la base de données
+            Long idProjectManager = userDao.create(projectManager);
+            projectManager.setId(idProjectManager);
+            //Creation d'un nouveau projet
+            Project projetTest = new Project("Projet Test", "Projet Test", "Projet test : test d'insertion et de manipulation d'objets du WBS", "", projectManager.getId());
+            //Insertion du projet dans la base de données + affectation de l'attribut projet désignant le projet en cours.
+            this.idProject = projetDao.create(projetTest);
+            
+            */
+         }
+         catch (DatabaseException e) {
+            System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+        }
+         catch(ProjectException e){
+             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+         }
+        
+        initComponents();
+        String id = (String) jComboBox2.getSelectedItem();
+        this.idProject=Long.valueOf(id).longValue();
+        
+        System.out.println(this.idProject);
         
         
-       
+        
+        
+        
+        //
     }
 
     /**
@@ -69,6 +99,22 @@ public class Start extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.removeAllItems();
+        ProjectDAO p = new ProjectDAO(this.db);
+        try {
+            LinkedList<String> strArray =  p.listOfProjectId();
+
+            for(String str : strArray) {
+                jComboBox2.addItem(str);
+            }
+        } catch (ProjectException ex) {
+            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Select a project");
 
@@ -137,8 +183,12 @@ public class Start extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    try {
         // TODO add your handling code here:
-        
+        new Application(this.idProject, this.db);
+    } catch (DatabaseException ex) {
+        Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+    }
         dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -146,6 +196,12 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+        String id = (String) jComboBox2.getSelectedItem();
+        this.idProject=Long.valueOf(id).longValue();
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -177,8 +233,15 @@ public class Start extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Start().setVisible(true);
+                try {
+                    new Start().setVisible(true);
+                } catch (DatabaseException ex) {
+                    Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+            
+            
+       
         });
     }
 
