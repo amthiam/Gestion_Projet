@@ -414,6 +414,7 @@ public class New_Element extends javax.swing.JFrame {
             catch (ProjectException ex) {
                     Logger.getLogger(New_Element.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            dispose();
         }
 
     }//GEN-LAST:event_okButtonActionPerformed
