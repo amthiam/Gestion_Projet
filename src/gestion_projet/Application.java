@@ -2,10 +2,15 @@
  */
 package gestion_projet;
 
+import dao.impl.ProjectDAO;
+import dao.impl.UserDAO;
 import exceptions.DatabaseException;
+import exceptions.ProjectException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import manager.DatabaseManager;
+import model.Project;
+import model.User;
 
 
 
@@ -14,8 +19,10 @@ import manager.DatabaseManager;
  * @author amadou
  */
 public class Application extends javax.swing.JFrame {
-ObjetsBDD objets = new ObjetsBDD();
-DatabaseManager db;
+    
+protected ObjetsBDD objets = new ObjetsBDD();
+protected DatabaseManager db;
+protected Long idProject;
     
     public Application() throws DatabaseException {
         
@@ -25,12 +32,30 @@ DatabaseManager db;
             DatabaseManager db = new DatabaseManager("jdbc:h2:~/test", "sa", "");
             this.db=db;
             System.out.println("DatabaseManager créé");
+            
+            //We create a test project
+            ProjectDAO projetDao = new ProjectDAO(db);
+            UserDAO userDao = new UserDAO(db);
+            //Création d'un user tes
+            User projectManager = new User("Project Manager", "pwd");
+            //Insertion dans la base de données
+            Long idProjectManager = userDao.create(projectManager);
+            projectManager.setId(idProjectManager);
+            //Creation d'un nouveau projet
+            Project projetTest = new Project("Projet Test", "Projet Test", "Projet test : test d'insertion et de manipulation d'objets du WBS", "", projectManager.getId());
+            //Insertion du projet dans la base de données + affectation de l'attribut projet désignant le projet en cours.
+            this.idProject = projetDao.create(projetTest);
          }
          catch (DatabaseException e) {
             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
             System.out.println(e.getStackTrace().toString());
             e.printStackTrace();
         }
+         catch(ProjectException e){
+             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+         }
         
         
         initComponents();
@@ -555,7 +580,7 @@ DatabaseManager db;
 
     private void jButton_New_ElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_New_ElementActionPerformed
         // TODO add your handling code here:
-        new New_Element(db);
+        new New_Element(db, idProject);
     }//GEN-LAST:event_jButton_New_ElementActionPerformed
 
     /**

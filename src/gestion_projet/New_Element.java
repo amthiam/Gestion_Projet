@@ -23,11 +23,13 @@ import manager.DatabaseManager;
  */
 public class New_Element extends javax.swing.JFrame {
 
-    DatabaseManager db;
+    protected DatabaseManager db;
+    protected Long idProject;
+    
     /**
      * Creates new form New_Element
      */
-    public New_Element(DatabaseManager db) {
+    public New_Element(DatabaseManager db, Long idProject) {
           /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -55,6 +57,7 @@ public class New_Element extends javax.swing.JFrame {
        this.setVisible(true);
         initComponents();
         this.db=db;
+        this.idProject = idProject;
     }
 
     /**
@@ -400,7 +403,7 @@ public class New_Element extends javax.swing.JFrame {
 
             try{
                 
-                model.WBSElement a = new model.WBSElement(null, label, description, IsWorkPackage, StartDate, workload, duration, IsContractual, achievement, deliveryDate, laborAmount, PurchaseAmount, RentAmount, ExpAmount, SubcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, TotalSlack, FreeSlack, Long.MIN_VALUE, null,null);
+                model.WBSElement a = new model.WBSElement(null, label, description, IsWorkPackage, StartDate, workload, duration, IsContractual, achievement, deliveryDate, laborAmount, PurchaseAmount, RentAmount, ExpAmount, SubcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, TotalSlack, FreeSlack, null, null,idProject);
                 WBSElementDAO elementDAO = new WBSElementDAO(db);
                     elementDAO.create(a);
                  
