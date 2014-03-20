@@ -6,6 +6,7 @@
 
 package gestion_projet;
 
+import dao.impl.ActivityDAO;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -305,7 +306,9 @@ public class New_Activity extends javax.swing.JDialog {
                                                 a.setHypothesis(hypothesis);
                                                 a.setLabel(label);
                                                 a.setWorkload(workload);
-                                                this.objet.getActivites().add(a);
+                                                ActivityDAO activityDAO = new ActivityDAO(db);
+                                                activityDAO.create(a);
+                                                
                                                 dispose();
                                                 
                                                 

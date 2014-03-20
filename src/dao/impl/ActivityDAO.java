@@ -276,7 +276,7 @@ public class ActivityDAO extends DAO<Activity> {
      * @param projectId : id of the project 
      * @return the list of activities 
      */
-    public LinkedList<Activity> listActivitiesOfProject(long projectId) throws ProjectException{
+    public LinkedList<Activity> listActivitiesOfProject(Long projectId) throws ProjectException{
         
         LinkedList<Activity> resultList = new LinkedList();
         
@@ -285,6 +285,36 @@ public class ActivityDAO extends DAO<Activity> {
             
             ResultSet response = db.executeRequest(
                     "SELECT activity_id FROM projectDefinition.activity WHERE project_id = " + projectId);
+            
+            //Creating the activity objects from the list of ids found, and adding them to the result list
+            while(response.next()){
+                Long activityId = response.getLong("activity_id");
+                Activity activity = find(activityId);
+                resultList.add(activity);
+                
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+        return resultList;
+    }
+    
+    /**
+     * Method returning the list of activities stored in the database concerning a given WBS Element
+     * @param wbsElementId : id of the WBS element 
+     * @return the list of activities
+     * @throws ProjectException 
+     */
+    public LinkedList<Activity> listActivitiesOfElement(Long wbsElementId) throws ProjectException {
+         
+        LinkedList<Activity> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of activities.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT activity_id FROM projectDefinition.activity WHERE element_id = " + wbsElementId);
             
             //Creating the activity objects from the list of ids found, and adding them to the result list
             while(response.next()){

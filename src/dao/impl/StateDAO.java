@@ -181,4 +181,33 @@ public class StateDAO extends DAO<State> {
         return resultList;
     }
     
+    
+    /**
+     * Method returning the list of states stored in the database concerning a given WBS Element
+     * @param wbsElementId : id of the WBS Element 
+     * @return the list of states 
+     */
+    public LinkedList<State> listStatesOfElement(long wbsElementId) throws ProjectException{
+        
+        LinkedList<State> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of states.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT state_id FROM projectDefinition.state WHERE element_id = " + wbsElementId);
+            
+            //Creating the state objects from the list of ids found, and adding them to the result list
+            while(response.next()){
+                Long stateId = response.getLong("state_id");
+                State state = find(stateId);
+                resultList.add(state);
+                
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
+        return resultList;
+    }
 }

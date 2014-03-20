@@ -298,7 +298,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
      * @param projectId : id of the project 
      * @return the list of element 
      */
-    public LinkedList<WBSElement> ListElementOfProject(long projectId) throws ProjectException{
+    public LinkedList<WBSElement> listElementOfProject(long projectId) throws ProjectException{
         
         LinkedList<WBSElement> resultList = new LinkedList();
         
