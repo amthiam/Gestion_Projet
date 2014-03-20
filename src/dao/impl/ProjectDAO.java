@@ -9,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import manager.DatabaseManager;
 import model.Project;
+
 
 /**
  * Class to insert, update, delete or find projet information in the database
@@ -198,5 +200,30 @@ public class ProjectDAO extends DAO<Project> {
             throw new DatabaseException(e);
         }
    
+    }
+    
+    public LinkedList<Project> listOfProjects() throws ProjectException{
+        
+        LinkedList<Project> resultList = new LinkedList();
+        
+        //Query into the database to return the list of ids of projects.
+        try{
+            
+            ResultSet response = db.executeRequest(
+                    "SELECT project_id FROM projectDefinition.project ");
+            
+            //Creating the state objects from the list of ids found, and adding them to the result list
+
+            while(response.next()){
+                Long projectId = response.getLong("project_id");
+                Project project = find(projectId);
+                resultList.add(project);
+            }
+            
+                    return resultList;
+        }
+        catch(SQLException e){
+            throw new DatabaseException(e);
+        }
     }
 }
