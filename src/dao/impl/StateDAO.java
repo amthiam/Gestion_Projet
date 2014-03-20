@@ -45,6 +45,8 @@ public class StateDAO extends DAO<State> {
         //Insertion in the database
         try {
 
+            db.getConnection();
+            
             db.startTransaction();
 
             // SQL query
@@ -86,6 +88,8 @@ public class StateDAO extends DAO<State> {
 
   
   db.commit();
+  
+  db.close();
 
             return idState;
         }
@@ -109,6 +113,8 @@ public class StateDAO extends DAO<State> {
         
         try {
 
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT state_id, project_id, state_label, state_isMilestone, "
                     + "element_id, activity_idActivityPredecessorToState "
@@ -141,6 +147,8 @@ public class StateDAO extends DAO<State> {
             //Creation of the resulting state object
             State result = new State(id, idProject, label, milestone, element, predecessorActivity);
             
+            db.close();
+            
             return result;
             
         } catch (SQLException e) {
@@ -164,6 +172,8 @@ public class StateDAO extends DAO<State> {
         //Query into the database to return the list of ids of states.
         try{
             
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT state_id FROM projectDefinition.state WHERE project_id = " + projectId);
             
@@ -174,6 +184,8 @@ public class StateDAO extends DAO<State> {
                 resultList.add(state);
                 
             }
+            
+            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);
@@ -194,6 +206,8 @@ public class StateDAO extends DAO<State> {
         //Query into the database to return the list of ids of states.
         try{
             
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT state_id FROM projectDefinition.state WHERE element_id = " + wbsElementId);
             
@@ -204,6 +218,8 @@ public class StateDAO extends DAO<State> {
                 resultList.add(state);
                 
             }
+            
+            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);

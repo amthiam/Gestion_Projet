@@ -50,6 +50,8 @@ public class ActivityDAO extends DAO<Activity> {
         //Insertion in the database
         try {
 
+            
+            db.getConnection();
             db.startTransaction();
 
             // SQL query
@@ -164,6 +166,8 @@ public class ActivityDAO extends DAO<Activity> {
             }
             
             db.commit();
+            
+            db.close();
 
             return idActivity;
         }
@@ -187,6 +191,8 @@ public class ActivityDAO extends DAO<Activity> {
         
         try {
 
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT activity_id, project_id, activity_label, activity_description, activity_workload, "
                     + "activity_duration, activity_hypothesis, activity_calcNote, activity_constDateValue, "
@@ -260,6 +266,8 @@ public class ActivityDAO extends DAO<Activity> {
             
             Activity result = new Activity(idActivity, idProject, label, description, workload, duration, hypothesis, calculationNote, constDateValue, element, constraintDateType, place, listOfStatePredecessors);
 
+            db.close();
+            
             return result;
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -282,6 +290,7 @@ public class ActivityDAO extends DAO<Activity> {
         
         //Query into the database to return the list of ids of activities.
         try{
+            db.getConnection();
             
             ResultSet response = db.executeRequest(
                     "SELECT activity_id FROM projectDefinition.activity WHERE project_id = " + projectId);
@@ -293,6 +302,8 @@ public class ActivityDAO extends DAO<Activity> {
                 resultList.add(activity);
                 
             }
+            
+            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);
@@ -313,6 +324,8 @@ public class ActivityDAO extends DAO<Activity> {
         //Query into the database to return the list of ids of activities.
         try{
             
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT activity_id FROM projectDefinition.activity WHERE element_id = " + wbsElementId);
             
@@ -323,6 +336,9 @@ public class ActivityDAO extends DAO<Activity> {
                 resultList.add(activity);
                 
             }
+            
+            db.close();
+            
         }
         catch(SQLException e){
             throw new DatabaseException(e);

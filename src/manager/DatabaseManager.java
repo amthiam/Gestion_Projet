@@ -13,54 +13,73 @@ import java.sql.SQLException;
  * @author Felix
  */
 public class DatabaseManager {
+    
+    //Information to connect to the database
+    protected String url;
+    protected String user;
+    protected String passwd;
+    
+    //Connection to the database
+    protected Connection connection;
+    //boolean indicating if the connection to the database is open
+    protected boolean connectionOpen;
 
-    //Connection interface to the database
-    private Connection connection;
 
     /**
-     * Method to connect to the database
+     * Main constructor : load the database driver and stores connection information
      *
-     * @return connector to database
      * @throws DatabaseException
      */
-    private static Connection connect(String url, String user, String passwd) throws DatabaseException {
-
-        Connection connection;
+    public DatabaseManager(String url, String user, String passwd) throws DatabaseException {
         try {
+            
+            this.url = url;
+            this.user = user;
+            this.passwd = passwd;
+            this.connectionOpen = false;
+            
             // load the database driver
             Class.forName("org.h2.Driver");
+        } catch (Exception e) {
+            throw new DatabaseException(e);
+        }
 
+    }
 
-            //Open a connection to the database
-            connection = DriverManager.getConnection(url, user, passwd);
-           
+    /**
+     * Opens a connection to the database. Allows to make queries with parameters.
+     * @return connection object 
+     */
+    public Connection getConnection() throws DatabaseException{
+        
+        try{
+            if(connectionOpen = false){
+        //Open a connection to the database
+           this.connection = DriverManager.getConnection(url, user, passwd);
+           this.connectionOpen = true;
+            }
         } catch (Exception e) {
             throw new DatabaseException(e);
         }
 
         return connection;
     }
-
-    /**
-     * Main constructor : opens a connection to the database
-     *
-     * @throws DatabaseException
-     */
-    public DatabaseManager(String url, String user, String passwd) throws DatabaseException {
-        connection = connect(url, user, passwd);
-    }
-
+    
+    
     /**
      * Closes the connection to the database
      *
-     * @return
+     * @return boolean 
      */
-    public boolean close() {
+    public void close() {
         try {
+            if(connectionOpen = true){
             connection.close();
-            return true;
+            this.connectionOpen = false;
+            }
         } catch (SQLException e) {
-            return false;
+            //The connection object failed to close the connection
+            this.connectionOpen = true;
         }
     }
 
@@ -78,6 +97,9 @@ public class DatabaseManager {
 
         try {
 
+            //Open a connection to the database
+            getConnection();
+            
             // Preparation of the query
             PreparedStatement preparedRequest = connection.prepareStatement(request);
 
@@ -85,6 +107,10 @@ public class DatabaseManager {
             if (preparedRequest.execute()) {
                 result = preparedRequest.getResultSet();
             }
+            
+            //Close the connection to the database
+            close();
+            
         } catch (SQLException e) {
             throw new DatabaseException(e);
         }
@@ -105,11 +131,17 @@ public class DatabaseManager {
 
         try {
 
+            //Open a connection to the database
+            getConnection();
+            
             // Preparation of the query
             PreparedStatement preparedStmt = connection.prepareStatement(query);
 
             // Execution of the query and storage of the result
             count = preparedStmt.executeUpdate();
+            
+            //Close the connection to the database
+            close();
 
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -146,15 +178,5 @@ public class DatabaseManager {
         }
     }
 
-    /**
-     * Get the Connection object fo this database manager : permits to make
-     * prepared statement with parameters
-     *
-     * Do not close this connection if the manager is used afterwards
-     *
-     * @return Connection object of this manager
-     */
-    public Connection getConnection() {
-        return connection;
-    }
+  
 }

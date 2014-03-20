@@ -1,3 +1,4 @@
+CREATE SCHEMA projectDefinition;
 
 CREATE TABLE projectDefinition.constraintDateType (
                 constraintDateType_id IDENTITY NOT NULL,

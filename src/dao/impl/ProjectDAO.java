@@ -34,6 +34,8 @@ public class ProjectDAO extends DAO<Project> {
 
         try {
 
+            db.getConnection();
+            
             db.startTransaction();
 
 
@@ -90,6 +92,8 @@ public class ProjectDAO extends DAO<Project> {
 
             db.commit();
 
+            db.close();
+            
             return idProject;
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -105,6 +109,8 @@ public class ProjectDAO extends DAO<Project> {
     public void update(Project project) throws ProjectException {
         
         try{
+            
+            db.getConnection();
             
             db.startTransaction();
 
@@ -164,6 +170,8 @@ public class ProjectDAO extends DAO<Project> {
 
             db.commit();
             
+            db.close();
+            
         } catch (SQLException e) {
             throw new DatabaseException(e);
         }
@@ -175,6 +183,8 @@ public class ProjectDAO extends DAO<Project> {
     public Project find(long id) throws ProjectException {
 
         try {
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT project_label, project_name, project_descrption, customer_name, user_projectManagerId "
                     + "FROM projectDefinition.project "
@@ -190,6 +200,8 @@ public class ProjectDAO extends DAO<Project> {
 
             Project result = new Project(id, label, name, description, customer, projectManagerId);
 
+            db.close();
+            
             return result;
         } catch (SQLException e) {
             throw new DatabaseException(e);

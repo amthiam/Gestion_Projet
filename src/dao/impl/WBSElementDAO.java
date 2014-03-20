@@ -44,6 +44,8 @@ public class WBSElementDAO extends DAO<WBSElement> {
         //Insertion in the database
         try {
 
+            db.getConnection();
+            
             db.startTransaction();
 
             // SQL query
@@ -211,6 +213,8 @@ public class WBSElementDAO extends DAO<WBSElement> {
             Long idElement = generatedKeys.getLong(1);
 
             db.commit();
+            
+            db.close();
 
             return idElement;
 
@@ -235,6 +239,8 @@ public class WBSElementDAO extends DAO<WBSElement> {
     public WBSElement find(long id) throws DatabaseException {
         try {
 
+            db.getConnection();
+            
             ResultSet response = db.executeRequest(
                     "SELECT element_id, element_label, element_description, element_isWorkpackage, element_start, "
                     + "element_workload, element_duration, element_isContractual, element_achievCriteria, element_delivDate, "
@@ -285,6 +291,8 @@ public class WBSElementDAO extends DAO<WBSElement> {
 
             WBSElement result = new WBSElement(idElement, label, description, isWorkpackage, startDate, workload, duration, isContractual, achievCriteria, delivDate, laborAmount, purchaseAmount, expenseAmount, rentAmount, subcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, totalSlack, freeSlack, idParentElement, rank, idProject);
 
+            db.close();
+            
             return result;
         } catch (SQLException e) {
             throw new DatabaseException(e);
@@ -305,6 +313,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
         //Query into the database to return the list of id of WBS element.
         try{
             
+            db.getConnection();
             ResultSet response = db.executeRequest(
                     "SELECT element_id FROM project WHERE project_id = " + projectId);
             
@@ -315,6 +324,7 @@ public class WBSElementDAO extends DAO<WBSElement> {
                 resultList.add(element);
                 
             }
+            db.close();
         }
         catch(SQLException e){
             throw new DatabaseException(e);
