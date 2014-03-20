@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.LinkedList;
 import manager.DatabaseManager;
-import manager.GraphManager;
+//import manager.GraphManager;
 import model.*;
 
 /**
@@ -199,6 +199,7 @@ public class Test {
             //Test de création de graphe
             //GraphManager graphGenerator = new GraphManager(dbManager);
             //graphGenerator.writeStateActivity(idProjetTest);
+
             
         } catch (DatabaseException e) {
             System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());

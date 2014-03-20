@@ -196,7 +196,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTable_WBS">
                   <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="}&#xa;catch(ProjectException e){&#xa;             System.out.println(&quot;Erreur BDD :&quot; + e.getMessage() + &quot;, ResultCode :&quot; + e.getResultCode().name());&#xa;            System.out.println(e.getStackTrace().toString());&#xa;            e.printStackTrace();&#xa;         }">
                       <Connection code="mtm" type="code"/>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -238,7 +238,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.objets);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.idProject, this.db);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -576,7 +576,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTable2">
                   <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
                       <Connection code="a" type="code"/>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="if (jTable2.getColumnModel().getColumnCount() &gt; 0) {&#xa;    jTable2.getColumnModel().getColumn(0).setHeaderValue(&quot;Activity Label&quot;);&#xa;    jTable2.getColumnModel().getColumn(1).setHeaderValue(&quot;States at the origin of the activity&quot;);&#xa;    jTable2.getColumnModel().getColumn(2).setHeaderValue(&quot;Workload&quot;);&#xa;    jTable2.getColumnModel().getColumn(3).setHeaderValue(&quot;Duration&quot;);&#xa;    jTable2.getColumnModel().getColumn(4).setHeaderValue(&quot;Constraint Type&quot;);&#xa;    jTable2.getColumnModel().getColumn(5).setHeaderValue(&quot;Imposed Date&quot;);&#xa;    jTable2.getColumnModel().getColumn(6).setHeaderValue(&quot;Execution Place&quot;);&#xa;    jTable2.getColumnModel().getColumn(7).setHeaderValue(&quot;Completed&quot;);&#xa;}">
@@ -629,7 +629,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="MyModelActivity a= new MyModelActivity(this.objets);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/*MyModelActivity a= new MyModelActivity(this.objets);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

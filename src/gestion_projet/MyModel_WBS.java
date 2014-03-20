@@ -1,16 +1,22 @@
 package gestion_projet;
+import dao.impl.WBSElementDAO;
+import exceptions.ProjectException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.table.AbstractTableModel;
+import manager.DatabaseManager;
 import model.WBSElement;
 class MyModel_WBS extends AbstractTableModel{
     
-    public MyModel_WBS(ObjetsBDD a){
-        this.list = a.getElements();
+    public MyModel_WBS(long ProjectId, DatabaseManager db) throws ProjectException{
+          WBSElementDAO elementDAO = new WBSElementDAO(db);
+          list = elementDAO.listElementOfProject(ProjectId);
         
     }
 
-    private ArrayList<WBSElement> list;    
+    
+    private LinkedList<WBSElement> list;    
     
 
     
