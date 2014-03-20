@@ -2,6 +2,11 @@
  */
 package gestion_projet;
 
+import exceptions.DatabaseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import manager.DatabaseManager;
+
 
 
 /**
@@ -10,12 +15,29 @@ package gestion_projet;
  */
 public class Application extends javax.swing.JFrame {
 ObjetsBDD objets = new ObjetsBDD();
+DatabaseManager db;
     
-    public Application() {
+    public Application() throws DatabaseException {
+        
+         try {
+            
+            //Connection à la base de données
+            DatabaseManager db = new DatabaseManager("jdbc:h2:~/test", "sa", "");
+            this.db=db;
+            System.out.println("DatabaseManager créé");
+         }
+         catch (DatabaseException e) {
+            System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+        }
+        
+        
         initComponents();
         
         
         System.out.println("test");
+        
         
     }
 
@@ -130,6 +152,11 @@ ObjetsBDD objets = new ObjetsBDD();
         jButton_ExportPDF.setText("Export as PDF");
 
         jButton_New_Element.setText("New Element");
+        jButton_New_Element.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_New_ElementActionPerformed(evt);
+            }
+        });
 
         jButton_Estimation.setText("Estimation");
 
@@ -526,6 +553,11 @@ ObjetsBDD objets = new ObjetsBDD();
         new New_RH();
     }//GEN-LAST:event_jButton_NewHumanActionPerformed
 
+    private void jButton_New_ElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_New_ElementActionPerformed
+        // TODO add your handling code here:
+        new New_Element(db);
+    }//GEN-LAST:event_jButton_New_ElementActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -556,7 +588,11 @@ ObjetsBDD objets = new ObjetsBDD();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Application().setVisible(true) ;
+                try {
+                    new Application().setVisible(true) ;
+                } catch (DatabaseException ex) {
+                    Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                
                 

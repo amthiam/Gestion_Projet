@@ -11,8 +11,9 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import java.util.GregorianCalendar;
+
 import java.util.*;
+import org.jdesktop.swingx.JXDatePicker;
 
 /**
  *
@@ -87,7 +88,6 @@ public class New_Activity extends javax.swing.JDialog {
         Calculation_Note_TF = new javax.swing.JTextField();
         jLabel_Calculation = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        ImposedDate_TF = new javax.swing.JTextField();
         jLabel_ResultingState = new javax.swing.JLabel();
         jLabel_label2 = new javax.swing.JLabel();
         RS_Label_TF = new javax.swing.JTextField();
@@ -95,6 +95,7 @@ public class New_Activity extends javax.swing.JDialog {
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         constraint_TF = new javax.swing.JTextField();
+        jX_date_choice = new org.jdesktop.swingx.JXDatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -119,12 +120,6 @@ public class New_Activity extends javax.swing.JDialog {
         jLabel_Calculation.setText("Calculation Notes");
 
         jLabel8.setText("Imposed date");
-
-        ImposedDate_TF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImposedDate_TFActionPerformed(evt);
-            }
-        });
 
         jLabel_ResultingState.setText("Resulting State:");
 
@@ -165,32 +160,31 @@ public class New_Activity extends javax.swing.JDialog {
                                     .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(constraint_TF, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel_Constraint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(89, 89, 89)
+                                        .addComponent(jLabel_Constraint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jX_date_choice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_Calculation)
                                     .addComponent(jLabel_ActivityDesc)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Description_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel_Hypothesis)
-                                            .addComponent(Hypothesis_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(Hypothesis_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_Calculation))
                                         .addGap(68, 68, 68)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jCheckBox_Milestone)
                                             .addComponent(jLabel_ResultingState)
                                             .addComponent(jLabel_label2)
                                             .addComponent(RS_Label_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(ImposedDate_TF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel8)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(okButton)
                         .addGap(18, 18, 18)
                         .addComponent(cancelButton)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +205,7 @@ public class New_Activity extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel_Workload)
@@ -220,7 +214,27 @@ public class New_Activity extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel_Duration, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel_Constraint)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(constraint_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jX_date_choice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(okButton)
+                                    .addComponent(cancelButton)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel_Calculation)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel_Hypothesis)
@@ -231,27 +245,8 @@ public class New_Activity extends javax.swing.JDialog {
                                 .addComponent(Hypothesis_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(jCheckBox_Milestone)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel_Constraint)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(constraint_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel_Calculation)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Calculation_Note_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(4, 4, 4)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ImposedDate_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(okButton)
-                    .addComponent(cancelButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jCheckBox_Milestone)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -261,10 +256,6 @@ public class New_Activity extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Duration_TFActionPerformed
 
-    private void ImposedDate_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImposedDate_TFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ImposedDate_TFActionPerformed
-
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
                                 
@@ -272,19 +263,10 @@ public class New_Activity extends javax.swing.JDialog {
                                 String description = Description_TF.getText();
                                 String hypothesis = Hypothesis_TF.getText();
                                 String calculation_Note = Calculation_Note_TF.getText();
-                                String dateString= ImposedDate_TF.getText();
+                             //   String dateString= ImposedDate_TF.getText();
                                 String constraintType=constraint_TF.getText();
          
-                                /*Gestion du calendrier. Demander si on ne peut pas remplacer l'utilisation des dates par des String.
-                                //Egalement pour Place, ce serait plus simple de le gérer avec des String.
-                                DateFormat df = new SimpleDateFormat("E, dd MMM yyyy hh:mm:ss Z");
-                                Date parsed = df.parse(dateString);
-
-
-                                 GregorianCalendar newCalendar = GregorianCalendar.getInstance();
-                                 newCalendar.setTime(parsed);
-                                GregorianCalendar imposed_date= new GregorianCalendar(ImposedDate_TF.getText());
-                                */
+                                
                                 
                                 BigDecimal workload=new BigDecimal(Workload_TF.getText());
                                 BigDecimal duration=new BigDecimal(Duration_TF.getText());
@@ -297,7 +279,7 @@ public class New_Activity extends javax.swing.JDialog {
                                 else{
                                         
                                         try{
-                                              
+                                              /*
                                                  model.Activity a = new model.Activity();
                                                 a.setCaculationNote(calculation_Note);
                                                 a.setConstraintDateType(constraintType);
@@ -306,9 +288,14 @@ public class New_Activity extends javax.swing.JDialog {
                                                 a.setHypothesis(hypothesis);
                                                 a.setLabel(label);
                                                 a.setWorkload(workload);
+<<<<<<< HEAD
                                                 ActivityDAO activityDAO = new ActivityDAO(db);
                                                 activityDAO.create(a);
                                                 
+=======
+                                                this.objet.getActivites().add(a);
+                                            */
+>>>>>>> Ajout de l'élément WBS
                                                 dispose();
                                                 
                                                 
@@ -339,7 +326,6 @@ public class New_Activity extends javax.swing.JDialog {
     private javax.swing.JTextField Description_TF;
     private javax.swing.JTextField Duration_TF;
     private javax.swing.JTextField Hypothesis_TF;
-    private javax.swing.JTextField ImposedDate_TF;
     private javax.swing.JTextField RS_Label_TF;
     private javax.swing.JTextField Workload_TF;
     private javax.swing.JButton cancelButton;
@@ -355,7 +341,9 @@ public class New_Activity extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel_Workload;
     private javax.swing.JLabel jLabel_label;
     private javax.swing.JLabel jLabel_label2;
+    private org.jdesktop.swingx.JXDatePicker jX_date_choice;
     private javax.swing.JTextField labelTF;
     private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
+    
 }
