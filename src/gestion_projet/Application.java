@@ -158,6 +158,11 @@ protected Long idProject;
         jButton_ShowAsList.setText("Show as List");
 
         jButton_ShowTree.setText("Show as a Tree");
+        jButton_ShowTree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ShowTreeActionPerformed(evt);
+            }
+        });
 
         jButton_ExportPDF.setText("Export as PDF");
 
@@ -575,6 +580,15 @@ protected Long idProject;
         // TODO add your handling code here:
         new New_Element(db, idProject);
     }//GEN-LAST:event_jButton_New_ElementActionPerformed
+
+    private void jButton_ShowTreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ShowTreeActionPerformed
+    try {
+        // TODO add your handling code here:
+        new TreeView(this.db, this.idProject);
+    } catch (ProjectException ex) {
+        Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_jButton_ShowTreeActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,4 +1,4 @@
-package Application;
+package gestion_projet;
 import dao.impl.ProjectDAO;
 import dao.impl.WBSElementDAO;
 import exceptions.ProjectException;
@@ -32,7 +32,7 @@ import model.WBSElement;
 
 public class TreeView extends Panel implements ActionListener, MouseListener {
 	
-	WBSElement magasin;
+	WBSElement mag;
 	boolean active;
         DatabaseManager db;
         long projectId;
@@ -50,7 +50,7 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
                 LinkedList<WBSElement> list = p.listElementOfProject(projectId);
                         
                         
-                WBSElement racine;
+                WBSElement racine=null;
                 for (WBSElement e:list){
                     if (e.getIdParentElement()==null){
                         racine=e;
@@ -58,36 +58,14 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
                     
                 }
                 
-		this.magasin =racine ;
+		this.mag=racine ;
 		
-		// ************* Creation des bouttons ***************************
-		addProduct = new JButton("  Creer un nouveau produit  ");
-		addCategory = new JButton("Creer une nouvelle categorie");
-		deleteCategory = new JButton("Supprimer categorie ou produit");
-		modifyProduct = new JButton("    Modifier un produit    ");
-		modifyTree = new JButton("    Deplacer une categorie    ");
-		renameCategorie = new JButton("Renommer categorie ou produit");
-		getBackButton = new JButton("Retour");
-		getBackButton.addActionListener(app);
-
-		addProduct.setEnabled(false);
-		addCategory.setEnabled(false);
-		deleteCategory.setEnabled(false);
-		modifyProduct.setEnabled(false);
-		modifyTree.setEnabled(false);
-		renameCategorie.setEnabled(false);
-
+		
 
 
 
 		// ******************* Actions Listener  ****************************
-		// Boutton "Creer un nouveau produit"
-		addProduct.addActionListener(this);
-		deleteCategory.addActionListener(this);
-		renameCategorie.addActionListener(this);
-		addCategory.addActionListener(this);
-		modifyProduct.addActionListener(this);
-		modifyTree.addActionListener(this);
+		
 
 
 
@@ -101,27 +79,15 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
 
 		
 		buttonZone.setLayout(south);
-		buttonZone.add(addProduct);
-		buttonZone.add(addCategory);
-		buttonZone.add(deleteCategory);
-		buttonZone.add(modifyProduct);
-		buttonZone.add(modifyTree);
-		buttonZone.add(renameCategorie);
-		buttonZone.add(getBackButton);
+		
 		buttonZone.setVisible(true);
 
 
-		//Affichage du tableau d'informations du produit
-		String[] titles = {"id", "Nom produit", "Prix unitaire", "Quantit� en stock"};
-		String[] defaultProductData = {"","","",""};
-		productInfoModel = new ProductInfoModel(titles);
-		productInfoModel.setProductData(defaultProductData);
-		productInfoTable = new JTable(productInfoModel);
-
-
+		
 
 		// ******************  Affichage de l'arbre **************************
-		arbre = new Arbre(magasin);
+		arbre = new Arbre(mag, projectId,db);
+                
 		JScrollPane treeZone = new JScrollPane(arbre.arbre);
 		arbre.arbre.addMouseListener(this);
 
@@ -130,7 +96,6 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
 		this.setLayout(test);
 
 		this.add(treeZone, BorderLayout.NORTH);
-		this.add(productInfoTable, BorderLayout.CENTER);
 		this.add(buttonZone, BorderLayout.SOUTH);
 		this.setVisible(true);
 
@@ -138,125 +103,28 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
 	}
 
 
-	public void addProduct(Category cat, Product p){
-		cat.addChild(p);
-		app.getSim().addProduct(p);
-	}
-
-	public void addCategory(Category cat, Category p){
-		cat.addChild(p);
-	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		DefaultMutableTreeNode selectedNode = arbre.getLastSelectedNode();
 		
 		if (selectedNode != null){
-			if((JButton) e.getSource() == addProduct){
-				a=0;
-				Category cat = (Category)(selectedNode.getUserObject());
-				AddProductWindow addWindow = new AddProductWindow(this, cat);
-			}
-			else if(((JButton) e.getSource() == addCategory)){
-				a=0;
-				Category cat = (Category)(arbre.getLastSelectedNode().getUserObject());
-				AddCategoryWindow addWindow = new AddCategoryWindow(this, cat);
-			}
-			else if((JButton) e.getSource() == modifyTree){
-				a=1;
-				nodeToMove = arbre.getLastSelectedNode();
-			}
-			else if(((JButton) e.getSource() == renameCategorie)){
-				a=0;
-				Category cat = (Category)(arbre.getLastSelectedNode().getUserObject());
-				RenameCategoryWindow renameWindow = new RenameCategoryWindow(this, cat);
-
-			}
-			else if((JButton) e.getSource() == modifyProduct) {
-				a=0;
-				Product produit = (Product) (arbre.getLastSelectedNode().getUserObject());
-				ModifyProductWindow addWindow = new ModifyProductWindow(this, produit); 
-			}
-			else if((JButton) e.getSource() == deleteCategory){
-				a=0;
-				Category cat = (Category)(arbre.getLastSelectedNode().getUserObject());
-				DeleteCategoryWindow addWindow = new DeleteCategoryWindow(this, cat);
-
-			}
-
+			
 
 		}
 	}
 
-	private void modifyTree(){
-		Category catToMove = (Category) nodeToMove.getUserObject();
-		DefaultMutableTreeNode newParentNode;
-		newParentNode = arbre.getLastSelectedNode();
-		Category newParentCat = (Category) newParentNode.getUserObject();
-		if(!(newParentCat instanceof Product)){
-			Category parent = magasin.getParentCategory(catToMove);
-			parent.removeChild(catToMove);
-			newParentCat.addChild(catToMove);
-			arbre.updateTree();
-		}
-		else{
-			JOptionPane.showMessageDialog(this, "Erreur: veuillez recommencer l'op�ration et s�lectionner une cat�gorie comme nouveau parent, non pas un produit", "Erreur utilisateur",
-                    JOptionPane.ERROR_MESSAGE);
-		}
-	}
+	
 
-	public void updateTree() {
+	public void updateTree() throws ProjectException {
 		arbre.updateTree();
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		if(arbre.arbre.getBounds().contains(e.getPoint())){
-			//Si l'utilisateur a cliqu� sur l'arbre on regarde si le noeud s�lectionn� est une cat�gorie ou un produit
-			//et on active/d�sactive certains boutons en cons�quence
-			DefaultMutableTreeNode selectedNode = arbre.getLastSelectedNode();
-			renameCategorie.setEnabled(true);
-			if(selectedNode != null){
-				Category selectedObject = (Category) selectedNode.getUserObject();
-				if(a==1){
-					modifyTree();
-					a=0;
-				}
-				if(selectedObject instanceof Product){
-					addProduct.setEnabled(false);
-					addCategory.setEnabled(false);
-					modifyProduct.setEnabled(true);
-					modifyTree.setEnabled(true);
-					//La condition qui suit permet de s'assurer le bouton se suppression de cat�gorie n'est pas disponible pour la racine
-					if(!arbre.getLastSelectedNode().isRoot()){
-						deleteCategory.setEnabled(true);
-					}
-					else{
-						deleteCategory.setEnabled(false);
-					}
-					String[] pData = {((Product) selectedObject).getId()+"", selectedObject.getName(), ((Product) selectedObject).getPrice().toString(),
-							((Product) selectedObject).getCurrentQuantity().toString()};
-					productInfoModel.setProductData(pData);
-					productInfoTable.update(productInfoTable.getGraphics());
-				}
-				else if(selectedObject instanceof Category){
-					addProduct.setEnabled(true);
-					addCategory.setEnabled(true);
-					modifyProduct.setEnabled(false);
-					modifyTree.setEnabled(true);
-					//La condition qui suit permet de s'assurer le bouton se suppression de cat�gorie n'est pas disponible pour la racine
-					if(!selectedNode.isRoot()){
-						deleteCategory.setEnabled(true);
-					}
-					else{
-						deleteCategory.setEnabled(false);
-					}
-				}
-			}
-		}
-	}
+	
 
-	@Override
+	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
@@ -280,25 +148,17 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
 
 	}
 
-	/**
-	 * @return the getBackButton
-	 */
-	public JButton getGetBackButton() {
-		return getBackButton;
-	}
-
-	/**
-	 * @param getBackButton the getBackButton to set
-	 */
-	public void setGetBackButton(JButton getBackButton) {
-		this.getBackButton = getBackButton;
-	}
+	
+         public void activate() throws ProjectException {
         
-         public void activate() {
-        this.magasin=app.getMagasin();
-        arbre.setRootCategory(magasin);
+        arbre.setRoot(mag);
         this.updateTree();
-        System.out.println("Le nom du magasin est" + magasin.getName());
+        
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
