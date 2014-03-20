@@ -12,11 +12,14 @@ class MyModel_WBS extends AbstractTableModel{
     public MyModel_WBS(long ProjectId, DatabaseManager db) throws ProjectException{
           WBSElementDAO elementDAO = new WBSElementDAO(db);
           list = elementDAO.listElementOfProject(ProjectId);
+          
+          System.out.println(list.size());
         
     }
 
     
-    private LinkedList<WBSElement> list;    
+    private LinkedList<WBSElement> list;   
+    
     
 
     
@@ -31,6 +34,7 @@ class MyModel_WBS extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        
         WBSElement r = list.get(rowIndex);
         switch (columnIndex) {
         case 0: return r.getId(); 

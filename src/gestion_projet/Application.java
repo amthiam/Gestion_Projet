@@ -81,6 +81,8 @@ protected Long idProject;
         jButton_LoadProject = new javax.swing.JButton();
         jButton_NewProject = new javax.swing.JButton();
         jButton_Deconnection = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
         jPanel_WBS = new javax.swing.JPanel();
         jButton_ExportList = new javax.swing.JButton();
         jButton_ShowAsList = new javax.swing.JButton();
@@ -146,6 +148,10 @@ protected Long idProject;
             }
         });
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Select a project");
+
         javax.swing.GroupLayout jPanel_HomeLayout = new javax.swing.GroupLayout(jPanel_Home);
         jPanel_Home.setLayout(jPanel_HomeLayout);
         jPanel_HomeLayout.setHorizontalGroup(
@@ -156,14 +162,20 @@ protected Long idProject;
                 .addComponent(jButton_LoadProject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_Deconnection)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel_HomeLayout.setVerticalGroup(
             jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton_NewProject)
                 .addComponent(jButton_LoadProject)
-                .addComponent(jButton_Deconnection))
+                .addComponent(jButton_Deconnection)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1))
         );
 
         jTabbedPane1.addTab("Home", jPanel_Home);
@@ -664,6 +676,8 @@ protected Long idProject;
     private javax.swing.JButton jButton_StateList;
     private javax.swing.JButton jButton_Unit;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_WP;
     private javax.swing.JPanel jPanel_Activities;
     private javax.swing.JPanel jPanel_Communication;
