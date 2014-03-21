@@ -112,6 +112,8 @@ public class New_Element extends javax.swing.JFrame {
         late_finish = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         Description_TF = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        parent_TF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,6 +183,10 @@ public class New_Element extends javax.swing.JFrame {
         Description_TF.setRows(5);
         jScrollPane1.setViewportView(Description_TF);
 
+        jLabel1.setText("Parent ID");
+
+        parent_TF.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,12 +202,14 @@ public class New_Element extends javax.swing.JFrame {
                                 .addComponent(Workload_TF, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(labelTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                             .addComponent(jLabel_Duration)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(constraint_TF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_Constraint, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel_Duration1)
                             .addComponent(achievement_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Duration_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(parent_TF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(constraint_TF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel_Constraint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -290,7 +298,8 @@ public class New_Element extends javax.swing.JFrame {
                         .addComponent(jLabel_Constraint)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(constraint_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -354,10 +363,12 @@ public class New_Element extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(FS_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_Constraint3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_Constraint3)
+                    .addComponent(parent_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SA_TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(cancelButton))
@@ -376,6 +387,8 @@ public class New_Element extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String label = labelTF.getText();
+        long parent_id=Long.valueOf(parent_TF.getText()).longValue();
+                
         String description = Description_TF.getText();
         String constraintType=constraint_TF.getText();
 
@@ -468,7 +481,7 @@ public class New_Element extends javax.swing.JFrame {
 
             try{
                 
-                model.WBSElement a = new model.WBSElement(null, label, description, IsWorkPackage, StartDate, workload, duration, IsContractual, achievement, deliveryDate, laborAmount, PurchaseAmount, RentAmount, ExpAmount, SubcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, TotalSlack, FreeSlack, null, null,idProject);
+                model.WBSElement a = new model.WBSElement(null, label, description, IsWorkPackage, StartDate, workload, duration, IsContractual, achievement, deliveryDate, laborAmount, PurchaseAmount, RentAmount, ExpAmount, SubcontractAmount, earlyStart, earlyFinish, lateStart, lateFinish, TotalSlack, FreeSlack, parent_id, null,idProject);
                 WBSElementDAO elementDAO = new WBSElementDAO(db);
                     elementDAO.create(a);
                  
@@ -540,6 +553,7 @@ public class New_Element extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker early_start;
     private javax.swing.JCheckBox jCheckBox_Contractual;
     private javax.swing.JCheckBox jCheckBox_WP;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -566,5 +580,6 @@ public class New_Element extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker late_Start;
     private org.jdesktop.swingx.JXDatePicker late_finish;
     private javax.swing.JButton okButton;
+    private javax.swing.JTextField parent_TF;
     // End of variables declaration//GEN-END:variables
 }

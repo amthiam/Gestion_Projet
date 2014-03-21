@@ -39,30 +39,14 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
         long projectId;
         private javax.swing.JScrollPane jScrollPane1;
         private JTree tree;
+        private javax.swing.JButton reload;
 
 	public TreeView(DatabaseManager db, long projectId) throws ProjectException  {
 		active = false;
                 this.db=db;
                 this.projectId=projectId;
                 
-                WBSElementDAO p = new WBSElementDAO(db);
-                LinkedList<WBSElement> list = p.listElementOfProject(projectId);
-                        
-                
-                        
-                WBSElement mag=null;
-                for (WBSElement e:list){
-                      if (e.getIdParentElement()==0){
-                        System.out.println("Trouvé");
-                        mag=e;
-                    }
-                    
-                }
-                System.out.println(list.size());
-                
-		DefaultMutableTreeNode top = new DefaultMutableTreeNode(mag);
-            createNodes(top,mag);
-         tree = new JTree(top);
+                reload();
     
     
 		
@@ -70,10 +54,13 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
 	// *******************   Arrangement des bouttons ************************
 		jScrollPane1 = new javax.swing.JScrollPane(tree);
         
+reload = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        //jScrollPane1.setViewportView(arbre);
+        
+
+        reload.setText("Reload Tree");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +68,9 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reload)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,7 +78,9 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reload)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,6 +166,33 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
                 
                 
         }
+    
+    private void reload() throws ProjectException{
+        
+        WBSElementDAO p = new WBSElementDAO(db);
+                LinkedList<WBSElement> list = p.listElementOfProject(projectId);
+                        
+                
+                        
+                WBSElement mag=null;
+                for (WBSElement e:list){
+                      if (e.getIdParentElement()==0){
+                        System.out.println("Trouvé");
+                        mag=e;
+                    }
+                    
+                }
+                System.out.println(list.size());
+                
+		DefaultMutableTreeNode top = new DefaultMutableTreeNode(mag);
+            createNodes(top,mag);
+         tree = new JTree(top);
+    
+}
+    
+    private void reloadActionPerformed(java.awt.event.ActionEvent evt) throws ProjectException {                                       
+        reload();
+    }   
     }
     
     
