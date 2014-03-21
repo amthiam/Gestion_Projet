@@ -9,6 +9,7 @@ import exceptions.ProjectException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import manager.DatabaseManager;
+import manager.GraphManager;
 import model.Project;
 import model.User;
 
@@ -23,6 +24,7 @@ public class Application extends javax.swing.JFrame {
 protected ObjetsBDD objets = new ObjetsBDD();
 protected DatabaseManager db;
 protected Long idProject;
+protected String repo;
     
     public Application(long idProject, DatabaseManager db) throws DatabaseException {
         
@@ -31,6 +33,7 @@ protected Long idProject;
         this.idProject=idProject;
         initComponents();
         
+        String[] tab= new String[1];
         
         System.out.println("test");
         System.out.println(this.idProject);
@@ -98,6 +101,8 @@ protected Long idProject;
         jButton_ActGraph = new javax.swing.JButton();
         jButton_ActStateGraph = new javax.swing.JButton();
         jButton_ExportMSProject = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -509,6 +514,8 @@ protected Long idProject;
 
         jButton_ExportMSProject.setText("Export To MS Project");
 
+        jLabel2.setText("CurrentDirectory:");
+
         javax.swing.GroupLayout jPanel_ExportLayout = new javax.swing.GroupLayout(jPanel_Export);
         jPanel_Export.setLayout(jPanel_ExportLayout);
         jPanel_ExportLayout.setHorizontalGroup(
@@ -520,7 +527,11 @@ protected Long idProject;
                 .addComponent(jButton_ActGraph)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ExportMSProject)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel_ExportLayout.setVerticalGroup(
             jPanel_ExportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,7 +539,9 @@ protected Long idProject;
                 .addGroup(jPanel_ExportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ActGraph)
                     .addComponent(jButton_ActStateGraph)
-                    .addComponent(jButton_ExportMSProject))
+                    .addComponent(jButton_ExportMSProject)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 199, Short.MAX_VALUE))
         );
 
@@ -554,7 +567,17 @@ protected Long idProject;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ActStateGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActStateGraphActionPerformed
+
+        GraphManager g= new GraphManager(this.db, this.idProject);
+        this.repo=jTextField1.getText();
+        System.out.println(repo);
+    try {
+        g.writeStateActivityClusters(idProject, this.repo);
+        
         // TODO add your handling code here:
+    } catch (ProjectException ex) {
+        Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_jButton_ActStateGraphActionPerformed
 
     private void jButton_StateListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StateListActionPerformed
@@ -674,6 +697,7 @@ if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_WP;
     private javax.swing.JPanel jPanel_Activities;
     private javax.swing.JPanel jPanel_Communication;
@@ -690,7 +714,8 @@ if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable_RH;
     private javax.swing.JTable jTable_WBS;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    
+    public String[] tab;
 }
