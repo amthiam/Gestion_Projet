@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.LinkedList;
 import manager.DatabaseManager;
+import manager.GraphManager;
 //import manager.GraphManager;
 import model.*;
 
@@ -69,7 +70,7 @@ public class Test {
             System.out.println("id du Projet : " + elementTrouve.getIdProject());
             
             //Création d'un élément fils
-            WBSElement elementFils1 = new WBSElement(null, "Element fils 1", "Element de test d'arbre WBS : élément fils", false, null, new BigDecimal(5), new BigDecimal(2), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, idElementTest, new Integer(1), projetTest.getId());
+            WBSElement elementFils1 = new WBSElement(null, "Element fils 1", "Element de test d'arbre WBS : élément fils", true, null, new BigDecimal(5), new BigDecimal(2), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, idElementTest, new Integer(1), projetTest.getId());
             //Insertion de l'élément dans la base de données
             Long idElementFils1 = elementDAO.create(elementFils1);
             
@@ -89,7 +90,7 @@ public class Test {
 
             
             //Création d'un 2ème élément fils
-            WBSElement elementFils2 = new WBSElement(null, "Element fils 2", "Element de test d'arbre WBS : élément fils", false, null, new BigDecimal(5), new BigDecimal(2), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, idElementTest, new Integer(2), projetTest.getId());
+            WBSElement elementFils2 = new WBSElement(null, "Element fils 2", "Element de test d'arbre WBS : élément fils", true, null, new BigDecimal(5), new BigDecimal(2), true, "Achevé lorsque le projet est achevé", dateLivraison, null, null, null, null, null, null, null, null, null, null, null, idElementTest, new Integer(2), projetTest.getId());
             //Insertion de l'élément dans la base de données
             Long idElementFils2 = elementDAO.create(elementFils2);
             
@@ -113,7 +114,7 @@ public class Test {
             //Tests activités et états
             
             //Création d'une activité
-            Activity activiteTest = new Activity(null, idProjetTest, "Activité test", "Création d'une activité test", new BigDecimal(10), new BigDecimal(1), "Pas d'hypothèses pour cette activité", "Pas de notes de calcul", dateLivraison, elementFils1Trouve, null, null, new LinkedList<State>());
+            Activity activiteTest = new Activity(null, idProjetTest, "Activite test", "Création d'une activité test", new BigDecimal(10), new BigDecimal(1), "Pas d'hypothèses pour cette activité", "Pas de notes de calcul", dateLivraison, elementFils1Trouve, null, null, new LinkedList<State>());
             //Creation de l'objet activiteDAO
             ActivityDAO activiteDAO = new ActivityDAO(dbManager);
             //Insertion dans la base de donnée
@@ -153,10 +154,10 @@ public class Test {
             LinkedList<State> etatPred = new LinkedList();
             etatTest.setId(idEtatTest);
             etatPred.add(etatTest);
-            Activity activite2 = new Activity(null, idProjetTest, "Activité 2", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Activity activite2 = new Activity(null, idProjetTest, "Activite 2", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
             Long idActivite2 = activiteDAO.create(activite2);
             activite2.setId(idActivite2);
-            Activity activite3 = new Activity(null, idProjetTest, "Activité 3", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Activity activite3 = new Activity(null, idProjetTest, "Activite 3", "Création de deux activités parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
             Long idActivite3 = activiteDAO.create(activite3);
             activite3.setId(idActivite3);
             //Création des états correspondants
@@ -170,10 +171,13 @@ public class Test {
             etatPred.clear();
             etatPred.add(etat2);
             etatPred.add(etat3);
-            Activity activite4 = new Activity(null, idProjetTest, "Activité 4", "Activité suivant deux activités s'étant déroulée en parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
+            Activity activite4 = new Activity(null, idProjetTest, "Activite 4", "Activité suivant deux activités s'étant déroulée en parallèle", null, null, null, null, dateLivraison, elementFils1Trouve, null, null, etatPred);
             Long idActivite4 = activiteDAO.create(activite4);
             activite4.setId(idActivite4);
             activite4 = activiteDAO.find(idActivite4);
+            State etat4 = new State(null, idProjetTest, "Etat 4", false, elementFils1Trouve, activite4);
+            Long idEtat4 = stateDAO.create(etat4);
+            etat4.setId(idEtat4);
             
             System.out.println("Activité 4 :");
             System.out.println("id : "+activite4.getId());
@@ -190,6 +194,26 @@ public class Test {
                 System.out.println(etatPredecesseur.getLabel());
             }
             
+            //On ajoute des activités et états à l'élément du WBS Element fils 2
+            etatPred.clear();
+            etatPred.add(etat4);
+            Activity activite2_1 = new Activity(null, idProjetTest, "Activite 2.1", "Activité  du cluster 2", null, null, null, null, dateLivraison, elementFils2Trouve, null, null, etatPred);
+            Long idActivite2_1 = activiteDAO.create(activite2_1);
+            activite2_1.setId(idActivite2_1);
+            activite2_1 = activiteDAO.find(idActivite2_1);
+            State etat2_1 = new State(null, idProjetTest, "Etat 2.1", false, elementFils2Trouve, activite2_1);
+            Long idEtat2_1 = stateDAO.create(etat2_1);
+            etat2_1.setId(idEtat2_1);
+            etatPred.clear();
+            etatPred.add(etat2_1);
+            Activity activite2_2 = new Activity(null, idProjetTest, "Activite 2.2", "Activité  du cluster 2", null, null, null, null, dateLivraison, elementFils2Trouve, null, null, etatPred);
+            Long idActivite2_2 = activiteDAO.create(activite2_2);
+            activite2_2.setId(idActivite2_2);
+            activite2_2 = activiteDAO.find(idActivite2_2);
+            State etat2_2 = new State(null, idProjetTest, "Etat 2.2", false, elementFils2Trouve, activite2_2);
+            Long idEtat2_2 = stateDAO.create(etat2_2);
+            etat2_2.setId(idEtat2_2);
+            
             //Affichage de tous les éléments du WBS du projet
             LinkedList<WBSElement> elementList = elementDAO.listElementOfProject(idProjetTest);
             System.out.println("Affichage de l'enesemble des éléments du WBS : ");
@@ -197,8 +221,8 @@ public class Test {
                 System.out.println(element.getLabel());
                         }
             //Test de création de graphe
-            //GraphManager graphGenerator = new GraphManager(dbManager);
-            //graphGenerator.writeStateActivity(idProjetTest);
+            GraphManager graphGenerator = new GraphManager(dbManager,idProjetTest);
+            graphGenerator.writeStateActivityClusters(idProjetTest,"E:/Cours/PAPPL/Gestion_Projet/graphTest.dot");
 
             
         } catch (DatabaseException e) {

@@ -387,8 +387,13 @@ public class New_Element extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String label = labelTF.getText();
-        long parent_id=Long.valueOf(parent_TF.getText()).longValue();
-                
+        Long parent_id = null;
+        try{
+        parent_id=Long.valueOf(parent_TF.getText()).longValue();
+        }
+        catch(NumberFormatException e){
+            
+        }
         String description = Description_TF.getText();
         String constraintType=constraint_TF.getText();
 

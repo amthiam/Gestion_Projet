@@ -288,14 +288,13 @@ public class New_Activity extends javax.swing.JDialog {
                                                 a.setHypothesis(hypothesis);
                                                 a.setLabel(label);
                                                 a.setWorkload(workload);
-<<<<<<< HEAD
+
                                                 ActivityDAO activityDAO = new ActivityDAO(db);
                                                 activityDAO.create(a);
-                                                
-=======
+
                                                 this.objet.getActivites().add(a);
                                             */
->>>>>>> Ajout de l'élément WBS
+
                                                 dispose();
                                                 
                                                 

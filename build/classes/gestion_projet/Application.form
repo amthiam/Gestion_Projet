@@ -65,7 +65,11 @@
                       <Component id="jButton_LoadProject" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton_Deconnection" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="405" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="198" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -75,6 +79,8 @@
                       <Component id="jButton_NewProject" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_LoadProject" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_Deconnection" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -104,6 +110,23 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DeconnectionActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox2">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Select a project"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel_WBS">
@@ -130,7 +153,9 @@
                       <Component id="jButton_ShowTree" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton_ExportPDF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -145,6 +170,7 @@
                           <Component id="jButton_ExportPDF" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_New_Element" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_Estimation" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="296" max="-2" attributes="0"/>
@@ -168,6 +194,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Show as a Tree"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ShowTreeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_ExportPDF">
               <Properties>
@@ -237,12 +266,23 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jTable_WBSPropertyChange"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.idProject, this.db);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reload"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel_Resources">
