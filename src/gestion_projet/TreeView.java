@@ -94,13 +94,7 @@ reload = new javax.swing.JButton();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*DefaultMutableTreeNode selectedNode = tree.getLastSelectedNode();
 		
-		if (selectedNode != null){
-			
-
-		}
-                        */
 	}
 
 	

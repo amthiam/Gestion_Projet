@@ -26,8 +26,7 @@ public class New_Activity extends javax.swing.JDialog {
     public New_Activity(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //ObjetsBDD objets=o;
-        //this.lancer();
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -265,16 +264,7 @@ public class New_Activity extends javax.swing.JDialog {
                              //   String dateString= ImposedDate_TF.getText();
                                 String constraintType=constraint_TF.getText();
          
-                                /*Gestion du calendrier. Demander si on ne peut pas remplacer l'utilisation des dates par des String.
-                                //Egalement pour Place, ce serait plus simple de le gérer avec des String.
-                                DateFormat df = new SimpleDateFormat("E, dd MMM yyyy hh:mm:ss Z");
-                                Date parsed = df.parse(dateString);
-
-
-                                 GregorianCalendar newCalendar = GregorianCalendar.getInstance();
-                                 newCalendar.setTime(parsed);
-                                GregorianCalendar imposed_date= new GregorianCalendar(ImposedDate_TF.getText());
-                                */
+                               
                                 
                                 BigDecimal workload=new BigDecimal(Workload_TF.getText());
                                 BigDecimal duration=new BigDecimal(Duration_TF.getText());
