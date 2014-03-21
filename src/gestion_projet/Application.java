@@ -65,6 +65,7 @@ protected Long idProject;
         jButton_Estimation = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_WBS = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jPanel_Resources = new javax.swing.JPanel();
         jButton_Human = new javax.swing.JButton();
         jButton_Material = new javax.swing.JButton();
@@ -184,6 +185,11 @@ protected Long idProject;
             System.out.println(e.getStackTrace().toString());
             e.printStackTrace();
         }
+        jTable_WBS.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable_WBSPropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_WBS);
         jTable_WBS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
@@ -194,6 +200,13 @@ protected Long idProject;
             jTable_WBS.getColumnModel().getColumn(4).setHeaderValue("Start Date");
             jTable_WBS.getColumnModel().getColumn(5).setHeaderValue("Delivery Date");
         }
+
+        jButton1.setText("Reload");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_WBSLayout = new javax.swing.GroupLayout(jPanel_WBS);
         jPanel_WBS.setLayout(jPanel_WBSLayout);
@@ -211,7 +224,9 @@ protected Long idProject;
                 .addComponent(jButton_ShowTree)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ExportPDF)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         jPanel_WBSLayout.setVerticalGroup(
@@ -223,7 +238,8 @@ protected Long idProject;
                     .addComponent(jButton_ShowTree)
                     .addComponent(jButton_ExportPDF)
                     .addComponent(jButton_New_Element)
-                    .addComponent(jButton_Estimation))
+                    .addComponent(jButton_Estimation)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -591,12 +607,41 @@ protected Long idProject;
     }
     }//GEN-LAST:event_jButton_ShowTreeActionPerformed
 
+    private void jTable_WBSPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable_WBSPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable_WBSPropertyChange
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            gestion_projet.MyModel_WBS mtm = new gestion_projet.MyModel_WBS(this.idProject, this.db);
+            jTable_WBS.setModel(mtm);
+        }
+        catch(ProjectException e){
+            System.out.println("Erreur BDD :" + e.getMessage() + ", ResultCode :" + e.getResultCode().name());
+            System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
+        }
+        
+        jTable_WBS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+if (jTable_WBS.getColumnModel().getColumnCount() > 0) {
+    jTable_WBS.getColumnModel().getColumn(0).setHeaderValue("Code");
+    jTable_WBS.getColumnModel().getColumn(1).setHeaderValue("Label");
+    jTable_WBS.getColumnModel().getColumn(2).setHeaderValue("Work Package");
+    jTable_WBS.getColumnModel().getColumn(3).setHeaderValue("Concractual");
+    jTable_WBS.getColumnModel().getColumn(4).setHeaderValue("Start Date");
+    jTable_WBS.getColumnModel().getColumn(5).setHeaderValue("Delivery Date");
+}
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonTargetGroup;
     private javax.swing.JButton jButton_ActGraph;
     private javax.swing.JButton jButton_ActStateGraph;
