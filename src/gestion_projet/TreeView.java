@@ -30,7 +30,7 @@ import model.WBSElement;
 
 
 
-public class TreeView extends Panel implements ActionListener, MouseListener {
+public class TreeView extends javax.swing.JFrame implements ActionListener, MouseListener {
 	
 	WBSElement mag;
 	boolean active;
@@ -97,7 +97,9 @@ public class TreeView extends Panel implements ActionListener, MouseListener {
 
 		this.add(treeZone, BorderLayout.NORTH);
 		this.add(buttonZone, BorderLayout.SOUTH);
+                this.activate();
 		this.setVisible(true);
+                System.out.println("TreeView lancé");
 
 
 	}
