@@ -5,9 +5,8 @@ import javax.swing.table.AbstractTableModel;
 import model.WBSElement;
 class MyModel extends AbstractTableModel{
     
-    public MyModel(ObjetsBDD a){
-        this.list = a.getElements();
-        
+    public MyModel(){
+                
     }
 
     private ArrayList<WBSElement> list;    

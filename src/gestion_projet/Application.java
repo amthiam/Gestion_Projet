@@ -21,7 +21,7 @@ import model.User;
  */
 public class Application extends javax.swing.JFrame {
     
-protected ObjetsBDD objets = new ObjetsBDD();
+
 protected DatabaseManager db;
 protected Long idProject;
 protected String repo;
@@ -265,7 +265,7 @@ protected String repo;
             }
         });
 
-        gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH(this.objets);
+        gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH();
         jTable_RH.setModel(model_rh);
         jTable_RH.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(jTable_RH);
@@ -602,7 +602,7 @@ protected String repo;
 
     private void jButton_NewActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_NewActMouseClicked
  // TODO add your handling code here:
-        new New_Activity(this, true, objets);
+        new New_Activity(this, true);
     }//GEN-LAST:event_jButton_NewActMouseClicked
 
     private void jButton_NewActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewActActionPerformed

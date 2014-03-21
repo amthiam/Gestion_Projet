@@ -6,8 +6,8 @@ import model.HumanResource;
 import model.WBSElement;
 class Model_ResourcesH extends AbstractTableModel{
     
-    public Model_ResourcesH(ObjetsBDD a){
-        this.list = a.getRh();
+    public Model_ResourcesH(){
+        //this.list = a.getRh();
         
     }
 

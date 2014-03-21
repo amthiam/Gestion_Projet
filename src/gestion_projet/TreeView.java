@@ -2,7 +2,7 @@ package gestion_projet;
 import dao.impl.ProjectDAO;
 import dao.impl.WBSElementDAO;
 import exceptions.ProjectException;
-import gestion_projet.Arbre;
+
 import java.awt.*;
 import java.awt.event.*;
 

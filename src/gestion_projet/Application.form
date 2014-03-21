@@ -438,7 +438,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH(this.objets);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="gestion_projet.Model_ResourcesH model_rh= new gestion_projet.Model_ResourcesH();"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
