@@ -39,9 +39,9 @@ class MyModel_WBS extends AbstractTableModel{
         switch (columnIndex) {
         case 0: return r.getId(); 
         case 1: return r.getLabel();
-       // case 2: return r.getWorkpackage;// A compléter après, récupérer le WP 
-        case 3:return r.getSubcontractAmount(); //A revérifier
-        case 4: return r.getEarlyStart(); //A vérifier aussi
+        case 2: return r.isIsWorkpackage();
+        case 3:return r.isIsContractual(); 
+        case 4: return r.getStartDate(); 
         case 5: return r.getDeliveryDate();
           
         }
