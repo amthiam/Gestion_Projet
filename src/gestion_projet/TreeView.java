@@ -11,6 +11,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import java.awt.*;
 import java.util.LinkedList;
+
 import manager.DatabaseManager;
 import model.Project;
 import model.WBSElement;
@@ -36,10 +37,8 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
 	boolean active;
         DatabaseManager db;
         long projectId;
-	
-	Arbre arbre;
-	int a=0;
-	DefaultMutableTreeNode nodeToMove;	//utilis� pour le d�placement d'une cat�gorie
+        private javax.swing.JScrollPane jScrollPane1;
+        private JTree tree;
 
 	public TreeView(DatabaseManager db, long projectId) throws ProjectException  {
 		active = false;
@@ -49,78 +48,74 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
                 WBSElementDAO p = new WBSElementDAO(db);
                 LinkedList<WBSElement> list = p.listElementOfProject(projectId);
                         
+                
                         
-                WBSElement racine=null;
+                WBSElement mag=null;
                 for (WBSElement e:list){
-                    if (e.getIdParentElement()==null){
-                        racine=e;
+                      if (e.getIdParentElement()==0){
+                        System.out.println("Trouvé");
+                        mag=e;
                     }
                     
                 }
+                System.out.println(list.size());
                 
-		this.mag=racine ;
-		
-		
-
-
-
-		// ******************* Actions Listener  ****************************
+		DefaultMutableTreeNode top = new DefaultMutableTreeNode(mag);
+            createNodes(top,mag);
+         tree = new JTree(top);
+    
+    
 		
 
+	// *******************   Arrangement des bouttons ************************
+		jScrollPane1 = new javax.swing.JScrollPane(tree);
+        
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        //jScrollPane1.setViewportView(arbre);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        pack();
 
 
-		// *******************   Arrangement des bouttons ************************
-		JPanel buttonZone = new JPanel();
-		GridLayout south = new GridLayout();
-		south.setColumns(3);
-		south.setRows(3);
-		south.setHgap(5);
-		south.setVgap(5);
-
-		
-		buttonZone.setLayout(south);
-		
-		buttonZone.setVisible(true);
-
-
-		
-
-		// ******************  Affichage de l'arbre **************************
-		arbre = new Arbre(mag, projectId,db);
-                
-		JScrollPane treeZone = new JScrollPane(arbre.arbre);
-		arbre.arbre.addMouseListener(this);
-
-
-		BorderLayout test = new BorderLayout();
-		this.setLayout(test);
-
-		this.add(treeZone, BorderLayout.NORTH);
-		this.add(buttonZone, BorderLayout.SOUTH);
-                this.activate();
 		this.setVisible(true);
-                System.out.println("TreeView lancé");
-
-
-	}
+        }
 
 
 	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		DefaultMutableTreeNode selectedNode = arbre.getLastSelectedNode();
+		/*DefaultMutableTreeNode selectedNode = tree.getLastSelectedNode();
 		
 		if (selectedNode != null){
 			
 
 		}
+                        */
 	}
 
 	
 
 	public void updateTree() throws ProjectException {
-		arbre.updateTree();
+	//	arbre.updateTree();
 	}
 
 	@Override
@@ -152,16 +147,37 @@ public class TreeView extends javax.swing.JFrame implements ActionListener, Mous
 
 	
          public void activate() throws ProjectException {
-        
+        /*
         arbre.setRoot(mag);
         this.updateTree();
-        
+        */
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+
+    private void createNodes(DefaultMutableTreeNode top, WBSElement racine) throws ProjectException {
+              
+                WBSElementDAO elementDAO = new WBSElementDAO(db);
+                LinkedList<WBSElement> list = elementDAO.listElementOfProject(projectId);
+       
+                for (WBSElement e : list){
+                    if (racine.getId()==e.getIdParentElement()){
+                        DefaultMutableTreeNode fils = new DefaultMutableTreeNode(e);
+                        createNodes(fils,e);
+                        top.add(fils);
+                    }
+                }
+                
+                
+                
+                
+        }
+    }
+    
+    
+
 
 

@@ -314,4 +314,8 @@ public class WBSElement {
         }
         return result;
     }
+    @Override
+    public String toString(){
+        return this.getLabel();
+    }
 }

@@ -38,20 +38,18 @@ public class Arbre extends JTree{
                 node = buildTree(root);
                 treeModel = new DefaultTreeModel(node);
                 arbre = new JTree(treeModel);
+                
                 arbre.setEditable(false);
         }
 
 
         // **************** Methodes ********************
-        /*
-         * Methode permettant de creer un arbre
-         * Methode recursive
-         * Parametre en entree : category
-         */
+       
+        
         private DefaultMutableTreeNode buildTree(WBSElement cat) throws ProjectException{
                 //Création d'une racine initiale
                 DefaultMutableTreeNode racine = new DefaultMutableTreeNode(cat);
-                //Récupération des fils.
+                //Récupération des fils
                 WBSElementDAO elementDAO = new WBSElementDAO(db);
                 LinkedList<WBSElement> list = elementDAO.listElementOfProject(projectId);
        

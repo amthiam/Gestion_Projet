@@ -585,6 +585,7 @@ protected Long idProject;
     try {
         // TODO add your handling code here:
         new TreeView(this.db, this.idProject);
+        //new TreeView2(this.idProject, this.db);
     } catch (ProjectException ex) {
         Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
     }
