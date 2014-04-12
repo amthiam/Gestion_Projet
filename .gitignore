@@ -1,9 +1,0 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# Fichiers de bibliotheques a inclure
-!lib/*.jar
